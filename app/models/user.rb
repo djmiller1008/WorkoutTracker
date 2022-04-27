@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    before_validation :ensure_session_token!
+    before_validation :ensure_session_token
 
     validates :username, presence: true, uniqueness: true
     validates :password_digest, presence: true
