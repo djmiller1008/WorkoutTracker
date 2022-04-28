@@ -37,7 +37,7 @@ class SessionForm extends React.Component {
         return(
             <div>
                 {errors}
-                <form>
+                <form className="session-form">
                     <label>Username</label>
                     <input type='text'
                             value={this.state.username}

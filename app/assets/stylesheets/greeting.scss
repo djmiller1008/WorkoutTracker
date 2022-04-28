@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Comic Neue', cursive;
+    vertical-align: center;
+
+    h1 {
+        font-size: 28px;
+        font-weight: 700;
+        padding: 20px 25px;
+    }
+}
+
+.session-links-nav {
+    display: flex;
+    
+
+    a {
+        margin: auto;
+        padding-right: 25px;
+
+        button {
+            background-color: white;
+            font-family: inherit;
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+
+}
+
+.session-links-nav button:hover {
+    cursor: pointer;
+    background-color: #9AB4CB;
+}

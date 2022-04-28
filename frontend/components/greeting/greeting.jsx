@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Greeting = ({ currentUser, logout }) => {
     const withUser = () => (
-        <header>
+        <header className="header">
             <h1>WorkoutTracker</h1>
             <nav>
                 <h1>Welcome {currentUser.username}!</h1>
@@ -14,9 +14,9 @@ const Greeting = ({ currentUser, logout }) => {
     );
 
     const noUser = () => ( 
-        <header>
+        <header className="header">
             <h1>WorkoutTracker</h1>
-             <nav>
+             <nav className="session-links-nav">
                 <Link to='/login'>
                     <button>Sign In</button>
                 </Link> 
