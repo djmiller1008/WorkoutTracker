@@ -2,12 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Comic Neue', cursive;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     label {
         font-family: inherit;
         font-size: 20px;
-        font-weight: 600;
+       
         margin-top: 20px;
         margin-bottom: 20px;
     }
@@ -17,17 +17,23 @@
     }
 
     button {
-        margin-top: 15px;
+        border: .5px solid black;
+        border-radius: 2px;
+        margin-top: 25px;
         font-family: inherit;
-        text-transform: capitalize;
         font-size: 20px;
-        font-weight: 600;
         background-color: white;
     }
 
     button:hover {
         cursor: pointer;
-        background-color: #9AB4CB;
+        background-color: lightgray;
     }
     
+}
+
+.errors-li {
+    text-align: center;
+    color: lightcoral;
+
 }

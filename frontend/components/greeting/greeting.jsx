@@ -6,9 +6,9 @@ const Greeting = ({ currentUser, logout }) => {
     const withUser = () => (
         <header className="header">
             <h1>WorkoutTracker</h1>
-            <nav>
-                <h1>Welcome {currentUser.username}!</h1>
-                <button onClick={logout}>Logout</button>
+            <nav className="welcome-nav">
+                <h2>Welcome {currentUser.username}!</h2>
+                <button className="logout-button" onClick={logout}>Logout</button>
             </nav>
         </header>
     );
@@ -17,11 +17,11 @@ const Greeting = ({ currentUser, logout }) => {
         <header className="header">
             <h1>WorkoutTracker</h1>
              <nav className="session-links-nav">
-                <Link to='/login'>
-                    <button>Sign In</button>
+                <Link className="nav-link" to='/login'>
+                    Sign In
                 </Link> 
-                <Link to='/signup'>
-                    <button>Sign Up</button>
+                <Link className="nav-link" to='/signup'>
+                    Sign Up
                 </Link>
             </nav>
         </header> 

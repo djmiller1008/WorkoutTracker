@@ -28,15 +28,26 @@ class SessionForm extends React.Component {
         } else {
             this.props.signup(this.state);
         }
-
     };
 
+    renderErrors() {
+        return(
+          <ul className="errors-ul">
+            {this.props.errors.map((error, i) => (
+              <li className="errors-li" key={`error-${i}`}>
+                {error}
+              </li>
+            ))}
+          </ul>
+        );
+    }
+
     render() {
-        const buttonText = this.props.login ? 'Login' : 'Signup'
-        const errors = this.props.errors;
+        const buttonText = this.props.login ? 'Login' : 'Signup';
+        
         return(
             <div>
-                {errors}
+                {this.renderErrors()}
                 <form className="session-form">
                     <label>Username</label>
                     <input type='text'
