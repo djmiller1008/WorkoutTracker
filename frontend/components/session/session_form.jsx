@@ -28,6 +28,7 @@ class SessionForm extends React.Component {
         } else {
             this.props.signup(this.state);
         }
+
     };
 
     render() {
