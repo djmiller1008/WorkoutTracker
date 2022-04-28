@@ -17,8 +17,12 @@ const Greeting = ({ currentUser, logout }) => {
         <header>
             <h1>WorkoutTracker</h1>
              <nav>
-                <button>Sign In</button>
-                <button>Sign Up</button>
+                <Link to='/login'>
+                    <button>Sign In</button>
+                </Link> 
+                <Link to='/signup'>
+                    <button>Sign Up</button>
+                </Link>
             </nav>
         </header> 
     );
