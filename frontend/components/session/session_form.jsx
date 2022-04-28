@@ -14,10 +14,16 @@ class SessionForm extends React.Component {
     };
 
     handleSubmit(e) {
-
-    }
+        e.preventDefault();
+        if (this.props.login) {
+            this.props.login(this.state);
+        } else {
+            this.props.signup(this.state);
+        }
+    };
 
     render() {
+        const buttonText = this.props.login ? 'Login' : 'Signup'
         return(
             <div>
                 <form>
@@ -33,7 +39,7 @@ class SessionForm extends React.Component {
                             onChange={this.update('password')}
                     />
 
-                    <button></button>
+                    <button onClick={this.handleSubmit}>{buttonText}</button>
                 </form>
             </div>
         )
