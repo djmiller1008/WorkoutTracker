@@ -7,6 +7,14 @@ class SessionForm extends React.Component {
             username: '',
             password: ''
         };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+    };
+
+    componentDidMount() {
+        if (this.props.errors.length > 0) {
+            this.props.clearErrors();
+        };
     };
 
     update(property) {
@@ -24,8 +32,10 @@ class SessionForm extends React.Component {
 
     render() {
         const buttonText = this.props.login ? 'Login' : 'Signup'
+        const errors = this.props.errors;
         return(
             <div>
+                {errors}
                 <form>
                     <label>Username</label>
                     <input type='text'
