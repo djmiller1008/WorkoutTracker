@@ -1,0 +1,46 @@
+.main-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.workout-index-div {
+    margin-top: 40px;
+    margin-left: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.workout-index-title {
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.workouts-ul {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.workout-index-item {
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: gray;
+}
+
+.new-workout-link {
+    margin-top: 40px;
+    margin-left: 25px;
+    text-decoration: none;
+    color: gray;
+}
+
+.new-workout-link:hover {
+    color: black;
+}
+
+.workout-index-item:hover {
+    color: black;
+}
+
+.exercise-show-ul {
+    margin-top: 25px;
+}
