@@ -1,6 +1,63 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./frontend/actions/exercise_actions.js":
+/*!**********************************************!*\
+  !*** ./frontend/actions/exercise_actions.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CLEAR_EXERCISES": () => (/* binding */ CLEAR_EXERCISES),
+/* harmony export */   "RECEIVE_EXERCISE": () => (/* binding */ RECEIVE_EXERCISE),
+/* harmony export */   "RECEIVE_EXERCISES": () => (/* binding */ RECEIVE_EXERCISES),
+/* harmony export */   "clearExercises": () => (/* binding */ clearExercises),
+/* harmony export */   "createExercise": () => (/* binding */ createExercise),
+/* harmony export */   "fetchExercises": () => (/* binding */ fetchExercises),
+/* harmony export */   "receiveExercise": () => (/* binding */ receiveExercise),
+/* harmony export */   "receiveExercises": () => (/* binding */ receiveExercises)
+/* harmony export */ });
+/* harmony import */ var _util_exercise_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/exercise_api_util */ "./frontend/util/exercise_api_util.js");
+
+var RECEIVE_EXERCISES = 'RECEIVE_EXERCISES';
+var RECEIVE_EXERCISE = 'RECEIVE_EXERCISE';
+var CLEAR_EXERCISES = 'CLEAR_EXERCISES';
+var receiveExercise = function receiveExercise(exercise) {
+  return {
+    type: RECEIVE_EXERCISE,
+    exercise: exercise
+  };
+};
+var clearExercises = function clearExercises() {
+  return {
+    type: CLEAR_EXERCISES
+  };
+};
+var receiveExercises = function receiveExercises(exercises) {
+  return {
+    type: RECEIVE_EXERCISES,
+    exercises: exercises
+  };
+};
+var fetchExercises = function fetchExercises(workoutId) {
+  return function (dispatch) {
+    return _util_exercise_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchExercises(workoutId).then(function (exercises) {
+      return dispatch(receiveExercises(exercises));
+    });
+  };
+};
+var createExercise = function createExercise(exercise) {
+  return function (dispatch) {
+    return _util_exercise_api_util__WEBPACK_IMPORTED_MODULE_0__.createExercise(exercise).then(function (exercise) {
+      return dispatch(receiveExercise(exercise));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -78,6 +135,90 @@ var logout = function logout() {
 
 /***/ }),
 
+/***/ "./frontend/actions/workout_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/workout_actions.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CLEAR_WORKOUTS": () => (/* binding */ CLEAR_WORKOUTS),
+/* harmony export */   "RECEIVE_WORKOUT": () => (/* binding */ RECEIVE_WORKOUT),
+/* harmony export */   "RECEIVE_WORKOUTS": () => (/* binding */ RECEIVE_WORKOUTS),
+/* harmony export */   "RECEIVE_WORKOUT_ERRORS": () => (/* binding */ RECEIVE_WORKOUT_ERRORS),
+/* harmony export */   "clearWorkouts": () => (/* binding */ clearWorkouts),
+/* harmony export */   "createWorkout": () => (/* binding */ createWorkout),
+/* harmony export */   "deleteWorkout": () => (/* binding */ deleteWorkout),
+/* harmony export */   "fetchWorkout": () => (/* binding */ fetchWorkout),
+/* harmony export */   "fetchWorkouts": () => (/* binding */ fetchWorkouts),
+/* harmony export */   "receiveWorkout": () => (/* binding */ receiveWorkout),
+/* harmony export */   "receiveWorkoutErrors": () => (/* binding */ receiveWorkoutErrors),
+/* harmony export */   "receiveWorkouts": () => (/* binding */ receiveWorkouts)
+/* harmony export */ });
+/* harmony import */ var _util_workout_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/workout_api_util */ "./frontend/util/workout_api_util.js");
+
+var RECEIVE_WORKOUTS = 'RECEIVE_WORKOUTS';
+var RECEIVE_WORKOUT = 'RECEIVE_WORKOUT';
+var CLEAR_WORKOUTS = 'CLEAR_WORKOUTS';
+var RECEIVE_WORKOUT_ERRORS = 'RECEIVE_WORKOUT_ERRORS';
+var receiveWorkoutErrors = function receiveWorkoutErrors(errors) {
+  return {
+    type: RECEIVE_WORKOUT_ERRORS,
+    errors: errors
+  };
+};
+var clearWorkouts = function clearWorkouts() {
+  return {
+    type: CLEAR_WORKOUTS
+  };
+};
+var receiveWorkout = function receiveWorkout(workout) {
+  return {
+    type: RECEIVE_WORKOUT,
+    workout: workout
+  };
+};
+var receiveWorkouts = function receiveWorkouts(workouts) {
+  return {
+    type: RECEIVE_WORKOUTS,
+    workouts: workouts
+  };
+};
+var createWorkout = function createWorkout(workout) {
+  return function (dispatch) {
+    return _util_workout_api_util__WEBPACK_IMPORTED_MODULE_0__.createWorkout(workout).then(function (workout) {
+      return dispatch(receiveWorkout(workout));
+    });
+  };
+};
+var fetchWorkouts = function fetchWorkouts() {
+  return function (dispatch) {
+    return _util_workout_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchWorkouts().then(function (workouts) {
+      return dispatch(receiveWorkouts(workouts));
+    });
+  };
+};
+var fetchWorkout = function fetchWorkout(workoutId) {
+  return function (dispatch) {
+    return _util_workout_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchWorkout(workoutId).then(function (workout) {
+      return dispatch(receiveWorkout(workout));
+    }).fail(function (err) {
+      return dispatch(receiveWorkoutErrors(err.responseJSON));
+    });
+  };
+};
+var deleteWorkout = function deleteWorkout(workoutId) {
+  return function (dispatch) {
+    return _util_workout_api_util__WEBPACK_IMPORTED_MODULE_0__.deleteWorkout(workoutId).then(function (workouts) {
+      return dispatch(receiveWorkouts(workouts));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/components/App.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/App.jsx ***!
@@ -92,9 +233,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./greeting/greeting_container */ "./frontend/components/greeting/greeting_container.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _session_signup_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session/signup_form_container */ "./frontend/components/session/signup_form_container.js");
-/* harmony import */ var _session_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session/login_form_container */ "./frontend/components/session/login_form_container.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _home_home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./home/home */ "./frontend/components/home/home.jsx");
+/* harmony import */ var _session_signup_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session/signup_form_container */ "./frontend/components/session/signup_form_container.js");
+/* harmony import */ var _session_login_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session/login_form_container */ "./frontend/components/session/login_form_container.js");
+/* harmony import */ var _workout_workout_index_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./workout/workout_index_container */ "./frontend/components/workout/workout_index_container.js");
+/* harmony import */ var _workout_workout_show_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./workout/workout_show_container */ "./frontend/components/workout/workout_show_container.js");
+/* harmony import */ var _workout_workout_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./workout/workout_form_container */ "./frontend/components/workout/workout_form_container.js");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+
+
+
+
+
+
 
 
 
@@ -102,18 +254,187 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__.AuthRoute, {
     exact: true,
     path: "/signup",
-    component: _session_signup_form_container__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+    component: _session_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__.AuthRoute, {
     exact: true,
     path: "/login",
-    component: _session_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }));
+    component: _session_login_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__.ProtectedRoute, {
+    exact: true,
+    path: "/workouts",
+    component: _workout_workout_index_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__.ProtectedRoute, {
+    path: "/workouts/new",
+    component: _workout_workout_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__.ProtectedRoute, {
+    exact: true,
+    path: "/workouts/:workoutId",
+    component: _workout_workout_show_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+    exact: true,
+    path: "/",
+    component: _home_home__WEBPACK_IMPORTED_MODULE_2__["default"]
+  })));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+
+/***/ }),
+
+/***/ "./frontend/components/exercises/exercise_form.jsx":
+/*!*********************************************************!*\
+  !*** ./frontend/components/exercises/exercise_form.jsx ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var ExerciseForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(ExerciseForm, _React$Component);
+
+  var _super = _createSuper(ExerciseForm);
+
+  function ExerciseForm(props) {
+    var _this;
+
+    _classCallCheck(this, ExerciseForm);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      name: "",
+      sets: 0,
+      reps: 0,
+      weight: 0,
+      workout_id: _this.props.workoutId
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ExerciseForm, [{
+    key: "update",
+    value: function update(property) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, property, e.target.value));
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      this.props.createExercise(this.state).then(function () {
+        return _this3.setState({
+          name: '',
+          sets: 0,
+          reps: 0,
+          weight: 0
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "exercise-form-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+        className: "exercise-form-h2"
+      }, "Add your Exercise"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+        className: "exercise-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Exercise:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "text",
+        value: this.state.name,
+        onChange: this.update('name')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Sets:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "number",
+        value: this.state.sets,
+        onChange: this.update('sets')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Reps:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        className: "reps-input",
+        type: "text",
+        value: this.state.reps,
+        onChange: this.update('reps')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Weight:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "number",
+        value: this.state.weight,
+        onChange: this.update('weight')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+        onClick: this.handleSubmit
+      }, "Add Exercise")));
+    }
+  }]);
+
+  return ExerciseForm;
+}((react__WEBPACK_IMPORTED_MODULE_0___default().Component));
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExerciseForm);
+
+/***/ }),
+
+/***/ "./frontend/components/exercises/exercise_form_container.js":
+/*!******************************************************************!*\
+  !*** ./frontend/components/exercises/exercise_form_container.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _exercise_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./exercise_form */ "./frontend/components/exercises/exercise_form.jsx");
+/* harmony import */ var _actions_exercise_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/exercise_actions */ "./frontend/actions/exercise_actions.js");
+
+
+
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    createExercise: function createExercise(exercise) {
+      return dispatch((0,_actions_exercise_actions__WEBPACK_IMPORTED_MODULE_2__.createExercise)(exercise));
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(null, mapDispatchToProps)(_exercise_form__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -139,14 +460,17 @@ var Greeting = function Greeting(_ref) {
       logout = _ref.logout;
 
   var withUser = function withUser() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", {
       className: "header"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "WorkoutTracker"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "WorkoutTracker"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      className: "my-workouts",
+      to: "/workouts"
+    }, "My Workouts"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
       className: "welcome-nav"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Welcome ", currentUser.username, "!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       className: "logout-button",
       onClick: logout
-    }, "Logout")));
+    }, "Logout"))));
   };
 
   var noUser = function noUser() {
@@ -205,6 +529,38 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, mapDispatchToProps)(_greeting__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/home/home.jsx":
+/*!*******************************************!*\
+  !*** ./frontend/components/home/home.jsx ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+
+var Home = function Home() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home-content"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "home-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Easily track and manage all of your workouts")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "home-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "A solution for everyone to record your progress in the gym"))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
 
 /***/ }),
 
@@ -294,6 +650,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -317,6 +674,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -360,12 +718,18 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this3 = this;
+
       e.preventDefault();
 
       if (this.props.login) {
-        this.props.login(this.state);
+        this.props.login(this.state).then(function () {
+          return _this3.props.history.push('/workouts');
+        });
       } else {
-        this.props.signup(this.state);
+        this.props.signup(this.state).then(function () {
+          return _this3.props.history.push('/workouts');
+        });
       }
     }
   }, {
@@ -404,7 +768,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
 }((react__WEBPACK_IMPORTED_MODULE_0___default().Component));
 
 ;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SessionForm);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.withRouter)(SessionForm));
 
 /***/ }),
 
@@ -448,6 +812,515 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/workout/workout_form.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/workout/workout_form.jsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var WorkoutForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(WorkoutForm, _React$Component);
+
+  var _super = _createSuper(WorkoutForm);
+
+  function WorkoutForm(props) {
+    var _this;
+
+    _classCallCheck(this, WorkoutForm);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      date: '',
+      user_id: _this.props.userId
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(WorkoutForm, [{
+    key: "update",
+    value: function update(property) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, property, e.target.value));
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      this.props.createWorkout(this.state).then(function (workout) {
+        _this3.props.history.push({
+          pathname: "/workouts/".concat(Object.values(workout.workout)[0].id),
+          date: _this3.state.date
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+        className: "workout-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+        className: "workout-form-label"
+      }, "Workout Date", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        type: "date",
+        value: this.state.date,
+        onChange: this.update('date')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+        className: "workout-form-button",
+        onClick: this.handleSubmit
+      }, "Create Workout")));
+    }
+  }]);
+
+  return WorkoutForm;
+}((react__WEBPACK_IMPORTED_MODULE_0___default().Component));
+
+;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WorkoutForm);
+
+/***/ }),
+
+/***/ "./frontend/components/workout/workout_form_container.js":
+/*!***************************************************************!*\
+  !*** ./frontend/components/workout/workout_form_container.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_workout_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/workout_actions */ "./frontend/actions/workout_actions.js");
+/* harmony import */ var _workout_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./workout_form */ "./frontend/components/workout/workout_form.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    userId: state.session.id
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    createWorkout: function createWorkout(workout) {
+      return dispatch((0,_actions_workout_actions__WEBPACK_IMPORTED_MODULE_1__.createWorkout)(workout));
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_workout_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/workout/workout_index.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/workout/workout_index.jsx ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _workout_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./workout_index_item */ "./frontend/components/workout/workout_index_item.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var WorkoutIndex = /*#__PURE__*/function (_React$Component) {
+  _inherits(WorkoutIndex, _React$Component);
+
+  var _super = _createSuper(WorkoutIndex);
+
+  function WorkoutIndex(props) {
+    _classCallCheck(this, WorkoutIndex);
+
+    return _super.call(this, props);
+  }
+
+  _createClass(WorkoutIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchWorkouts();
+    }
+  }, {
+    key: "renderWorkouts",
+    value: function renderWorkouts() {
+      return Object.values(this.props.workouts).map(function (workout, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_workout_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: i,
+          workout: workout
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "main-content"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+        className: "new-workout-link",
+        to: "/workouts/new"
+      }, "Add a New Workout"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "workout-index-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+        className: "workout-index-title"
+      }, "Your Workouts"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
+        className: "workouts-ul"
+      }, this.renderWorkouts())));
+    }
+  }]);
+
+  return WorkoutIndex;
+}((react__WEBPACK_IMPORTED_MODULE_0___default().Component));
+
+;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WorkoutIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/workout/workout_index_container.js":
+/*!****************************************************************!*\
+  !*** ./frontend/components/workout/workout_index_container.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_workout_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/workout_actions */ "./frontend/actions/workout_actions.js");
+/* harmony import */ var _workout_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./workout_index */ "./frontend/components/workout/workout_index.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    workouts: state.entities.workouts
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchWorkouts: function fetchWorkouts() {
+      return dispatch((0,_actions_workout_actions__WEBPACK_IMPORTED_MODULE_1__.fetchWorkouts)());
+    },
+    clearWorkouts: function clearWorkouts() {
+      return dispatch((0,_actions_workout_actions__WEBPACK_IMPORTED_MODULE_1__.clearWorkouts)());
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_workout_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/workout/workout_index_item.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/workout/workout_index_item.jsx ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+var WorkoutIndexItem = function WorkoutIndexItem(_ref) {
+  var workout = _ref.workout;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    className: "workout-index-item",
+    to: {
+      pathname: "/workouts/".concat(workout.id),
+      date: workout.date
+    }
+  }, workout.date);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WorkoutIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/workout/workout_show.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/workout/workout_show.jsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _exercises_exercise_form_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../exercises/exercise_form_container */ "./frontend/components/exercises/exercise_form_container.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var WorkoutShow = /*#__PURE__*/function (_React$Component) {
+  _inherits(WorkoutShow, _React$Component);
+
+  var _super = _createSuper(WorkoutShow);
+
+  function WorkoutShow(props) {
+    var _this;
+
+    _classCallCheck(this, WorkoutShow);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      exerciseForm: false,
+      exercisesLoaded: false,
+      exerciseFormButton: 'Add an Exercise'
+    };
+    _this.toggleExerciseForm = _this.toggleExerciseForm.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(WorkoutShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var workoutId = this.props.match.params.workoutId;
+      this.props.fetchExercises(workoutId);
+      this.props.fetchWorkout(workoutId).then(function () {
+        return _this2.setState({
+          exercisesLoaded: true
+        });
+      });
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete(e) {
+      e.preventDefault();
+      this.props.deleteWorkout(this.props.match.params.workoutId).then(this.props.history.push('/workouts'));
+    }
+  }, {
+    key: "renderExercises",
+    value: function renderExercises() {
+      if (Object.keys(this.props.exercises).length > 0) {
+        return Object.values(this.props.exercises).map(function (exercise, i) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+            key: i,
+            className: "exercise-show-div"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
+            className: "exercise-show-ul"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Exercise: ", exercise.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Weight: ", exercise.weight ? exercise.weight : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Sets: ", exercise.sets ? exercise.sets : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Reps: ", exercise.reps ? exercise.reps : '')));
+        });
+      } else {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+          className: "no-exercises-div"
+        }, "No Exercises Yet");
+      }
+    }
+  }, {
+    key: "toggleExerciseForm",
+    value: function toggleExerciseForm(e) {
+      e.preventDefault();
+
+      if (this.state.exerciseForm) {
+        this.setState({
+          exerciseForm: false,
+          exerciseFormButton: 'Add an Exercise'
+        });
+      } else {
+        this.setState({
+          exerciseForm: true,
+          exerciseFormButton: 'Hide New Exercise Form'
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.props.errors.length > 0) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, this.props.errors);
+      }
+
+      var form = this.state.exerciseForm ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_exercises_exercise_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        workoutId: this.props.match.params.workoutId
+      }) : '';
+
+      if (this.state.exercisesLoaded) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+          className: "workout-show"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+          className: "workout-index-div"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+          className: "workout-index-title"
+        }, "Your ", Object.values(this.props.workout)[0].date, " Workout "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+          className: "exercise-form-buttons"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+          onClick: this.toggleExerciseForm
+        }, this.state.exerciseFormButton), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+          onClick: this.handleDelete
+        }, "Delete Workout")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+          className: "exercises-show-div"
+        }, this.renderExercises()), form));
+      } else {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Exercises Loading...");
+      }
+    }
+  }]);
+
+  return WorkoutShow;
+}((react__WEBPACK_IMPORTED_MODULE_0___default().Component));
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WorkoutShow);
+
+/***/ }),
+
+/***/ "./frontend/components/workout/workout_show_container.js":
+/*!***************************************************************!*\
+  !*** ./frontend/components/workout/workout_show_container.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_exercise_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/exercise_actions */ "./frontend/actions/exercise_actions.js");
+/* harmony import */ var _actions_workout_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/workout_actions */ "./frontend/actions/workout_actions.js");
+/* harmony import */ var _workout_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./workout_show */ "./frontend/components/workout/workout_show.jsx");
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    exercises: state.entities.exercises,
+    workout: state.entities.workouts,
+    errors: state.errors.workout
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchExercises: function fetchExercises(workoutId) {
+      return dispatch((0,_actions_exercise_actions__WEBPACK_IMPORTED_MODULE_1__.fetchExercises)(workoutId));
+    },
+    clearExercises: function clearExercises() {
+      return dispatch((0,_actions_exercise_actions__WEBPACK_IMPORTED_MODULE_1__.clearExercises)());
+    },
+    fetchWorkout: function fetchWorkout(workoutId) {
+      return dispatch((0,_actions_workout_actions__WEBPACK_IMPORTED_MODULE_2__.fetchWorkout)(workoutId));
+    },
+    deleteWorkout: function deleteWorkout(workoutId) {
+      return dispatch((0,_actions_workout_actions__WEBPACK_IMPORTED_MODULE_2__.deleteWorkout)(workoutId));
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_workout_show__WEBPACK_IMPORTED_MODULE_3__["default"]));
+
+/***/ }),
+
 /***/ "./frontend/reducers/entities_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/entities_reducer.js ***!
@@ -459,12 +1332,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _exercises_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./exercises_reducer */ "./frontend/reducers/exercises_reducer.js");
+/* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _workouts_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./workouts_reducer */ "./frontend/reducers/workouts_reducer.js");
 
 
-var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__["default"]
+
+
+var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  workouts: _workouts_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  exercises: _exercises_reducer__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (entitiesReducer);
 
@@ -481,14 +1360,57 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
+/* harmony import */ var _workout_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./workout_errors_reducer */ "./frontend/reducers/workout_errors_reducer.js");
 
 
-var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__["default"]
+
+var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
+  workout: _workout_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/exercises_reducer.js":
+/*!************************************************!*\
+  !*** ./frontend/reducers/exercises_reducer.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_exercise_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/exercise_actions */ "./frontend/actions/exercise_actions.js");
+
+
+var exercisesReducer = function exercisesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_exercise_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_EXERCISES:
+      return action.exercises;
+
+    case _actions_exercise_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_EXERCISE:
+      return Object.assign({}, state, action.exercise);
+
+    case _actions_exercise_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_EXERCISES:
+      return {};
+
+    default:
+      return state;
+  }
+
+  ;
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (exercisesReducer);
 
 /***/ }),
 
@@ -640,6 +1562,78 @@ var usersReducer = function usersReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/workout_errors_reducer.js":
+/*!*****************************************************!*\
+  !*** ./frontend/reducers/workout_errors_reducer.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_workout_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/workout_actions */ "./frontend/actions/workout_actions.js");
+
+
+var workoutErrorsReducer = function workoutErrorsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_workout_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_WORKOUT_ERRORS:
+      return action.errors;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (workoutErrorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/workouts_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/workouts_reducer.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_workout_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/workout_actions */ "./frontend/actions/workout_actions.js");
+
+
+var workoutsReducer = function workoutsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_workout_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_WORKOUTS:
+      return action.workouts;
+
+    case _actions_workout_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_WORKOUT:
+      return action.workout;
+
+    case _actions_workout_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_WORKOUTS:
+      return {};
+
+    default:
+      return state;
+  }
+
+  ;
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (workoutsReducer);
+
+/***/ }),
+
 /***/ "./frontend/store/store.js":
 /*!*********************************!*\
   !*** ./frontend/store/store.js ***!
@@ -667,6 +1661,102 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/exercise_api_util.js":
+/*!********************************************!*\
+  !*** ./frontend/util/exercise_api_util.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createExercise": () => (/* binding */ createExercise),
+/* harmony export */   "fetchExercises": () => (/* binding */ fetchExercises)
+/* harmony export */ });
+var fetchExercises = function fetchExercises(workout_id) {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/exercises',
+    data: {
+      workout_id: workout_id
+    }
+  });
+};
+var createExercise = function createExercise(exercise) {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/exercises',
+    data: {
+      exercise: exercise
+    }
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/route_util.jsx":
+/*!**************************************!*\
+  !*** ./frontend/util/route_util.jsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AuthRoute": () => (/* binding */ AuthRoute),
+/* harmony export */   "ProtectedRoute": () => (/* binding */ ProtectedRoute)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    loggedIn: Boolean(state.session.id)
+  };
+};
+
+var Auth = function Auth(_ref) {
+  var loggedIn = _ref.loggedIn,
+      path = _ref.path,
+      exact = _ref.exact,
+      Component = _ref.component;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+    path: path,
+    exact: exact,
+    render: function render(props) {
+      return !loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Component, props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
+        to: "/workouts"
+      });
+    }
+  });
+};
+
+var Protected = function Protected(_ref2) {
+  var loggedIn = _ref2.loggedIn,
+      path = _ref2.path,
+      exact = _ref2.exact,
+      Component = _ref2.component;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+    path: path,
+    exact: exact,
+    render: function render(props) {
+      return loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Component, props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
+        to: "/login"
+      });
+    }
+  });
+};
+
+var AuthRoute = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.withRouter)((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps)(Auth));
+var ProtectedRoute = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.withRouter)((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps)(Protected));
 
 /***/ }),
 
@@ -705,6 +1795,50 @@ var deleteSession = function deleteSession() {
   return $.ajax({
     method: 'DELETE',
     url: 'api/session'
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/workout_api_util.js":
+/*!*******************************************!*\
+  !*** ./frontend/util/workout_api_util.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createWorkout": () => (/* binding */ createWorkout),
+/* harmony export */   "deleteWorkout": () => (/* binding */ deleteWorkout),
+/* harmony export */   "fetchWorkout": () => (/* binding */ fetchWorkout),
+/* harmony export */   "fetchWorkouts": () => (/* binding */ fetchWorkouts)
+/* harmony export */ });
+var createWorkout = function createWorkout(workout) {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/workouts',
+    data: {
+      workout: workout
+    }
+  });
+};
+var fetchWorkouts = function fetchWorkouts() {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/workouts'
+  });
+};
+var fetchWorkout = function fetchWorkout(id) {
+  return $.ajax({
+    method: 'GET',
+    url: "api/workouts/".concat(id)
+  });
+};
+var deleteWorkout = function deleteWorkout(id) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "api/workouts/".concat(id)
   });
 };
 

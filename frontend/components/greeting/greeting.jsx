@@ -4,13 +4,18 @@ import { Link } from 'react-router-dom';
 
 const Greeting = ({ currentUser, logout }) => {
     const withUser = () => (
-        <header className="header">
-            <h1>WorkoutTracker</h1>
-            <nav className="welcome-nav">
-                <h2>Welcome {currentUser.username}!</h2>
-                <button className="logout-button" onClick={logout}>Logout</button>
-            </nav>
-        </header>
+        <div>
+            <header className="header">
+                <h1>WorkoutTracker</h1>
+                <Link className='my-workouts' to="/workouts">My Workouts</Link>
+                <nav className="welcome-nav">
+                    <h2>Welcome {currentUser.username}!</h2>
+                    <button className="logout-button" onClick={logout}>Logout</button>
+                </nav>
+            </header>
+            
+        </div>
+        
     );
 
     const noUser = () => ( 

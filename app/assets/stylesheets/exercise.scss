@@ -1,0 +1,69 @@
+.no-exercises-div {
+    margin-top: 35px;
+}
+
+.exercise-form-buttons {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.exercise-form-buttons button {
+    text-align: left;
+    background-color: white;
+    border: none;
+    color: gray;
+    width: 180px;   
+}
+
+.exercise-form-buttons button:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.exercise-form-h2 {
+   
+   font-size: 18px;
+   margin-bottom: 25px;
+}
+
+.exercise-form {
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+    
+}
+
+.exercise-form button {
+    background-color: white;
+    color: gray;
+    border: none;
+}
+
+.exercise-form button:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.exercise-form input {
+    margin-left: 6px;
+    padding: 5px 5px;
+}
+
+.exercise-form input[type='number'] {
+    width: 40px;
+}
+
+.reps-input {
+    width: 60px;
+}
+
+.exercises-show-div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.exercise-show-div {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    width: 33%;
+}

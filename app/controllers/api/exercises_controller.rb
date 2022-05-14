@@ -3,10 +3,23 @@ class Api::ExercisesController < ApplicationController
     def create
         @exercise = Exercise.new(exercise_params)
         if @exercise.save
-            render json: ['Exercise saved']
+            render :show
         else
             render json: @exercise.errors.full_messages, status: 401
         end
+    end
+
+    def index
+        @workout = Workout.find_by(id: params[:workout_id])
+        if @workout 
+            @exercises = @workout.exercises
+            render :index
+        else
+            render json: ['No exercises yet']
+        end
+    end
+
+    def show
     end
 
     def destroy

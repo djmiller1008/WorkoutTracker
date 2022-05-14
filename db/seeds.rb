@@ -7,3 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+Workout.destroy_all
+Exercise.destroy_all
+
+
+
+
+
+

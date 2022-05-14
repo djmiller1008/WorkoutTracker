@@ -4,8 +4,6 @@
 }
 
 .workout-index-div {
-    margin-top: 40px;
-    margin-left: 25px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -43,4 +41,32 @@
 
 .exercise-show-ul {
     margin-top: 25px;
+}
+
+.workout-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.workout-form-label input {
+    margin: 10px 10px;
+}
+
+.workout-form-button {
+    background-color: white;
+    padding: 5px 5px;
+    margin-top: 15px;
+
+}
+
+.workout-form-button:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
+
+.workout-show {
+    display: flex;
+    margin: 25px 25px;
 }
