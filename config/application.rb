@@ -11,6 +11,8 @@ module WorkoutTracker
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    config.assets.initialize_on_precompile = false
+
     config.generators do |g|
       g.test_framework :rspec,
         :fixtures => true,
