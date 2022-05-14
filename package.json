@@ -25,7 +25,8 @@
   },
   "scripts": {
     "test": "jest",
-    "start": "webpack --watch --mode=development"
+    "start": "webpack --watch --mode=development",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
@@ -42,5 +43,9 @@
     "babel-jest": "^28.1.0",
     "jest": "^28.1.0",
     "react-test-renderer": "^18.1.0"
+  },
+  "engines": {
+    "node": "12.5.0",
+    "npm": "6.9.0"
   }
 }
