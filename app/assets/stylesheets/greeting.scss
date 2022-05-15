@@ -1,29 +1,39 @@
+@import 'colors';
+
 .header {
     display: flex;
     justify-content: space-between;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: $font;
     vertical-align: center;
+    background-color: $background;
 
     h1 {
-        font-size: 28px;
+        font-size: 44px;
         padding: 20px 25px;
+        color: $secondary;
     }
 }
 
+
+
 .session-links-nav {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
 
     a {
-        padding: 20px 25px;
+       
+        margin-right: 20px;
         text-decoration: none;
-        color: gray;
+        color: $secondary;
         font-family: inherit;
         font-size: 20px;
         
     }
 
     a:hover {
-        color: black;
+        color: $accent;
     }
 
    
@@ -32,7 +42,7 @@
 
 .session-links-nav button:hover {
     cursor: pointer;
-    background-color: black;
+    background-color: $accent;
 }
 
 
@@ -44,7 +54,7 @@
 
     h2 {
         padding: 20px 25px;
-        font-size: 18px;
+        font-size: 28px;
         font-weight: 600;
     }
     
@@ -53,22 +63,45 @@
         background-color: white;
         font-family: inherit;
         font-size: 16px;
-        color: gray;
+        color: $secondary;
         
     }
 
     button:hover {
         cursor: pointer;
-        color: black;
+        color: $accent;
     }
 }
 
 .my-workouts {
     align-self: center;
     text-decoration: none;
-    color: gray;
+    color: $secondary;
 }
 
 .my-workouts:hover {
     color: black;
+}
+
+.home-content {
+    display: flex;
+}
+
+.home-content img {
+    height: 450px;
+    width: 450px;
+    padding: 100px 100px;
+}
+
+.home-content section {
+    padding: 100px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.home-content section p {
+    font-size: 32px;
+    font-weight: 700;
+
 }
