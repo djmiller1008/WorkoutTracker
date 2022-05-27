@@ -8,9 +8,12 @@
 
 User.destroy_all
 Workout.destroy_all
-Exercise.destroy_all
+WorkoutLog.destroy_all
 
 
+User.create(email: 'Dave', password: '123456')
+
+user = User.find_by(email: 'Dave')
 
 
 

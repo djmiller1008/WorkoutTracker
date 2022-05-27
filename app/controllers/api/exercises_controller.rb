@@ -10,13 +10,8 @@ class Api::ExercisesController < ApplicationController
     end
 
     def index
-        @workout = Workout.find_by(id: params[:workout_id])
-        if @workout 
-            @exercises = @workout.exercises
-            render :index
-        else
-            render json: ['No exercises yet']
-        end
+        @exercises = Exercise.all
+        render :index
     end
 
     def show
@@ -30,7 +25,7 @@ class Api::ExercisesController < ApplicationController
     private
 
     def exercise_params
-        params.require(:exercise).permit(:name, :sets, :reps, :weight, :exercise_category_id, :workout_id)
+        params.require(:exercise).permit(:name)
     end
 
 end

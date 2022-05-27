@@ -10,30 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_04_153707) do
+ActiveRecord::Schema.define(version: 2022_05_24_073522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "exercises", force: :cascade do |t|
+  create_table "exercise_categories", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "sets"
-    t.float "weight"
-    t.integer "exercise_category_id"
-    t.integer "workout_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "reps"
-    t.index ["workout_id"], name: "index_exercises_on_workout_id"
+  end
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "exercise_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["username"], name: "index_users_on_username"
+    t.string "email", null: false
+  end
+
+  create_table "workout_logs", force: :cascade do |t|
+    t.integer "workout_id", null: false
+    t.integer "reps"
+    t.integer "weight"
+    t.string "weight_unit"
+    t.integer "exercise_id", null: false
+    t.integer "user_id", null: false
+    t.string "rep_unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name", null: false
+    t.index ["exercise_id"], name: "index_workout_logs_on_exercise_id"
+    t.index ["user_id"], name: "index_workout_logs_on_user_id"
+    t.index ["workout_id"], name: "index_workout_logs_on_workout_id"
   end
 
   create_table "workouts", force: :cascade do |t|
@@ -41,6 +57,7 @@ ActiveRecord::Schema.define(version: 2022_05_04_153707) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "date", null: false
+    t.string "comment"
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 

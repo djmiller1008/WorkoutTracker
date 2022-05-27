@@ -1,0 +1,112 @@
+@import 'colors';
+@import 'fonts';
+
+.workout-log-main-form-div {
+    font-family: $body-font;
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.exercise-search {
+    display: flex;
+    align-items: baseline;
+    width: 400px;
+    margin: auto;
+    margin-bottom: 25px;
+
+    label {
+        padding-right: 15px;
+    }
+
+    input:focus {
+        outline: 2px solid $green;
+    }
+}
+
+.possible-exercises {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    align-items: center;
+    margin-bottom: 25px;
+    
+
+    li {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    li:hover {
+        cursor: pointer;
+        color: $light-green;
+    }
+}
+
+.sets-section {
+    display: flex;
+    text-align: center;
+    align-items: baseline;
+    margin: auto;
+    width: 125px;
+    height: 20px;
+
+    label {
+        margin-right: 15px;
+    }
+
+    input:focus {
+        outline: 2px solid $green;
+    }
+}
+
+.log-info-section {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    
+    margin-top: 50px;
+    font-size: $font-m;
+
+    label {
+        margin-right: 15px;
+    }
+
+    input {
+        width: 100px;
+        margin-right: 20px;
+    }
+
+    select {
+        width: 100px;
+    }
+
+    input:focus {
+        outline: 2px solid $green;
+    }
+
+    select:focus {
+        outline: 2px solid $green;
+    }
+
+}
+
+.log-submit {
+   
+    margin-top: 25px;
+    width: 100%;
+    font-family: $body-font;
+    background-color: $green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    
+   
+}
+
+.log-submit:hover {
+    background-color: $light-green;
+    cursor: pointer;
+}

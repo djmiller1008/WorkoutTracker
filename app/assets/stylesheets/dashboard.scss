@@ -1,0 +1,125 @@
+@import 'fonts';
+@import 'colors';
+
+.dashboard-header {
+    font-family: $body-font;
+    margin-top: 35px;
+    padding-bottom: 25px;
+    border-bottom: .5px solid $light-green;
+}
+
+.dashboard-nav {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    h1 {
+        font-size: $font-l;
+        margin-left: 55px;
+    }
+}
+
+.email-display {
+    margin-right: 5px;
+    font-size: $font-m;
+}
+
+.email-div:hover {
+    cursor: pointer;
+    color: $light-green;
+}
+
+.email-div {
+    display: flex;
+    margin-right: 55px;
+    margin-top: 10px;
+}
+
+.dashnav-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+    margin-right: 25px;
+    position: absolute;
+}
+
+.logout-button {
+    background-color: #fff;
+    border: none;
+    font-family: $body-font;
+    width: 100%;
+}
+
+.logout-button:hover {
+    cursor: pointer;
+    color: $light-green;
+}
+
+.dashboard-content-div {
+    margin-top: 50px;
+    font-family: $body-font;
+    display: flex;
+    justify-content: space-between;
+}
+
+.my-workouts-div {
+    margin-left: 45px;
+    width: 25%;
+    h1 {
+        font-size: $font-ml;
+        margin-bottom: 12px;
+        text-align: center;
+    }
+}
+
+.workout-log-table {
+    border: 4px solid black;
+    border-radius: 5px;
+
+    a:last-child {
+        p {
+            border-bottom: none;
+        }
+    }
+}
+
+.workout-date {
+    text-align: center;
+    border-bottom: 3px solid black;
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
+
+.workout-date:hover {
+    cursor: pointer;
+    background-color: $light-green;
+}
+
+
+
+.dashboard-link {
+    font-family: $body-font;
+    background-color: $green;
+    color: white;
+    padding: 12px 30px;
+}
+
+.dashboard-link:hover {
+    background-color: $light-green;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+.new-workout-link-div {
+    margin-right: 100px;
+}
+
+.all-workouts-link-div {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+

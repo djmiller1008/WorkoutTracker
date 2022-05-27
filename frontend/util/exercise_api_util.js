@@ -1,16 +1,16 @@
-export const fetchExercises = (workout_id) => (
+export const fetchExercises = () => (
     $.ajax({
         method: 'GET',
-        url: 'api/exercises',
-        data: { workout_id }
+        url: 'api/exercises'
+      
     })
 );
 
-export const createExercise = exercise => (
+export const createExercise = name => (
     $.ajax({
         method: 'POST',
         url: 'api/exercises',
-        data: { exercise }
+        data: { name }
     })
 );
 

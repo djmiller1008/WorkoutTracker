@@ -6,10 +6,11 @@ export const createWorkout = workout => (
     })
 );
 
-export const fetchWorkouts = () => (
+export const fetchWorkouts = limit => (
     $.ajax({
         method: 'GET',
-        url: 'api/workouts'
+        url: 'api/workouts',
+        data: { limit } 
     })
 );
 
