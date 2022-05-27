@@ -1,0 +1,50 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+class WorkoutForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user_id: this.props.userId,
+            date: ''
+        }
+        this.handleSubmit = this.handleSubmit.bind(this);
+    };
+
+    handleInput(property) {
+        return (e) => this.setState({ [property]: e.target.value })
+    };
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.createWorkout(this.state)
+            .then(workout => this.props.history
+                .replace(`/workouts/${Object.values(workout.workout)[0].id}/workout_log`))
+                
+
+            
+    };
+
+    render() {
+        return (
+            <div>
+                <nav className="workout-form-nav">
+                    <Link to="/dashboard" className='dashboard-link'>My Dashboard</Link>
+                </nav>
+                
+                <div className="workout-form-div">
+                    <h1>Which Day Did You Workout Out?</h1>
+                    <form onSubmit={this.handleSubmit} className='new-workout-form'>
+                        
+                        <input type='date'
+                            value={this.state.date}
+                            onChange={this.handleInput('date')} />
+                        <button className='new-workout-submit'>Create Workout</button>
+                    </form>
+                </div>
+            </div>
+           
+    )}
+}
+
+export default WorkoutForm;

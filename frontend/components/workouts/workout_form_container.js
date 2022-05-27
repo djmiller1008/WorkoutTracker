@@ -1,11 +1,10 @@
 import { connect } from "react-redux";
 import { createWorkout } from "../../actions/workout_actions";
-
 import WorkoutForm from "./workout_form";
 
 
-const mapStateToProps = (state) => ({
-    userId: state.session.id
+const mapStateToProps = ({ session }) => ({
+    userId: session.id
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -30,10 +30,12 @@ export const createWorkout = workout => dispatch => (
         .then(workout => dispatch(receiveWorkout(workout)))
 );
 
-export const fetchWorkouts = () => dispatch => (
-    APIUtil.fetchWorkouts()
+export const fetchWorkouts = (data) => dispatch => {
+    return (
+    APIUtil.fetchWorkouts(data)
         .then(workouts => dispatch(receiveWorkouts(workouts)))
-);
+    )
+};
 
 export const fetchWorkout = workoutId => dispatch => (
     APIUtil.fetchWorkout(workoutId)

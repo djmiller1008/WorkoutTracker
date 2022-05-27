@@ -5,10 +5,9 @@ class SessionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            email: '',
             password: ''
         };
-
         this.handleSubmit = this.handleSubmit.bind(this);
     };
 
@@ -26,16 +25,12 @@ class SessionForm extends React.Component {
         e.preventDefault();
         if (this.props.login) {
             this.props.login(this.state)
-                .then(() => this.props.history.push('/workouts'));
+                .then(() => this.props.history.push('/dashboard'));
         } else {
             this.props.signup(this.state)
-                .then(() => this.props.history.push('/workouts'))
+                .then(() => this.props.history.push('/dashboard'))
         }
     };
-
-    
-
-
 
     renderErrors() {
         return(
@@ -51,15 +46,17 @@ class SessionForm extends React.Component {
 
     render() {
         const buttonText = this.props.login ? 'Login' : 'Signup';
-        
         return(
-            <div>
-                {this.renderErrors()}
+            <div className="session-form-div">
+
+                <div className="errors-div">
+                    {this.renderErrors()}
+                </div>
                 <form className="session-form">
-                    <label>Username</label>
+                    <label>Email</label>
                     <input type='text'
-                            value={this.state.username}
-                            onChange={this.update('username')}                
+                            value={this.state.email}
+                            onChange={this.update('email')}                
                     />
 
                     <label>Password</label>
@@ -67,7 +64,6 @@ class SessionForm extends React.Component {
                             value={this.state.password}
                             onChange={this.update('password')}
                     />
-
                     <button onClick={this.handleSubmit}>{buttonText}</button>
                 </form>
             </div>

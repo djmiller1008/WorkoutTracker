@@ -5,11 +5,10 @@ import {
 } from "../actions/workout_actions";
 
 const workoutsReducer = (state = {}, action) => {
-    
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_WORKOUTS:
-            return action.workouts;
+            return Object.assign({}, state, action.workouts);
         case RECEIVE_WORKOUT:
             return action.workout;
         case CLEAR_WORKOUTS:

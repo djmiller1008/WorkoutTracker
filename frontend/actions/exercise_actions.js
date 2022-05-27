@@ -18,8 +18,8 @@ export const receiveExercises = exercises => ({
     exercises
 });
 
-export const fetchExercises = workoutId => dispatch => (
-    APIUtil.fetchExercises(workoutId)
+export const fetchExercises = () => dispatch => (
+    APIUtil.fetchExercises()
         .then(exercises => dispatch(receiveExercises(exercises)))
 ); 
 
