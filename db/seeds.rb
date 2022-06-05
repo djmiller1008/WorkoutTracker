@@ -12,8 +12,6 @@ WorkoutLog.destroy_all
 Exercise.destroy_all
 ExerciseCategory.destroy_all
 
-User.create(email: 'Dave', password: '123456')
-
 abs = ExerciseCategory.create(name: 'abs')
 arms = ExerciseCategory.create(name: 'arms')
 back = ExerciseCategory.create(name: 'back')
