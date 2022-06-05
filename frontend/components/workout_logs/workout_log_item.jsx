@@ -6,7 +6,7 @@ const WorkoutLogItem = ({ log }) => {
         const display = log.map((set, i) => {
          
             return (
-            <div className="single-log-div">
+            <div key={i} className="single-log-div">
                 <span>{set[0].reps} {set[0].rep_unit} * {set[0].weight} {set[0].weight_unit}</span>
             </div>
             )

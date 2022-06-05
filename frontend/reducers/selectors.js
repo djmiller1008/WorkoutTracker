@@ -20,11 +20,21 @@ export const sortWorkoutLogs = logs => {
 }
 
 export const getDateFromWorkout = workout => {
-    return Object.values(workout)[0].date;
+    if (Object.values(workout).length > 0) {
+        return Object.values(workout)[0].date;
+    } else {
+        return 'No Workout!';
+    }
+   
 };
 
 export const getExerciseNames = exercises => {
     const nameArray = [];
     Object.values(exercises).map(exercise => nameArray.push(exercise.name))
     return nameArray;
+}
+
+export const sortExerciseNames = exercises => {
+    const names = Object.values(exercises).map(exercise => exercise.name);
+    return names.sort();
 }

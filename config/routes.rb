@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :workout_logs, only: [:index, :create, :show, :destroy, :update]
     end
     resources :exercises, only: [:create, :show, :destroy, :index]
+    resources :exercise_categories, only: [:index, :show]
   end
   
 end

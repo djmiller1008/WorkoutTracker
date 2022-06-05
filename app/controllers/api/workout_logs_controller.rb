@@ -13,7 +13,7 @@ class Api::WorkoutLogsController < ApplicationController
         if @workout_log.save
             render :show
         else
-            render @workout_log.errors.full_messages, status: 401
+            render json: @workout_log.errors.full_messages, status: 401
         end
     end
 
