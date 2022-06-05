@@ -1,15 +1,9 @@
 TODO
- 
 
+-fill in about section
 
--format wokrout log show page
-
--fix all workouts page
-    -bottom border
-    -should be links
-
--don't want to lost state on page refresh
+-user can create exercises
+-user can create exercise categories
 
 
 
- 

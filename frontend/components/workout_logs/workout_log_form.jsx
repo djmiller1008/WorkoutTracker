@@ -24,8 +24,13 @@ class WorkoutLogForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         
-
         const logs = this.state.sets;
+        if (this.state.exerciseName === "") {
+            return alert("You must pick a valid exercise");
+        } else if (logs <= 0) {
+            return alert("You must pick a valid number of sets");
+        }
+
         for (let i = 0; i < logs; i++) {
             let logObject = {
                 reps: this.state.reps[i],
@@ -90,6 +95,7 @@ class WorkoutLogForm extends React.Component {
                                             <option value=''></option>
                                             <option value='lbs'>lbs</option>
                                             <option value='kg'>kg</option>
+                                            <option value='body-weight'>bw</option>
                                 </select>   
                           </section>
             setInputs.push(input);

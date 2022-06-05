@@ -4,7 +4,10 @@ import Home from './home/home';
 import SignupFormContent from './session/signup-form-content';
 import LoginFormContent from './session/login_form_content';
 import DashboardContainer from '../components/dashboard/dashboard_container';
+import AllExercisesContainer from '../components/exercises/all_exercises_container';
+import ExerciseCategoriesContainer from '../components/exercise_categories/exercise_categories_container';
 import WorkoutFormContainer from '../components/workouts/workout_form_container';
+import CategoryShowContainer from '../components/exercise_categories/category_show_container';
 import AllWorkoutsContainer from '../components/workouts/all_workouts_container';
 import WorkoutLogFormContainer from '../components/workout_logs/workout_log_form_container';
 import WorkoutLogShowContainer from '../components/workout_logs/workout_log_show_container';
@@ -20,6 +23,11 @@ const App = () => (
         <ProtectedRoute exact path='/workouts/all' component={AllWorkoutsContainer} />
         <ProtectedRoute exact path='/workouts/:workoutId/workout_log' component={WorkoutLogShowContainer} />
         <ProtectedRoute exact path='/workouts/:workoutId/workout_log/new' component={WorkoutLogFormContainer} />
+        <ProtectedRoute exact path='/exercises/all' component={AllExercisesContainer} />
+        <Switch>
+            <ProtectedRoute exact path='/categories/all' component={ExerciseCategoriesContainer} />
+            <ProtectedRoute exact path='/categories/:categoryName' component={CategoryShowContainer} />
+        </Switch>
     </div>
 );
    

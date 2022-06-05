@@ -2,18 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import DashnavContainer from './dashnav_container';
 import WorkoutItem from "../workouts/workout_item";
-import FetchExercises from "../fetch_exercises";
+
 
 const Dashboard = ({ workouts, fetchWorkouts }) => {
-
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetchWorkouts(10);
+        let timer = setTimeout(() => {
+            fetchWorkouts(10).then(() => setLoading(false));
+        }, 500);
+        return () => clearTimeout(timer);
     }, [])
 
     const renderWorkouts = () => {
         let display = [];
-        if (workouts.length > 0) {
+        if (workouts.length > 0 && !loading) {
             workouts.slice(0, 10).forEach((workout, i) => {
                 const workoutElement = <WorkoutItem key={i} workout={workout} />
                 display.push(workoutElement);
@@ -23,10 +26,10 @@ const Dashboard = ({ workouts, fetchWorkouts }) => {
                     {display}
                 </section>
             )
+        } else if (loading) {
+            return <div className="no-workouts-div">Loading...</div>
         } else {
-            return (
-                <div className="no-workouts-div">You Don't Have Any Workouts!</div>
-            )
+            return <div className="no-workouts-div">You Don't Have Any Workouts!</div>
         }
     };
 

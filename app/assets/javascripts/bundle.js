@@ -3728,6 +3728,55 @@ var createExercise = function createExercise(exercise) {
 
 /***/ }),
 
+/***/ "./frontend/actions/exercise_category_actions.js":
+/*!*******************************************************!*\
+  !*** ./frontend/actions/exercise_category_actions.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_EXERCISE_CATEGORIES": () => (/* binding */ RECEIVE_EXERCISE_CATEGORIES),
+/* harmony export */   "RECEIVE_EXERCISE_CATEGORY": () => (/* binding */ RECEIVE_EXERCISE_CATEGORY),
+/* harmony export */   "fetchAllCategories": () => (/* binding */ fetchAllCategories),
+/* harmony export */   "fetchExerciseCategory": () => (/* binding */ fetchExerciseCategory),
+/* harmony export */   "receiveExerciseCategories": () => (/* binding */ receiveExerciseCategories),
+/* harmony export */   "receiveExerciseCategory": () => (/* binding */ receiveExerciseCategory)
+/* harmony export */ });
+/* harmony import */ var _util_exercise_categories_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/exercise_categories_api_util */ "./frontend/util/exercise_categories_api_util.js");
+
+var RECEIVE_EXERCISE_CATEGORIES = "RECEIVE_EXERCISE_CATEGORIES";
+var RECEIVE_EXERCISE_CATEGORY = "RECEIVE_EXERCISE_CATEGORY";
+var receiveExerciseCategory = function receiveExerciseCategory(category) {
+  return {
+    type: RECEIVE_EXERCISE_CATEGORY,
+    category: category
+  };
+};
+var receiveExerciseCategories = function receiveExerciseCategories(categories) {
+  return {
+    type: RECEIVE_EXERCISE_CATEGORIES,
+    categories: categories
+  };
+};
+var fetchExerciseCategory = function fetchExerciseCategory(category) {
+  return function (dispatch) {
+    return _util_exercise_categories_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchCategory(category).then(function (category) {
+      return dispatch(receiveExerciseCategory(category));
+    });
+  };
+};
+var fetchAllCategories = function fetchAllCategories() {
+  return function (dispatch) {
+    return _util_exercise_categories_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchAllCategories().then(function (categories) {
+      return dispatch(receiveExerciseCategories(categories));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -3860,6 +3909,8 @@ var createWorkout = function createWorkout(workout) {
   return function (dispatch) {
     return _util_workout_api_util__WEBPACK_IMPORTED_MODULE_0__.createWorkout(workout).then(function (workout) {
       return dispatch(receiveWorkout(workout));
+    }).fail(function (error) {
+      return dispatch(receiveWorkoutErrors(error.responseJSON));
     });
   };
 };
@@ -3900,15 +3951,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RECEIVE_WORKOUT_LOG": () => (/* binding */ RECEIVE_WORKOUT_LOG),
 /* harmony export */   "RECEIVE_WORKOUT_LOGS": () => (/* binding */ RECEIVE_WORKOUT_LOGS),
+/* harmony export */   "RECEIVE_WORKOUT_LOG_ERRORS": () => (/* binding */ RECEIVE_WORKOUT_LOG_ERRORS),
 /* harmony export */   "createWorkoutLog": () => (/* binding */ createWorkoutLog),
 /* harmony export */   "fetchWorkoutLogs": () => (/* binding */ fetchWorkoutLogs),
 /* harmony export */   "receiveWorkoutLog": () => (/* binding */ receiveWorkoutLog),
+/* harmony export */   "receiveWorkoutLogErrors": () => (/* binding */ receiveWorkoutLogErrors),
 /* harmony export */   "receiveWorkoutLogs": () => (/* binding */ receiveWorkoutLogs)
 /* harmony export */ });
 /* harmony import */ var _util_workout_log_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/workout_log_api_util */ "./frontend/util/workout_log_api_util.js");
 
 var RECEIVE_WORKOUT_LOGS = 'RECEIVE_WORKOUT_LOGS';
 var RECEIVE_WORKOUT_LOG = 'RECEIVE_WORKOUT_LOG';
+var RECEIVE_WORKOUT_LOG_ERRORS = 'RECEIVE_WORKOUT_LOG_ERRORS';
+var receiveWorkoutLogErrors = function receiveWorkoutLogErrors(errors) {
+  return {
+    type: RECEIVE_WORKOUT_LOG_ERRORS,
+    errors: errors
+  };
+};
 var receiveWorkoutLog = function receiveWorkoutLog(log) {
   return {
     type: RECEIVE_WORKOUT_LOG,
@@ -3951,15 +4011,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _home_home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home/home */ "./frontend/components/home/home.jsx");
 /* harmony import */ var _session_signup_form_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session/signup-form-content */ "./frontend/components/session/signup-form-content.jsx");
 /* harmony import */ var _session_login_form_content__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session/login_form_content */ "./frontend/components/session/login_form_content.jsx");
 /* harmony import */ var _components_dashboard_dashboard_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/dashboard/dashboard_container */ "./frontend/components/dashboard/dashboard_container.js");
-/* harmony import */ var _components_workouts_workout_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/workouts/workout_form_container */ "./frontend/components/workouts/workout_form_container.js");
-/* harmony import */ var _components_workouts_all_workouts_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/workouts/all_workouts_container */ "./frontend/components/workouts/all_workouts_container.js");
-/* harmony import */ var _components_workout_logs_workout_log_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/workout_logs/workout_log_form_container */ "./frontend/components/workout_logs/workout_log_form_container.js");
-/* harmony import */ var _components_workout_logs_workout_log_show_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/workout_logs/workout_log_show_container */ "./frontend/components/workout_logs/workout_log_show_container.js");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var _components_exercises_all_exercises_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/exercises/all_exercises_container */ "./frontend/components/exercises/all_exercises_container.js");
+/* harmony import */ var _components_exercise_categories_exercise_categories_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/exercise_categories/exercise_categories_container */ "./frontend/components/exercise_categories/exercise_categories_container.js");
+/* harmony import */ var _components_workouts_workout_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/workouts/workout_form_container */ "./frontend/components/workouts/workout_form_container.js");
+/* harmony import */ var _components_exercise_categories_category_show_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/exercise_categories/category_show_container */ "./frontend/components/exercise_categories/category_show_container.js");
+/* harmony import */ var _components_workouts_all_workouts_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/workouts/all_workouts_container */ "./frontend/components/workouts/all_workouts_container.js");
+/* harmony import */ var _components_workout_logs_workout_log_form_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/workout_logs/workout_log_form_container */ "./frontend/components/workout_logs/workout_log_form_container.js");
+/* harmony import */ var _components_workout_logs_workout_log_show_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/workout_logs/workout_log_show_container */ "./frontend/components/workout_logs/workout_log_show_container.js");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+
+
+
 
 
 
@@ -3973,37 +4040,49 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__.AuthRoute, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_12__.AuthRoute, {
     exact: true,
     path: "/",
     component: _home_home__WEBPACK_IMPORTED_MODULE_1__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__.AuthRoute, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_12__.AuthRoute, {
     exact: true,
     path: "/signup",
     component: _session_signup_form_content__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__.AuthRoute, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_12__.AuthRoute, {
     exact: true,
     path: "/login",
     component: _session_login_form_content__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__.ProtectedRoute, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_12__.ProtectedRoute, {
     path: "/dashboard",
     component: _components_dashboard_dashboard_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__.ProtectedRoute, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_12__.ProtectedRoute, {
     path: "/workouts/new",
-    component: _components_workouts_workout_form_container__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__.ProtectedRoute, {
+    component: _components_workouts_workout_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_12__.ProtectedRoute, {
     exact: true,
     path: "/workouts/all",
-    component: _components_workouts_all_workouts_container__WEBPACK_IMPORTED_MODULE_6__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__.ProtectedRoute, {
+    component: _components_workouts_all_workouts_container__WEBPACK_IMPORTED_MODULE_9__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_12__.ProtectedRoute, {
     exact: true,
     path: "/workouts/:workoutId/workout_log",
-    component: _components_workout_logs_workout_log_show_container__WEBPACK_IMPORTED_MODULE_8__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__.ProtectedRoute, {
+    component: _components_workout_logs_workout_log_show_container__WEBPACK_IMPORTED_MODULE_11__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_12__.ProtectedRoute, {
     exact: true,
     path: "/workouts/:workoutId/workout_log/new",
-    component: _components_workout_logs_workout_log_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }));
+    component: _components_workout_logs_workout_log_form_container__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_12__.ProtectedRoute, {
+    exact: true,
+    path: "/exercises/all",
+    component: _components_exercises_all_exercises_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_12__.ProtectedRoute, {
+    exact: true,
+    path: "/categories/all",
+    component: _components_exercise_categories_exercise_categories_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_12__.ProtectedRoute, {
+    exact: true,
+    path: "/categories/:categoryName",
+    component: _components_exercise_categories_category_show_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  })));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -4023,10 +4102,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _dashnav_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dashnav_container */ "./frontend/components/dashboard/dashnav_container.js");
 /* harmony import */ var _workouts_workout_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../workouts/workout_item */ "./frontend/components/workouts/workout_item.jsx");
-/* harmony import */ var _fetch_exercises__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../fetch_exercises */ "./frontend/components/fetch_exercises.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -4036,14 +4125,27 @@ __webpack_require__.r(__webpack_exports__);
 var Dashboard = function Dashboard(_ref) {
   var workouts = _ref.workouts,
       fetchWorkouts = _ref.fetchWorkouts;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+      _useState2 = _slicedToArray(_useState, 2),
+      loading = _useState2[0],
+      setLoading = _useState2[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchWorkouts(10);
+    var timer = setTimeout(function () {
+      fetchWorkouts(10).then(function () {
+        return setLoading(false);
+      });
+    }, 500);
+    return function () {
+      return clearTimeout(timer);
+    };
   }, []);
 
   var renderWorkouts = function renderWorkouts() {
     var display = [];
 
-    if (workouts.length > 0) {
+    if (workouts.length > 0 && !loading) {
       workouts.slice(0, 10).forEach(function (workout, i) {
         var workoutElement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_workouts_workout_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: i,
@@ -4054,6 +4156,10 @@ var Dashboard = function Dashboard(_ref) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
         className: "workout-log-table"
       }, display);
+    } else if (loading) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "no-workouts-div"
+      }, "Loading...");
     } else {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "no-workouts-div"
@@ -4067,12 +4173,12 @@ var Dashboard = function Dashboard(_ref) {
     className: "my-workouts-div"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "My Workout Log"), renderWorkouts(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "all-workouts-link-div"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     className: "dashboard-link",
     to: "./workouts/all"
   }, "View All Workouts"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "new-workout-link-div"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     className: "dashboard-link",
     to: "./workouts/new"
   }, "Log A New Workout"))));
@@ -4132,9 +4238,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _fortawesome_free_solid_svg_icons_faCaretDown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons/faCaretDown */ "./node_modules/@fortawesome/free-solid-svg-icons/faCaretDown.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons_faCaretDown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons/faCaretDown */ "./node_modules/@fortawesome/free-solid-svg-icons/faCaretDown.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 
@@ -4155,6 +4262,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Dashnav = function Dashnav(_ref) {
   var currentUserEmail = _ref.currentUserEmail,
       logout = _ref.logout;
@@ -4162,8 +4270,13 @@ var Dashnav = function Dashnav(_ref) {
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
-      dropdown = _useState2[0],
-      setDropdown = _useState2[1];
+      logoutDropdown = _useState2[0],
+      setLogout = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      exercisesDropdown = _useState4[0],
+      setExercisesDropdown = _useState4[1];
 
   var handleLogout = function handleLogout(e) {
     e.preventDefault();
@@ -4172,16 +4285,16 @@ var Dashnav = function Dashnav(_ref) {
     });
   };
 
-  var toggleDropdown = function toggleDropdown() {
-    if (dropdown) {
-      setDropdown(false);
+  var toggleLogout = function toggleLogout() {
+    if (logoutDropdown) {
+      setLogout(false);
     } else {
-      setDropdown(true);
+      setLogout(true);
     }
   };
 
-  var displayDropdown = function displayDropdown() {
-    if (dropdown) {
+  var displayLogout = function displayLogout() {
+    if (logoutDropdown) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "dashnav-dropdown"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
@@ -4191,19 +4304,51 @@ var Dashnav = function Dashnav(_ref) {
     }
   };
 
-  var dropdownMenu = displayDropdown();
+  var toggleExercisesDropdown = function toggleExercisesDropdown() {
+    if (exercisesDropdown) {
+      setExercisesDropdown(false);
+    } else {
+      setExercisesDropdown(true);
+    }
+  };
+
+  var displayExercisesDropdown = function displayExercisesDropdown() {
+    if (exercisesDropdown) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "dashnav-dropdown-exercises"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+        className: "exercises-links",
+        to: "/exercises/all"
+      }, "All Exercises"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+        className: "exercises-links",
+        to: "/categories/all"
+      }, "Categories"));
+    }
+  };
+
+  var dropdownMenu = displayLogout();
+  var dropdownExercises = displayExercisesDropdown();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", {
     className: "dashboard-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
     className: "dashboard-nav"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "My Dashboard"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    onClick: toggleDropdown,
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "title-links-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "My Dashboard"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    onMouseEnter: toggleExercisesDropdown,
+    onMouseLeave: toggleExercisesDropdown,
+    className: "exercise-toggle-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "exercises-toggle"
+  }, "Exercises"), dropdownExercises)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    onMouseEnter: toggleLogout,
+    onMouseLeave: toggleLogout,
     className: "email-div"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     className: "email-display"
   }, currentUserEmail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
-    icon: _fortawesome_free_solid_svg_icons_faCaretDown__WEBPACK_IMPORTED_MODULE_3__.faCaretDown
-  })), dropdownMenu)));
+    icon: _fortawesome_free_solid_svg_icons_faCaretDown__WEBPACK_IMPORTED_MODULE_4__.faCaretDown
+  }), dropdownMenu))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Dashnav);
@@ -4248,10 +4393,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/fetch_exercises.jsx":
-/*!*************************************************!*\
-  !*** ./frontend/components/fetch_exercises.jsx ***!
-  \*************************************************/
+/***/ "./frontend/components/exercise_categories/category_show.jsx":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/exercise_categories/category_show.jsx ***!
+  \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4261,65 +4406,258 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _actions_exercise_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/exercise_actions */ "./frontend/actions/exercise_actions.js");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
+var CategoryShow = function CategoryShow(_ref) {
+  var category = _ref.category,
+      fetchExerciseCategory = _ref.fetchExerciseCategory;
+  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useParams)();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchExerciseCategory(params.categoryName);
+  }, []);
+  var display = category.exercises ? category.exercises.map(function (exercise) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, exercise.name);
+  }) : "";
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
+    className: "workout-form-nav"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    to: "/dashboard",
+    className: "dashboard-link"
+  }, "My Dashboard")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+    className: "category-h1"
+  }, category.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "category-exercises-div"
+  }, display)));
+};
 
-var FetchExercises = /*#__PURE__*/function (_React$Component) {
-  _inherits(FetchExercises, _React$Component);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CategoryShow);
 
-  var _super = _createSuper(FetchExercises);
+/***/ }),
 
-  function FetchExercises(props) {
-    _classCallCheck(this, FetchExercises);
+/***/ "./frontend/components/exercise_categories/category_show_container.js":
+/*!****************************************************************************!*\
+  !*** ./frontend/components/exercise_categories/category_show_container.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-    return _super.call(this, props);
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_exercise_category_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/exercise_category_actions */ "./frontend/actions/exercise_category_actions.js");
+/* harmony import */ var _category_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./category_show */ "./frontend/components/exercise_categories/category_show.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var entities = _ref.entities;
+  return {
+    category: entities.exerciseCategories
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchExerciseCategory: function fetchExerciseCategory(categoryName) {
+      return dispatch((0,_actions_exercise_category_actions__WEBPACK_IMPORTED_MODULE_1__.fetchExerciseCategory)(categoryName));
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_category_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/exercise_categories/exercise_categories.jsx":
+/*!*************************************************************************!*\
+  !*** ./frontend/components/exercise_categories/exercise_categories.jsx ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+var ExerciseCategories = function ExerciseCategories(_ref) {
+  var fetchAllCategories = _ref.fetchAllCategories,
+      categories = _ref.categories;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchAllCategories();
+  }, []);
+
+  var renderCategories = function renderCategories() {
+    var names = categories.map(function (cat, i) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+        to: "/categories/".concat(cat.name),
+        key: i
+      }, cat.name);
+    });
+    return names;
+  };
+
+  var display = categories.length > 0 ? renderCategories() : "";
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "all-exercises"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
+    className: "workout-form-nav"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/dashboard",
+    className: "dashboard-link"
+  }, "My Dashboard")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+    className: "categories-h1"
+  }, "Exercise Categories"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "categories-div"
+  }, display));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExerciseCategories);
+
+/***/ }),
+
+/***/ "./frontend/components/exercise_categories/exercise_categories_container.js":
+/*!**********************************************************************************!*\
+  !*** ./frontend/components/exercise_categories/exercise_categories_container.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _exercise_categories__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./exercise_categories */ "./frontend/components/exercise_categories/exercise_categories.jsx");
+/* harmony import */ var _actions_exercise_category_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/exercise_category_actions */ "./frontend/actions/exercise_category_actions.js");
+
+
+
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var entities = _ref.entities;
+  return {
+    categories: entities.exerciseCategories
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchAllCategories: function fetchAllCategories() {
+      return dispatch((0,_actions_exercise_category_actions__WEBPACK_IMPORTED_MODULE_2__.fetchAllCategories)());
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_exercise_categories__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/exercises/all_exercises.jsx":
+/*!*********************************************************!*\
+  !*** ./frontend/components/exercises/all_exercises.jsx ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+var AllExercises = function AllExercises(_ref) {
+  var exercises = _ref.exercises,
+      fetchExercises = _ref.fetchExercises;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchExercises();
+  }, []);
+
+  var renderExercises = function renderExercises() {
+    var names = exercises.map(function (exe, i) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+        key: i,
+        className: "exercise-name"
+      }, exe);
+    });
+    return names;
+  };
+
+  if (exercises.length > 0) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "all-exercises"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
+      className: "workout-form-nav"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      to: "/dashboard",
+      className: "dashboard-link"
+    }, "My Dashboard")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+      className: "all-exercises-h1"
+    }, "All Exercises"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "all-exercises-div"
+    }, renderExercises()));
+  } else {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Loading...");
   }
 
-  _createClass(FetchExercises, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      fetch("https://wger.de/api/v2/exercise.json?limit=1000&offset=1000?language=2").then(function (res) {
-        return res.json();
-      }).then(function (result) {
-        console.log(result.results);
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      /*#__PURE__*/
-      react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null);
-    }
-  }]);
+  ;
+};
 
-  return FetchExercises;
-}((react__WEBPACK_IMPORTED_MODULE_0___default().Component));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AllExercises);
 
-;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FetchExercises);
+/***/ }),
+
+/***/ "./frontend/components/exercises/all_exercises_container.js":
+/*!******************************************************************!*\
+  !*** ./frontend/components/exercises/all_exercises_container.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _all_exercises__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./all_exercises */ "./frontend/components/exercises/all_exercises.jsx");
+/* harmony import */ var _actions_exercise_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/exercise_actions */ "./frontend/actions/exercise_actions.js");
+/* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var entities = _ref.entities;
+  return {
+    exercises: (0,_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__.sortExerciseNames)(entities.exercises)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchExercises: function fetchExercises() {
+      return dispatch((0,_actions_exercise_actions__WEBPACK_IMPORTED_MODULE_2__.fetchExercises)());
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_all_exercises__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -4443,7 +4781,7 @@ var Navbar = function Navbar() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
     className: "about-link",
     href: "#"
-  }, "About"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "nav-links-div"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "./login"
@@ -4873,6 +5211,12 @@ var WorkoutLogForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var logs = this.state.sets;
 
+      if (this.state.exerciseName === "") {
+        return alert("You must pick a valid exercise");
+      } else if (logs <= 0) {
+        return alert("You must pick a valid number of sets");
+      }
+
       for (var i = 0; i < logs; i++) {
         var logObject = {
           reps: this.state.reps[i],
@@ -4961,7 +5305,9 @@ var WorkoutLogForm = /*#__PURE__*/function (_React$Component) {
           value: "lbs"
         }, "lbs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
           value: "kg"
-        }, "kg")));
+        }, "kg"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+          value: "body-weight"
+        }, "bw")));
         setInputs.push(input);
       }
 
@@ -5117,6 +5463,7 @@ var WorkoutLogItem = function WorkoutLogItem(_ref) {
   var displayLog = function displayLog() {
     var display = log.map(function (set, i) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        key: i,
         className: "single-log-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, set[0].reps, " ", set[0].rep_unit, " * ", set[0].weight, " ", set[0].weight_unit));
     });
@@ -5153,8 +5500,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _workout_log_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./workout_log_item */ "./frontend/components/workout_logs/workout_log_item.jsx");
 /* harmony import */ var _dashboard_dashnav_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dashboard/dashnav_container */ "./frontend/components/dashboard/dashnav_container.js");
 
@@ -5167,10 +5514,19 @@ var WorkoutLogShow = function WorkoutLogShow(_ref) {
       logs = _ref.logs,
       fetchWorkoutLogs = _ref.fetchWorkoutLogs,
       fetchWorkout = _ref.fetchWorkout,
-      date = _ref.date;
+      date = _ref.date,
+      deleteWorkout = _ref.deleteWorkout;
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useHistory)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchWorkoutLogs(match.params.workoutId), fetchWorkout(match.params.workoutId);
   }, []);
+
+  var handleDelete = function handleDelete(e) {
+    e.preventDefault();
+    deleteWorkout(match.params.workoutId).then(function () {
+      return history.replace('/dashboard');
+    });
+  };
 
   if (logs !== {}) {
     var displayLogs = Object.values(logs).map(function (log, i) {
@@ -5183,25 +5539,30 @@ var WorkoutLogShow = function WorkoutLogShow(_ref) {
       className: "workout-log-div"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
       className: "workout-form-nav"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
       className: "dashboard-link",
       to: "/dashboard"
     }, "My Dashboard")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "log-title-div"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
       className: "date-h1"
-    }, "Workout: ", date)), displayLogs, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    }, "Workout: ", date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "display-all-logs-div"
+    }, displayLogs), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "new-exercise-link-div"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
       to: "/workouts/".concat(match.params.workoutId, "/workout_log/new"),
       replace: true
-    }, "Add A New Exercise")));
+    }, "Add A New Exercise"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      onClick: handleDelete,
+      className: "delete-button"
+    }, "Delete Workout")));
   } else {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "No Log To Display");
   }
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.withRouter)(WorkoutLogShow));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(WorkoutLogShow));
 
 /***/ }),
 
@@ -5242,6 +5603,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchWorkout: function fetchWorkout(workoutId) {
       return dispatch((0,_actions_workout_actions__WEBPACK_IMPORTED_MODULE_1__.fetchWorkout)(workoutId));
+    },
+    deleteWorkout: function deleteWorkout(workoutId) {
+      return dispatch((0,_actions_workout_actions__WEBPACK_IMPORTED_MODULE_1__.deleteWorkout)(workoutId));
     }
   };
 };
@@ -5263,7 +5627,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _workout_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./workout_item */ "./frontend/components/workouts/workout_item.jsx");
+
 
 
 
@@ -5279,9 +5645,10 @@ var AllWorkouts = function AllWorkouts(_ref) {
 
     if (workouts.length > 0) {
       workouts.forEach(function (workout, i) {
-        var workoutElement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-          className: "workout-date"
-        }, workout.date);
+        var workoutElement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_workout_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: i,
+          workout: workout
+        });
         display.push(workoutElement);
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
@@ -5296,7 +5663,7 @@ var AllWorkouts = function AllWorkouts(_ref) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "all-workouts"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     className: "dashboard-link",
     to: "/dashboard"
   }, "My Dashboard")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -5427,6 +5794,14 @@ var WorkoutForm = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "renderErrors",
+    value: function renderErrors() {
+      var errors = this.props.errors.map(function (err) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, err);
+      });
+      return errors;
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
@@ -5435,8 +5810,10 @@ var WorkoutForm = /*#__PURE__*/function (_React$Component) {
         to: "/dashboard",
         className: "dashboard-link"
       }, "My Dashboard")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "workout-form-errors-div"
+      }, this.renderErrors()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "workout-form-div"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Which Day Did You Workout Out?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Which Day Did You Workout?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
         onSubmit: this.handleSubmit,
         className: "new-workout-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -5474,10 +5851,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
-  var session = _ref.session;
+var mapStateToProps = function mapStateToProps(state) {
   return {
-    userId: session.id
+    userId: state.session.id,
+    errors: state.errors.workout
   };
 };
 
@@ -5535,21 +5912,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _exercises_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./exercises_reducer */ "./frontend/reducers/exercises_reducer.js");
-/* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
-/* harmony import */ var _workouts_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./workouts_reducer */ "./frontend/reducers/workouts_reducer.js");
-/* harmony import */ var _workout_logs_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./workout_logs_reducer */ "./frontend/reducers/workout_logs_reducer.js");
+/* harmony import */ var _exercise_categories_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./exercise_categories_reducer */ "./frontend/reducers/exercise_categories_reducer.js");
+/* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _workouts_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./workouts_reducer */ "./frontend/reducers/workouts_reducer.js");
+/* harmony import */ var _workout_logs_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./workout_logs_reducer */ "./frontend/reducers/workout_logs_reducer.js");
 
 
 
 
 
-var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  workouts: _workouts_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+
+var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  workouts: _workouts_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
   exercises: _exercises_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
-  workoutLogs: _workout_logs_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  workoutLogs: _workout_logs_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
+  exerciseCategories: _exercise_categories_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (entitiesReducer);
 
@@ -5577,6 +5957,43 @@ var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
   workout: _workout_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/exercise_categories_reducer.js":
+/*!**********************************************************!*\
+  !*** ./frontend/reducers/exercise_categories_reducer.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_exercise_category_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/exercise_category_actions */ "./frontend/actions/exercise_category_actions.js");
+
+
+var exerciseCategoriesReducer = function exerciseCategoriesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_exercise_category_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_EXERCISE_CATEGORIES:
+      return action.categories;
+
+    case _actions_exercise_category_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_EXERCISE_CATEGORY:
+      return action.category;
+
+    default:
+      return state;
+  }
+
+  ;
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (exerciseCategoriesReducer);
 
 /***/ }),
 
@@ -5660,6 +6077,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getDateFromWorkout": () => (/* binding */ getDateFromWorkout),
 /* harmony export */   "getExerciseNames": () => (/* binding */ getExerciseNames),
 /* harmony export */   "sortByDate": () => (/* binding */ sortByDate),
+/* harmony export */   "sortExerciseNames": () => (/* binding */ sortExerciseNames),
 /* harmony export */   "sortWorkoutLogs": () => (/* binding */ sortWorkoutLogs)
 /* harmony export */ });
 var sortByDate = function sortByDate(workouts) {
@@ -5681,7 +6099,11 @@ var sortWorkoutLogs = function sortWorkoutLogs(logs) {
   return newLogs;
 };
 var getDateFromWorkout = function getDateFromWorkout(workout) {
-  return Object.values(workout)[0].date;
+  if (Object.values(workout).length > 0) {
+    return Object.values(workout)[0].date;
+  } else {
+    return 'No Workout!';
+  }
 };
 var getExerciseNames = function getExerciseNames(exercises) {
   var nameArray = [];
@@ -5689,6 +6111,12 @@ var getExerciseNames = function getExerciseNames(exercises) {
     return nameArray.push(exercise.name);
   });
   return nameArray;
+};
+var sortExerciseNames = function sortExerciseNames(exercises) {
+  var names = Object.values(exercises).map(function (exercise) {
+    return exercise.name;
+  });
+  return names.sort();
 };
 
 /***/ }),
@@ -5905,7 +6333,7 @@ var workoutsReducer = function workoutsReducer() {
 
   switch (action.type) {
     case _actions_workout_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_WORKOUTS:
-      return Object.assign({}, state, action.workouts);
+      return action.workouts;
 
     case _actions_workout_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_WORKOUT:
       return action.workout;
@@ -5979,6 +6407,33 @@ var createExercise = function createExercise(name) {
     data: {
       name: name
     }
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/exercise_categories_api_util.js":
+/*!*******************************************************!*\
+  !*** ./frontend/util/exercise_categories_api_util.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fetchAllCategories": () => (/* binding */ fetchAllCategories),
+/* harmony export */   "fetchCategory": () => (/* binding */ fetchCategory)
+/* harmony export */ });
+var fetchAllCategories = function fetchAllCategories() {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/exercise_categories'
+  });
+};
+var fetchCategory = function fetchCategory(categoryName) {
+  return $.ajax({
+    method: 'GET',
+    url: "/api/exercise_categories/".concat(categoryName)
   });
 };
 

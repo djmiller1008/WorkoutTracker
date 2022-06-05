@@ -3,8 +3,9 @@ import { createWorkout } from "../../actions/workout_actions";
 import WorkoutForm from "./workout_form";
 
 
-const mapStateToProps = ({ session }) => ({
-    userId: session.id
+const mapStateToProps = state => ({
+    userId: state.session.id,
+    errors: state.errors.workout
 });
 
 const mapDispatchToProps = dispatch => ({

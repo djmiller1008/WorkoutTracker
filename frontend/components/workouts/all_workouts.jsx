@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import WorkoutItem from './workout_item';
 
 const AllWorkouts = ({ fetchWorkouts, workouts }) => {
     useEffect(() => {
@@ -10,7 +11,7 @@ const AllWorkouts = ({ fetchWorkouts, workouts }) => {
         let display = [];
         if (workouts.length > 0) {
             workouts.forEach((workout, i) => {
-                const workoutElement = <p className="workout-date">{workout.date}</p>
+                const workoutElement = <WorkoutItem key={i} workout={workout}/>
                 display.push(workoutElement);
             })
             return (
@@ -22,7 +23,7 @@ const AllWorkouts = ({ fetchWorkouts, workouts }) => {
             return (
                 <div className="no-workouts-div">You Don't Have Any Workouts!</div>
             )
-        }
+        } 
     };
 
     return (

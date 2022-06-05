@@ -12,7 +12,7 @@ const Navbar = () => (
                 <h1 className="title">RepLogger</h1>  
             </div>
             <div className="info-div">
-                <a className="about-link" href="#">About</a>
+                <a className="about-link" href="#"></a>
                 <div className="nav-links-div">
                     <Link to="./login">Login</Link> 
                     <Link to="./signup">Register</Link>  

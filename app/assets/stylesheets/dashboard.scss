@@ -4,8 +4,8 @@
 .dashboard-header {
     font-family: $body-font;
     margin-top: 35px;
-    padding-bottom: 25px;
-    border-bottom: .5px solid $light-green;
+    padding-bottom: 15px;
+    border-bottom: .5px solid $green;
 }
 
 .dashboard-nav {
@@ -18,6 +18,15 @@
         margin-left: 55px;
     }
 }
+
+.title-links-div {
+    display: flex;
+    align-items: baseline;
+    
+    width: 500px;
+    margin-bottom: 20px;
+}
+
 
 .email-display {
     margin-right: 5px;
@@ -33,20 +42,28 @@
     display: flex;
     margin-right: 55px;
     margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.hover-div {
+    height: auto;
 }
 
 .dashnav-dropdown {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 5px;
+    margin-top: 25px;
     margin-right: 25px;
+    padding: 5px;
     position: absolute;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .logout-button {
     background-color: #fff;
     border: none;
+    font-size: $font-m;
     font-family: $body-font;
     width: 100%;
 }
@@ -91,6 +108,8 @@
     padding-top: 12px;
 }
 
+
+
 .workout-date:hover {
     cursor: pointer;
     background-color: $light-green;
@@ -123,3 +142,43 @@
     margin-bottom: 50px;
 }
 
+.dashnav-dropdown-exercises {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 8px;
+    width: 125px;
+    padding: 8px; 
+    position: absolute;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.exercises-links:last-child {
+    margin-bottom: 15px;
+}
+
+.exercises-links {
+    margin-top: 15px;
+    
+    
+}
+
+
+
+.exercise-toggle-div {  
+    margin-left: 50px;
+    padding-bottom: 10px;
+}
+    
+
+
+
+.exercises-toggle:hover {
+    color: $light-green;
+    cursor: pointer;
+}
+
+.exercises-links:hover {
+    color: $light-green;
+}

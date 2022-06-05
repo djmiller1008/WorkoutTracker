@@ -19,11 +19,13 @@ class WorkoutForm extends React.Component {
         e.preventDefault();
         this.props.createWorkout(this.state)
             .then(workout => this.props.history
-                .replace(`/workouts/${Object.values(workout.workout)[0].id}/workout_log`))
-                
+                .replace(`/workouts/${Object.values(workout.workout)[0].id}/workout_log`))   
+    }; 
 
-            
-    };
+    renderErrors() {
+        const errors = this.props.errors.map((err => <p>{err}</p>));
+        return errors;
+    }
 
     render() {
         return (
@@ -31,9 +33,11 @@ class WorkoutForm extends React.Component {
                 <nav className="workout-form-nav">
                     <Link to="/dashboard" className='dashboard-link'>My Dashboard</Link>
                 </nav>
-                
+                <div className="workout-form-errors-div">
+                    {this.renderErrors()}
+                </div>
                 <div className="workout-form-div">
-                    <h1>Which Day Did You Workout Out?</h1>
+                    <h1>Which Day Did You Workout?</h1>
                     <form onSubmit={this.handleSubmit} className='new-workout-form'>
                         
                         <input type='date'

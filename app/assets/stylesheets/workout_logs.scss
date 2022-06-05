@@ -110,3 +110,13 @@
     background-color: $light-green;
     cursor: pointer;
 }
+ 
+.display-all-logs-div {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.workout-log-main-content {
+    flex-basis: 33.33333%;
+}

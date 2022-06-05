@@ -2,6 +2,7 @@ class Api::WorkoutsController < ApplicationController
 
     def index
         @workouts = current_user.show_workouts(params[:limit])
+
         render :index
     end
 
@@ -10,7 +11,7 @@ class Api::WorkoutsController < ApplicationController
         if @workout.save
             render :show
         else
-            render json: @workout.errors.full_messages, status: 401
+            render json: ['You must pick a valid date!'], status: 401
         end
     end
 
@@ -26,7 +27,8 @@ class Api::WorkoutsController < ApplicationController
     def destroy
         workout = Workout.find_by(id: params[:id])
         workout.destroy
-        redirect_to action: 'index'
+        @workouts = current_user.show_workouts(10)
+        render :index
     end
 
     private
