@@ -2,7 +2,7 @@
 @import 'colors';
 
 .header {
-    height: 70px;
+    height: 4rem;
     font-family: $header-font;
 }
 
@@ -12,17 +12,19 @@
     width: 100%;
 }
 
+
+
 .title-div {
     display: flex;
-    padding-top: 20px;
-    padding-left: 40px;
+    padding-top: 2rem;
+    padding-left: 2rem;
 }
 
 .nav-links-div {
-    width: 150px;
+    width: 12rem;
     display: flex;
-    margin-right: 50px;
-    justify-content: space-around;
+    margin-right: 4rem;
+    justify-content: space-evenly;
 
     a:hover {
         color: $green;
@@ -32,7 +34,7 @@
 .info-div {
     display: flex;
     justify-content: space-between;
-    padding-top: 48px;
+    padding-top: 2.5rem;
     margin-left: 10px;
     width: 100%;
     font-size: $font-m;
@@ -42,6 +44,8 @@
     }
 
 }
+
+
 
 .title {
     font-size: $font-xl;
@@ -64,7 +68,7 @@
 }
 
 .get-started {
-    margin-top: 125px;
+    margin-top: 8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -116,4 +120,57 @@
 
 .dot-icon {
     color: $green;
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: $font-m;
+    }
+
+    .title-div {
+        padding-top: 1.5rem;
+    }
+
+    .logo {
+        font-size: $font-m;
+    }
+
+    .header {
+        height: fit-content;
+    }
+
+    .info-div {
+        padding-top: 1.5rem;
+        
+    }
+
+    .nav-links-div {
+        margin-right: 2rem;
+    }
+
+    .content-icon {
+        font-size: 6rem;
+    }
+
+    .get-started {
+        margin-top: 4rem;
+
+        h2 {
+            font-size: $font-m;
+        }
+    }
+
+    .info-section {
+        justify-content: space-between;
+        padding-left: 1rem;
+    }
+
+    .info-p {
+        font-size: $font-sm;
+        padding-left: 1rem;
+    }
+
+    .main-content {
+        padding-left: 1rem;
+    }
 }
