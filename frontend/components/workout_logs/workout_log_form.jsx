@@ -30,6 +30,7 @@ class WorkoutLogForm extends React.Component {
         } else if (logs <= 0) {
             return alert("You must pick a valid number of sets");
         }
+        
 
         for (let i = 0; i < logs; i++) {
             let logObject = {
@@ -38,12 +39,12 @@ class WorkoutLogForm extends React.Component {
                 weight_unit: this.state.weightUnit[i],
                 name: this.state.exerciseName,
                 user_id: this.props.userId,
-                workout_id: this.props.workoutId
+                workout_id: this.props.match.url.split("/")[2]
             }
             this.props.createWorkoutLog(logObject);
         }
 
-        this.props.history.replace(`/workouts/${this.props.workoutId}/workout_log`);
+        this.props.history.replace(`/workouts/${this.props.match.url.split("/")[2]}/workout_log`);
     };
 
     setExerciseId() {
@@ -127,8 +128,8 @@ class WorkoutLogForm extends React.Component {
         return matches;
     }
 
+    
     render() {
-       
         const possibleExercises = this.matches().map((match, i) => {
             if (match === 'No Exercises Found') {
                 return <span>{match}</span>

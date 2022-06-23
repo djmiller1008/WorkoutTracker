@@ -3949,9 +3949,11 @@ var deleteWorkout = function deleteWorkout(workoutId) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CLEAR_WORKOUT_LOGS": () => (/* binding */ CLEAR_WORKOUT_LOGS),
 /* harmony export */   "RECEIVE_WORKOUT_LOG": () => (/* binding */ RECEIVE_WORKOUT_LOG),
 /* harmony export */   "RECEIVE_WORKOUT_LOGS": () => (/* binding */ RECEIVE_WORKOUT_LOGS),
 /* harmony export */   "RECEIVE_WORKOUT_LOG_ERRORS": () => (/* binding */ RECEIVE_WORKOUT_LOG_ERRORS),
+/* harmony export */   "clearWorkoutLogs": () => (/* binding */ clearWorkoutLogs),
 /* harmony export */   "createWorkoutLog": () => (/* binding */ createWorkoutLog),
 /* harmony export */   "fetchWorkoutLogs": () => (/* binding */ fetchWorkoutLogs),
 /* harmony export */   "receiveWorkoutLog": () => (/* binding */ receiveWorkoutLog),
@@ -3963,6 +3965,12 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_WORKOUT_LOGS = 'RECEIVE_WORKOUT_LOGS';
 var RECEIVE_WORKOUT_LOG = 'RECEIVE_WORKOUT_LOG';
 var RECEIVE_WORKOUT_LOG_ERRORS = 'RECEIVE_WORKOUT_LOG_ERRORS';
+var CLEAR_WORKOUT_LOGS = 'CLEAR_WORKOUT_LOGS';
+var clearWorkoutLogs = function clearWorkoutLogs() {
+  return {
+    type: CLEAR_WORKOUT_LOGS
+  };
+};
 var receiveWorkoutLogErrors = function receiveWorkoutLogErrors(errors) {
   return {
     type: RECEIVE_WORKOUT_LOG_ERRORS,
@@ -5224,12 +5232,12 @@ var WorkoutLogForm = /*#__PURE__*/function (_React$Component) {
           weight_unit: this.state.weightUnit[i],
           name: this.state.exerciseName,
           user_id: this.props.userId,
-          workout_id: this.props.workoutId
+          workout_id: this.props.match.url.split("/")[2]
         };
         this.props.createWorkoutLog(logObject);
       }
 
-      this.props.history.replace("/workouts/".concat(this.props.workoutId, "/workout_log"));
+      this.props.history.replace("/workouts/".concat(this.props.match.url.split("/")[2], "/workout_log"));
     }
   }, {
     key: "setExerciseId",
@@ -5422,7 +5430,7 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     userId: state.session.id,
     exerciseNames: (0,_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__.getExerciseNames)(state.entities.exercises),
-    workoutId: Object.values(state.entities.workouts)[0].id,
+    //workoutId: Object.values(state.entities.workouts)[0].id,
     exercises: state.entities.exercises
   };
 };
@@ -5515,10 +5523,14 @@ var WorkoutLogShow = function WorkoutLogShow(_ref) {
       fetchWorkoutLogs = _ref.fetchWorkoutLogs,
       fetchWorkout = _ref.fetchWorkout,
       date = _ref.date,
-      deleteWorkout = _ref.deleteWorkout;
+      deleteWorkout = _ref.deleteWorkout,
+      clearLogs = _ref.clearLogs;
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useHistory)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchWorkoutLogs(match.params.workoutId), fetchWorkout(match.params.workoutId);
+    setTimeout(function () {
+      fetchWorkoutLogs(match.params.workoutId);
+    }, 250);
+    fetchWorkout(match.params.workoutId);
   }, []);
 
   var handleDelete = function handleDelete(e) {
@@ -5528,38 +5540,47 @@ var WorkoutLogShow = function WorkoutLogShow(_ref) {
     });
   };
 
-  if (logs !== {}) {
-    var displayLogs = Object.values(logs).map(function (log, i) {
+  var handleClear = function handleClear() {
+    console.log('hi');
+    return clearLogs();
+  };
+
+  var displayLogs;
+
+  if (JSON.stringify(logs) !== '{}') {
+    displayLogs = Object.values(logs).map(function (log, i) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_workout_log_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
         key: i,
         log: log
       });
     });
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "workout-log-div"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
-      className: "workout-form-nav"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-      className: "dashboard-link",
-      to: "/dashboard"
-    }, "My Dashboard")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "log-title-div"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
-      className: "date-h1"
-    }, "Workout: ", date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "display-all-logs-div"
-    }, displayLogs), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "new-exercise-link-div"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-      to: "/workouts/".concat(match.params.workoutId, "/workout_log/new"),
-      replace: true
-    }, "Add A New Exercise"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-      onClick: handleDelete,
-      className: "delete-button"
-    }, "Delete Workout")));
   } else {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "No Log To Display");
+    displayLogs = "";
   }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "workout-log-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
+    className: "workout-form-nav"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+    onClick: handleClear,
+    className: "dashboard-link",
+    to: "/dashboard"
+  }, "My Dashboard")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "log-title-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+    className: "date-h1"
+  }, "Workout: ", date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "display-all-logs-div"
+  }, displayLogs), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "new-exercise-link-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+    to: "/workouts/".concat(match.params.workoutId, "/workout_log/new"),
+    replace: true
+  }, "Add A New Exercise"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: handleDelete,
+    className: "delete-button"
+  }, "Delete Workout")));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.withRouter)(WorkoutLogShow));
@@ -5588,6 +5609,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var mapStateToProps = function mapStateToProps(_ref) {
   var entities = _ref.entities;
   return {
@@ -5598,6 +5620,9 @@ var mapStateToProps = function mapStateToProps(_ref) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    clearLogs: function clearLogs() {
+      return dispatch((0,_actions_workout_log_actions__WEBPACK_IMPORTED_MODULE_2__.clearWorkoutLogs)());
+    },
     fetchWorkoutLogs: function fetchWorkoutLogs(workoutId) {
       return dispatch((0,_actions_workout_log_actions__WEBPACK_IMPORTED_MODULE_2__.fetchWorkoutLogs)(workoutId));
     },
@@ -6099,10 +6124,10 @@ var sortWorkoutLogs = function sortWorkoutLogs(logs) {
   return newLogs;
 };
 var getDateFromWorkout = function getDateFromWorkout(workout) {
-  if (Object.values(workout).length > 0) {
+  if (Object.values(workout).length === 1) {
     return Object.values(workout)[0].date;
   } else {
-    return 'No Workout!';
+    return '';
   }
 };
 var getExerciseNames = function getExerciseNames(exercises) {
@@ -6300,6 +6325,9 @@ var WorkoutLogsReducer = function WorkoutLogsReducer() {
 
     case _actions_workout_log_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_WORKOUT_LOG:
       return Object.assign({}, state, _defineProperty({}, action.log.id, action.log));
+
+    case _actions_workout_log_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_WORKOUT_LOGS:
+      return {};
 
     default:
       return state;

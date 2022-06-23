@@ -3,6 +3,11 @@ import * as APIUtil from '../util/workout_log_api_util';
 export const RECEIVE_WORKOUT_LOGS = 'RECEIVE_WORKOUT_LOGS';
 export const RECEIVE_WORKOUT_LOG = 'RECEIVE_WORKOUT_LOG';
 export const RECEIVE_WORKOUT_LOG_ERRORS = 'RECEIVE_WORKOUT_LOG_ERRORS';
+export const CLEAR_WORKOUT_LOGS = 'CLEAR_WORKOUT_LOGS';
+
+export const clearWorkoutLogs = () => ({
+    type: CLEAR_WORKOUT_LOGS
+});
 
 export const receiveWorkoutLogErrors = errors => ({
     type: RECEIVE_WORKOUT_LOG_ERRORS,

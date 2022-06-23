@@ -3,12 +3,15 @@ import { withRouter, useHistory, Link } from 'react-router-dom';
 import WorkoutLogItem from './workout_log_item';
 import DashNavContainer from '../dashboard/dashnav_container';
 
-const WorkoutLogShow = ({ match, logs, fetchWorkoutLogs, fetchWorkout, date, deleteWorkout }) => {
+const WorkoutLogShow = ({ match, logs, fetchWorkoutLogs, fetchWorkout, date, deleteWorkout, clearLogs }) => {
     let history = useHistory();
 
     useEffect(() => {
-        fetchWorkoutLogs(match.params.workoutId),
-        fetchWorkout(match.params.workoutId)
+        setTimeout(() => {
+            fetchWorkoutLogs(match.params.workoutId)
+            
+        }, 250);
+        fetchWorkout(match.params.workoutId);
     }, []);
 
     const handleDelete = e => {
@@ -16,36 +19,44 @@ const WorkoutLogShow = ({ match, logs, fetchWorkoutLogs, fetchWorkout, date, del
         deleteWorkout(match.params.workoutId)
             .then(() => history.replace('/dashboard'));
     }
+
+    const handleClear = () => {
+        console.log('hi');
+        return clearLogs();
+    }
      
    
     
-    if (logs !== {}) {
-        const displayLogs = Object.values(logs).map((log, i) => (
+    let displayLogs;
+
+    if (JSON.stringify(logs) !== '{}') {
+         displayLogs = Object.values(logs).map((log, i) => (
             <WorkoutLogItem key={i} log={log} />
         ));
-        return (
-                <div className='workout-log-div'>
-                    <nav className='workout-form-nav'>
-                        <Link className='dashboard-link' to="/dashboard">My Dashboard</Link>
-                    </nav>
-                    <div className='log-title-div'>
-                        <h1 className='date-h1'>Workout: {date}</h1>
-                        
-                    </div>
-                    <div className='display-all-logs-div'>
-                        {displayLogs}
-                    </div>
-                    
-                    <div className='new-exercise-link-div'>
-                        <Link to={`/workouts/${match.params.workoutId}/workout_log/new`} replace >
-                            Add A New Exercise</Link>
-                        <button onClick={handleDelete} className='delete-button'>Delete Workout</button>
-                    </div>
-                </div>
-        )
     } else {
-        return <div>No Log To Display</div>;
+        displayLogs = "";
     }
+    
+    return (
+            <div className='workout-log-div'>
+                <nav className='workout-form-nav'>
+                    <Link onClick={handleClear} className='dashboard-link' to="/dashboard">My Dashboard</Link>
+                </nav>
+                <div className='log-title-div'>
+                    <h1 className='date-h1'>Workout: {date}</h1>
+                </div>
+                <div className='display-all-logs-div'>
+                    {displayLogs}
+                </div>
+                
+                <div className='new-exercise-link-div'>
+                    <Link to={`/workouts/${match.params.workoutId}/workout_log/new`} replace >
+                        Add A New Exercise</Link>
+                    <button onClick={handleDelete} className='delete-button'>Delete Workout</button>
+                </div>
+            </div>
+    )
+    
     
 };
 

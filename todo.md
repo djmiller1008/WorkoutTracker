@@ -1,16 +1,9 @@
 TODO
 
--fill in about section
-
-- exercise info page
-
--change mobile view
+-css is not responsive
 
 
 
-
--user can create exercises
--user can create exercise categories
 
 
 

@@ -7,7 +7,7 @@ import WorkoutLogForm from "./workout_log_form";
 const mapStateToProps = state => ({
     userId: state.session.id,
     exerciseNames: getExerciseNames(state.entities.exercises),
-    workoutId: Object.values(state.entities.workouts)[0].id,
+    //workoutId: Object.values(state.entities.workouts)[0].id,
     exercises: state.entities.exercises
 });
 

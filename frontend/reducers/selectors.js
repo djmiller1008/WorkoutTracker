@@ -20,10 +20,11 @@ export const sortWorkoutLogs = logs => {
 }
 
 export const getDateFromWorkout = workout => {
-    if (Object.values(workout).length > 0) {
+    
+    if (Object.values(workout).length === 1) {
         return Object.values(workout)[0].date;
     } else {
-        return 'No Workout!';
+        return '';
     }
    
 };
