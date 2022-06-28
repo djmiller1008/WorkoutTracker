@@ -39,7 +39,7 @@ const WorkoutLogShow = ({ match, logs, fetchWorkoutLogs, fetchWorkout, date, del
     
     return (
             <div className='workout-log-div'>
-                <nav className='workout-form-nav'>
+                <nav className='dashboard-nav-link'>
                     <Link onClick={handleClear} className='dashboard-link' to="/dashboard">My Dashboard</Link>
                 </nav>
                 <div className='log-title-div'>

@@ -30,7 +30,7 @@ class WorkoutForm extends React.Component {
     render() {
         return (
             <div>
-                <nav className="workout-form-nav">
+                <nav className="dashboard-nav-link">
                     <Link to="/dashboard" className='dashboard-link'>My Dashboard</Link>
                 </nav>
                 <div className="workout-form-errors-div">

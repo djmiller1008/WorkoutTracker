@@ -15,7 +15,7 @@ const ExerciseCategories = ({ fetchAllCategories, categories }) => {
 
     return (
         <div className="all-exercises">
-            <nav className="workout-form-nav">
+            <nav className="dashboard-nav-link">
                 <Link to="/dashboard" className="dashboard-link">My Dashboard</Link>
             </nav>
             <h1 className="categories-h1">Exercise Categories</h1>

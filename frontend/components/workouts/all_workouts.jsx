@@ -28,7 +28,7 @@ const AllWorkouts = ({ fetchWorkouts, workouts }) => {
 
     return (
         <div className="all-workouts">
-            <nav>
+            <nav className="dashboard-nav-link">
                 <Link className='dashboard-link' to='/dashboard'>My Dashboard</Link>
             </nav>
             

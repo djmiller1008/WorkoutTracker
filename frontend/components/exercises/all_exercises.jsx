@@ -15,7 +15,7 @@ const AllExercises = ({ exercises, fetchExercises }) => {
     if (exercises.length > 0) {
         return (
             <div className="all-exercises">
-                <nav className="workout-form-nav">
+                <nav className="dashboard-nav-link">
                     <Link to="/dashboard" className="dashboard-link">My Dashboard</Link>
                 </nav>
                 <h1 className="all-exercises-h1">All Exercises</h1>

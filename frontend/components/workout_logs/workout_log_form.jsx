@@ -140,7 +140,7 @@ class WorkoutLogForm extends React.Component {
        
         return (
             <div>
-                <nav className="workout-form-nav">
+                <nav className="dashboard-nav-link">
                     <Link className="dashboard-link" to='/dashboard'>My Dashboard</Link>
                 </nav>
                 <div className="workout-log-main-form-div">

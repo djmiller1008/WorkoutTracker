@@ -12,7 +12,7 @@ const CategoryShow = ({ category, fetchExerciseCategory }) => {
   
     return (
         <div>
-            <nav className="workout-form-nav">
+            <nav className="dashboard-nav-link">
                 <Link to="/dashboard" className="dashboard-link">My Dashboard</Link>
             </nav>
             <div>
