@@ -129,3 +129,24 @@
     justify-content: center;
 
 }
+
+@media (max-width: 480px) {
+
+    .quote-div {
+        display: none;
+    }
+
+    .signup-content-info {
+        margin-bottom: 50px;
+    }
+
+    .signup-content-div {
+        flex-direction: column-reverse;
+        text-align: center;
+        align-items: center;  
+    }
+
+    .signup-form-div {
+        height: 75vh;
+    }
+}

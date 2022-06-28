@@ -72,3 +72,28 @@
         text-align: center;
     }
 }
+
+@media (max-width: 480px) {
+    .dashboard-nav-link {
+       justify-content: center;
+    }
+
+    .exercise-name {
+        flex-basis: 50%;
+        font-size: $font-sm;
+        text-align: center;
+    }
+
+    .category-exercises-div {
+        
+        p {
+            flex-basis: 50%;
+        }
+    }
+
+    .categories-div {
+        a {
+            flex-basis: 50%;
+        }
+    }
+}

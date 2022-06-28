@@ -160,20 +160,13 @@
 
 .exercises-links {
     margin-top: 15px;
-    
-    
 }
-
-
 
 .exercise-toggle-div {  
     margin-left: 50px;
     padding-bottom: 10px;
 }
     
-
-
-
 .exercises-toggle:hover {
     color: $light-green;
     cursor: pointer;
@@ -181,4 +174,42 @@
 
 .exercises-links:hover {
     color: $light-green;
+}
+
+
+@media (max-width: 480px) {
+
+    .title-links-div {
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: $font-sm;
+
+        h1 {
+            font-size: $font-ml;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .email-div {
+        font-size: $font-sm;
+    }
+
+    .email-display {
+        font-size: $font-sm;
+    }
+
+    .dashboard-content-div {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .my-workouts-div {
+        width: 50%;
+        margin-left: 0px;
+    }
+
+    .new-workout-link-div {
+        margin-right: 0px;
+    }
 }

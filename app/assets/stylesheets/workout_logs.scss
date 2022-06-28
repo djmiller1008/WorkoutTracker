@@ -120,3 +120,35 @@
 .workout-log-main-content {
     flex-basis: 33.33333%;
 }
+
+@media (max-width: 480px) {
+    .display-all-logs-div {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .log-info-section {
+        font-size: $font-sm;
+
+        input {
+            width: 2rem;
+            height: 1.5rem;
+            font-size: $font-sm;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        select {
+           width: 2rem;
+           font-size: $font-sm;
+           padding-left: 3px;
+           padding-right: 3px;
+
+           option {
+            text-align: center;
+           }
+        }
+    }
+}
