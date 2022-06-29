@@ -27,12 +27,15 @@ const Dashnav = ({ currentUserEmail, logout }) => {
         if (logoutDropdown) {
             return (
                 <div className="dashnav-dropdown">
-                    <button className="logout-button" onClick={handleLogout}>Logout</button>
+                    <Link to='/profile' className="email-dropdown-button">My Account</Link>
+                    <button className="email-dropdown-button" onClick={handleLogout}>Logout</button>
                 </div>
                
             )
         }
     };
+
+
 
     const toggleExercisesDropdown = () => {
         if (exercisesDropdown) {

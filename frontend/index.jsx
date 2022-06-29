@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
+import { updateEmail } from './actions/account_actions';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         store = configureStore();
     }
     window.store = store;
+    window.updateEmail = updateEmail();
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store}/>, root);
 });

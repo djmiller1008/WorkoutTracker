@@ -40,7 +40,7 @@ class WorkoutForm extends React.Component {
                     <h1>Which Day Did You Workout?</h1>
                     <form onSubmit={this.handleSubmit} className='new-workout-form'>
                         
-                        <input type='date'
+                        <input className="date-input" type='date'
                             value={this.state.date}
                             onChange={this.handleInput('date')} />
                         <button className='new-workout-submit'>Create Workout</button>
