@@ -125,6 +125,7 @@
     background-color: $green;
     color: white;
     padding: 12px 30px;
+    text-align: center;
 }
 
 .dashboard-link:hover {
@@ -191,6 +192,24 @@
             font-size: $font-ml;
             margin-bottom: 1rem;
         }
+    }
+
+    .exercises-links {
+        margin-top: 5px;
+    }
+
+    .exercises-links:last-child {
+        margin-bottom: 5px;
+    }
+
+    .dashnav-dropdown-exercises {
+        width: 85px;
+        padding: 5px;
+    }
+
+    .email-dropdown-button {
+        font-size: $font-sm;
+        padding: 5px;
     }
 
     .email-div {

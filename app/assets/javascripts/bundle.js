@@ -5989,6 +5989,7 @@ var WorkoutForm = /*#__PURE__*/function (_React$Component) {
         onSubmit: this.handleSubmit,
         className: "new-workout-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+        className: "date-input",
         type: "date",
         value: this.state.date,
         onChange: this.handleInput('date')
