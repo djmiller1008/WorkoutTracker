@@ -163,7 +163,10 @@ class WorkoutLogForm extends React.Component {
                                     onChange={this.handleSetsInput('sets')}
                             />
                         </section>
-                        {this.renderSetInputs(this.state.sets)}
+                        <div className="logs-inputs">
+                            {this.renderSetInputs(this.state.sets)}
+                        </div>
+                      
                         <button onClick={this.handleSubmit} className='log-submit'>Log Exercise</button>
                     </form>
                 </div>

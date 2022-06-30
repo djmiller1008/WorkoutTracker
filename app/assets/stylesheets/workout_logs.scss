@@ -111,8 +111,11 @@
     color: white;
     padding: 10px 20px;
     border: none;
-   
-   
+}
+
+.logs-inputs {
+    position: fixed;
+    top: 15rem;
 }
 
 .log-submit:hover {

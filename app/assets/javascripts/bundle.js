@@ -5534,7 +5534,9 @@ var WorkoutLogForm = /*#__PURE__*/function (_React$Component) {
         type: "number",
         value: this.state.sets,
         onChange: this.handleSetsInput('sets')
-      })), this.renderSetInputs(this.state.sets), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "logs-inputs"
+      }, this.renderSetInputs(this.state.sets)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
         onClick: this.handleSubmit,
         className: "log-submit"
       }, "Log Exercise"))));
