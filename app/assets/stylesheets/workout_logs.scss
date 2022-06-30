@@ -147,10 +147,13 @@
         
 
         input {
+            
             width: 2.5rem;
             height: 2rem;
             font-size: $font-sm;
             padding: 5px;
+            top: .5rem;
+           
             
             
         }
@@ -161,7 +164,7 @@
            height: 2.5rem;
            font-size: $font-sm;
            padding: 5px;
-           
+           top: .5rem;
 
            option {
             text-align: center;
