@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import WorkoutItem from './workout_item';
+import DashNavLink from "../dashboard/dashnavlink";
 
 const AllWorkouts = ({ fetchWorkouts, workouts }) => {
     useEffect(() => {
@@ -28,9 +28,7 @@ const AllWorkouts = ({ fetchWorkouts, workouts }) => {
 
     return (
         <div className="all-workouts">
-            <nav className="dashboard-nav-link">
-                <Link className='dashboard-link' to='/dashboard'>My Dashboard</Link>
-            </nav>
+            <DashNavLink />
             
             <div className="all-workouts-div">
                 <h1>Your Workouts</h1>

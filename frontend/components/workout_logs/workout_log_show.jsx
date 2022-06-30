@@ -38,10 +38,12 @@ const WorkoutLogShow = ({ match, logs, fetchWorkoutLogs, fetchWorkout, date, del
     }
     
     return (
-            <div className='workout-log-div'>
-                <nav className='dashboard-nav-link'>
-                    <Link onClick={handleClear} className='dashboard-link' to="/dashboard">My Dashboard</Link>
-                </nav>
+
+        <div>
+            <nav className='dashboard-nav-link'>
+                <Link onClick={handleClear} className='dashboard-link' to="/dashboard">My Dashboard</Link>
+            </nav>
+            <div className='workout-log-div'>        
                 <div className='log-title-div'>
                     <h1 className='date-h1'>Workout: {date}</h1>
                 </div>
@@ -55,6 +57,7 @@ const WorkoutLogShow = ({ match, logs, fetchWorkoutLogs, fetchWorkout, date, del
                     <button onClick={handleDelete} className='delete-button'>Delete Workout</button>
                 </div>
             </div>
+        </div>
     )
     
     
