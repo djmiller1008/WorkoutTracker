@@ -65,14 +65,15 @@
 
 .log-info-section {
     display: flex;
-    align-items: baseline;
-    justify-content: center;
     
+    justify-content: center;
+    align-items: end;
     margin-top: 50px;
     font-size: $font-m;
 
     label {
         margin-right: 15px;
+       
     }
 
     input {
