@@ -1,30 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import DashNavLink from "../dashboard/dashnavlink";
 
-const Profile = ({ currentUser, updateEmail }) => {
-    const [newEmail, setNewEmail] = useState('');
-
-
-    const handleSubmit = e => {
-        e.preventDefault()
-        const data = { id: currentUser.id, email: newEmail }
-        updateEmail(data);
-    }
-
-    const handleTextInput = (e) => {
-        setNewEmail(e.target.value);
-    }
-
-    return(
+const Profile = ({ currentUser }) => {
+    return (
         <div>
-            <form>
-                <label>New Email</label>
-                <input onChange={handleTextInput} type='text'></input>
-                <button onClick={handleSubmit} type='submit'>Change Email</button>
-            </form>
+            <DashNavLink />
+            <div className="account-page-div">
+                
+
+                <section className="account-management-section">
+                    <h1>Account Management</h1>
+                    <ul className="account-links-ul">
+                        <li><Link to="/profile/email">Change Email</Link></li>
+                    </ul>
+                </section>
+                <section className="account-management-section">
+                    <h1>Profile</h1>
+                    <ul className="profile-ul">
+                        <li>Email: {currentUser.email}</li>
+                    </ul>
+                </section>
+            
+            </div>
+
+          
+            
+            
         </div>
     )
-
 }
 
 export default Profile;
