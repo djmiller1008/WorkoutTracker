@@ -12,7 +12,9 @@ import CategoryShowContainer from '../components/exercise_categories/category_sh
 import AllWorkoutsContainer from '../components/workouts/all_workouts_container';
 import WorkoutLogFormContainer from '../components/workout_logs/workout_log_form_container';
 import WorkoutLogShowContainer from '../components/workout_logs/workout_log_show_container';
+import UpdateEmailContainer from '../components/profile/update_email_container';
 import { ProtectedRoute, AuthRoute } from '../util/route_util';
+
 
 const App = () => (
     <div>
@@ -25,7 +27,8 @@ const App = () => (
         <ProtectedRoute exact path='/workouts/:workoutId/workout_log' component={WorkoutLogShowContainer} />
         <ProtectedRoute exact path='/workouts/:workoutId/workout_log/new' component={WorkoutLogFormContainer} />
         <ProtectedRoute exact path='/exercises/all' component={AllExercisesContainer} />
-        <ProtectedRoute path='/profile' component={ProfileContainer} />
+        <ProtectedRoute exact path='/profile' component={ProfileContainer} />
+        <ProtectedRoute exact path='/profile/email' component={UpdateEmailContainer} />
         <Switch>
             <ProtectedRoute exact path='/categories/all' component={ExerciseCategoriesContainer} />
             <ProtectedRoute exact path='/categories/:categoryName' component={CategoryShowContainer} />
