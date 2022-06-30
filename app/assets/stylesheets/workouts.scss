@@ -78,10 +78,10 @@
 }
 
 .dashboard-nav-link {
-    margin-top: 20px;
-    margin-right: 30px;
+    padding: 20px 30px;
     display: flex;
     justify-content: end;
+    border-bottom: .5px solid $green;
 }
 
 .date-h1 {
@@ -92,12 +92,13 @@
 .workout-log-div {
     font-family: $body-font;
     margin-left: 35px;
+    margin-top: 25px;
 }
 
 .log-big-div {
-    width: 250px;
+    width: 350px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-bottom: 20px;
   
 }

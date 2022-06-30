@@ -1,0 +1,101 @@
+@import 'fonts';
+@import 'colors';
+
+.account-management-section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    font-family: $body-font;
+
+    h1 {
+        font-size: $font-l;
+    }
+}
+
+.account-links-ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1.5rem !important;
+}
+
+.account-links-ul {
+    li:hover {
+        color: $green;
+    }
+}
+
+.profile-ul {
+   
+    margin-top: 1.5rem !important;
+}
+
+.account-page-div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.errors-div {
+    height: 0;
+    margin-top: 1rem;
+}
+
+.update-email-form {
+    font-family: $body-font;
+    padding-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    width: 30%;
+
+    label {
+        padding-bottom: .5rem;
+    }
+
+    input {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: .5px solid black;
+        margin-bottom: 1rem;
+    }
+
+    input:focus {
+        outline: 2px solid $green;
+     
+    }
+
+    button {
+        border: none;
+        padding: 5px 30px;
+        border-radius: 5px;
+        margin-top: 25px;
+        font-family: inherit;
+        font-size: 20px;
+        color: white;
+        background-color: $green;
+    }
+
+    button:hover {
+        cursor: pointer;
+        background-color: $light-green;
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .update-email-form {
+        width: 50%;
+    }
+
+    .account-management-section {
+        h1 {
+            font-size: $font-m;
+            font-weight: 700;
+        }
+    }
+}
