@@ -115,7 +115,7 @@
 
 .logs-inputs {
     position: fixed;
-    top: 15rem;
+    top: 16rem;
 }
 
 .log-submit:hover {
@@ -143,23 +143,20 @@
 
     .log-info-section {
         font-size: $font-sm;
+        padding-left: 15px;
+        padding-right: 15px;
         
         
 
         input {
             user-select: text;
-            width: 2.5rem;
-            height: 2rem;
+            width: 1.5rem;
+            height: 1.5rem;
             font-size: $font-sm;
-            padding: 5px;
             top: .5rem;
-             
-            
-            
         }
 
         select {
-           
            width: 2.5rem;
            height: 2.5rem;
            font-size: $font-sm;
