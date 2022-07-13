@@ -48,10 +48,10 @@ class SessionForm extends React.Component {
         const buttonText = this.props.login ? 'Login' : 'Signup';
         return(
             <div className="session-form-div">
-
                 <div className="errors-div">
                     {this.renderErrors()}
                 </div>
+                
                 <form className="session-form">
                     <label>Email</label>
                     <input type='text'
@@ -66,6 +66,8 @@ class SessionForm extends React.Component {
                     />
                     <button onClick={this.handleSubmit}>{buttonText}</button>
                 </form>
+
+                
             </div>
         )
     };
