@@ -10,6 +10,7 @@ import ExerciseCategoriesContainer from '../components/exercise_categories/exerc
 import WorkoutFormContainer from '../components/workouts/workout_form_container';
 import CategoryShowContainer from '../components/exercise_categories/category_show_container';
 import AllWorkoutsContainer from '../components/workouts/all_workouts_container';
+import UserExerciseFormContainer from '../components/exercises/user_exercise_form_container';
 import WorkoutLogFormContainer from '../components/workout_logs/workout_log_form_container';
 import WorkoutLogShowContainer from '../components/workout_logs/workout_log_show_container';
 import UpdateEmailContainer from '../components/profile/update_email_container';
@@ -27,6 +28,7 @@ const App = () => (
         <ProtectedRoute exact path='/workouts/:workoutId/workout_log' component={WorkoutLogShowContainer} />
         <ProtectedRoute exact path='/workouts/:workoutId/workout_log/new' component={WorkoutLogFormContainer} />
         <ProtectedRoute exact path='/exercises/all' component={AllExercisesContainer} />
+        <ProtectedRoute exact path='/exercises/new' component={UserExerciseFormContainer} />
         <ProtectedRoute exact path='/profile' component={ProfileContainer} />
         <ProtectedRoute exact path='/profile/email' component={UpdateEmailContainer} />
         <Switch>

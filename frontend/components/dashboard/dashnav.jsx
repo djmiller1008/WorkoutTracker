@@ -51,6 +51,7 @@ const Dashnav = ({ currentUserEmail, logout }) => {
                 <div className="dashnav-dropdown-exercises">
                     <Link className="exercises-links" to="/exercises/all">All Exercises</Link>
                     <Link className="exercises-links" to="/categories/all">Categories</Link>
+                    <Link className="exercises-links" to="/exercises/new">Create a New Exercise</Link>
                 </div>
             )
         }
