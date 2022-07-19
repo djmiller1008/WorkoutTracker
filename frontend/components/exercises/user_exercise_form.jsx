@@ -24,7 +24,7 @@ const UserExerciseForm = ({ userId, fetchAllCategories, createUserExercise, cate
     const handleSubmit = (e) => {
         e.preventDefault();
         createUserExercise(formData)
-            .then(() => history.replace("/dashboard"));
+            .then(() => history.replace("/exercises/user"));
     }
 
     const renderCategories = () => {
@@ -42,20 +42,22 @@ const UserExerciseForm = ({ userId, fetchAllCategories, createUserExercise, cate
     return (
         <div>
             <DashNavLink />
-            <form className="user-exercise-form">
-                <label>Exercise Name</label>
-                <input type="text" name="name"
-                        onChange={handleInput}
-                />
+            <div className="user-exercise-form-div">
+                <form className="user-exercise-form">
+                    <label>Exercise Name</label>
+                    <input type="text" name="name"
+                            onChange={handleInput}
+                    />
 
-                <label>Exercise Category</label>
-                <select name="exercise_category_id" onChange={handleInput}>
-                    <option value="" disabled selected>Select your option</option>
-                    {renderCategories()}
-                </select>
+                    <label>Exercise Category</label>
+                    <select name="exercise_category_id" onChange={handleInput}>
+                        <option value="" disabled selected>Select your option</option>
+                        {renderCategories()}
+                    </select>
 
-                <button onClick={handleSubmit}>Create Exercise</button>
-            </form>
+                    <button className="create-new-exercise" onClick={handleSubmit}>Create Exercise</button>
+                </form>
+            </div>
         </div>
     )
 };
