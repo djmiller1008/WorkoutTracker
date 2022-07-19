@@ -11,7 +11,6 @@ class WorkoutLogForm extends React.Component {
             reps: {},
             weight: {},
             weightUnit: {},
-
         }
 
         this.handleExerciseInput = this.handleExerciseInput.bind(this);
