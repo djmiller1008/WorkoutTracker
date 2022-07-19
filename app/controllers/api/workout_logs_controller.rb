@@ -7,9 +7,13 @@ class Api::WorkoutLogsController < ApplicationController
 
     def create
         @workout_log = WorkoutLog.new(workout_log_params)
-       
-        @workout_log.exercise_id = Exercise.find_by(name: params[:workout_log][:name]).id
         
+        if Exercise.find_by(name: params[:workout_log][:name]).nil?
+            @workout_log.user_exercise_id = UserExercise.find_by(name: params[:workout_log][:name]).id
+        else
+            @workout_log.exercise_id = Exercise.find_by(name: params[:workout_log][:name]).id
+        end
+       
         if @workout_log.save
             render :show
         else
