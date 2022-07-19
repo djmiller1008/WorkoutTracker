@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import DashNavLink from "../dashboard/dashnavlink";
 
 const UserExerciseForm = ({ userId, fetchAllCategories, createUserExercise, categories }) => {
+    const history = useHistory();
    
     const [formData, setFormData] = useState({
         user_id: userId,
@@ -21,7 +23,8 @@ const UserExerciseForm = ({ userId, fetchAllCategories, createUserExercise, cate
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        createUserExercise(formData);
+        createUserExercise(formData)
+            .then(() => history.replace("/dashboard"));
     }
 
     const renderCategories = () => {
