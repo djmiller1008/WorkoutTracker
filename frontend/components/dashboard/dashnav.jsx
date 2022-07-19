@@ -52,6 +52,7 @@ const Dashnav = ({ currentUserEmail, logout }) => {
                     <Link className="exercises-links" to="/exercises/all">All Exercises</Link>
                     <Link className="exercises-links" to="/categories/all">Categories</Link>
                     <Link className="exercises-links" to="/exercises/new">Create a New Exercise</Link>
+                    <Link className="exercises-links" to="/exercises/user">My Exercises</Link>
                 </div>
             )
         }
