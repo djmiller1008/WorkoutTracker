@@ -12,3 +12,10 @@ export const fetchUserExercises = () => (
         url: '/api/user_exercises'
     })
 );
+
+export const deleteUserExercise = id => (
+    $.ajax({
+        method: "DELETE",
+        url: `/api/user_exercises/${id}`
+    })
+);
