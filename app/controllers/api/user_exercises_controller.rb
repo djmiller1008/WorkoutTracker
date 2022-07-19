@@ -1,10 +1,12 @@
 class Api::UserExercisesController < ApplicationController
 
     def index
-
+        @user_exercises = current_user.user_exercises
+        render :index
     end
 
     def create
+       
         @user_exercise = UserExercise.new(user_exercise_params)
         if @user_exercise.save
             render :show
