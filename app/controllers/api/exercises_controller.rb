@@ -10,6 +10,7 @@ class Api::ExercisesController < ApplicationController
     end
 
     def index
+        @user_exercises = current_user.user_exercises
         @exercises = Exercise.all
         render :index
     end
@@ -20,7 +21,7 @@ class Api::ExercisesController < ApplicationController
     def destroy
     end
 
-
+ 
 
     private
 
