@@ -6,7 +6,6 @@ class Api::UserExercisesController < ApplicationController
     end
 
     def create
-       
         @user_exercise = UserExercise.new(user_exercise_params)
         if @user_exercise.save
             render :show
@@ -15,6 +14,12 @@ class Api::UserExercisesController < ApplicationController
         end
     end
 
+    def destroy
+        user_exercise = UserExercise.find_by(id: params[:id])
+        user_exercise.destroy
+        @user_exercises = current_user.user_exercises
+        render :index
+    end
 
     private
 
