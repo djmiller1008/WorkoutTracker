@@ -73,6 +73,88 @@
     }
 }
 
+.user-exercise-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 10rem;
+    margin: auto;
+    height: 15rem;
+
+    button {
+        border: none;
+        cursor: pointer;
+    }
+
+    label {
+       
+    }
+
+
+}
+
+.user-exercise-form-div {
+    margin-top: 3rem;
+    
+}
+
+.my-exercises-div {
+    margin: 3rem;
+    display: flex;
+   
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.my-exercise-item-div {
+    flex-basis: 20%;
+    text-align: center;
+    font-family: $body-font;
+    margin-bottom: 2rem;
+
+    p {
+        padding: 5px;
+        margin-bottom: 5px;
+
+    }
+
+    button {
+        color: white;
+        background-color: #d11a2a;
+        border: none;
+        font-family: $body-font;
+    }
+
+    button:hover {
+        background-color: red;
+        cursor: pointer;
+    }
+
+}
+
+.create-new-exercise {
+    font-family: $body-font;
+    background-color: $green;
+    color: white;
+    padding: 12px 30px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.create-new-exercise:hover {
+    background-color: $light-green;
+    color: white;
+}
+
+
+.button-section {
+    display: flex;
+    justify-content: center;
+}
+
+
 @media (max-width: 480px) {
     .dashboard-nav-link {
        justify-content: center;

@@ -148,6 +148,7 @@
 }
 
 .dashnav-dropdown-exercises {
+    z-index: 99;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
