@@ -9,7 +9,10 @@ const CategoryShow = ({ category, fetchExerciseCategory }) => {
     }, []);
     
     const display = category.exercises ? category.exercises.map((exercise => <p>{exercise.name}</p>)) : "";
-  
+    const myExercisesDisplay = category.user_exercises ? category.user_exercises.map((
+        exercise, i) => <p key={i}>{exercise.name}</p>) : "";
+
+
     return (
         <div>
             <nav className="dashboard-nav-link">
@@ -19,6 +22,7 @@ const CategoryShow = ({ category, fetchExerciseCategory }) => {
                 <h1 className="category-h1">{category.name}</h1>
                 <div className="category-exercises-div">
                     {display}
+                    {myExercisesDisplay}
                 </div>
                
             </div>
