@@ -39,3 +39,7 @@ export const sortExerciseNames = exercises => {
     const names = Object.values(exercises).map(exercise => exercise.name);
     return names.sort();
 }
+
+export const sortUserExercises = exercises => {
+    return Object.values(exercises).map(exercise => [exercise.name, exercise.id])
+};
