@@ -1,4 +1,3 @@
-
 export const sortByDate = workouts => {
     return Object.values(workouts).sort(function(a, b) {
         let c = new Date(a.date);
@@ -20,13 +19,11 @@ export const sortWorkoutLogs = logs => {
 }
 
 export const getDateFromWorkout = workout => {
-    
     if (Object.values(workout).length === 1) {
         return Object.values(workout)[0].date;
     } else {
         return '';
     }
-   
 };
 
 export const getExerciseNames = exercises => {
