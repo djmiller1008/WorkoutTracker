@@ -1,0 +1,1 @@
+json.extract! @user_exercise, :name, :user_id, :exercise_category_id
