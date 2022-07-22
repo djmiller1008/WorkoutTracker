@@ -1,11 +1,11 @@
 import React from "react";
 import Navbar from "./navbar";
-import Content from "./content";
+import ContentContainer from "./container_container"
 
 const Home = () => (
     <div>
         <Navbar />
-        <Content />
+        <ContentContainer />
     </div>
  
     
