@@ -71,6 +71,9 @@ const Dashnav = ({ currentUserEmail, logout }) => {
                         <section className="exercises-toggle">Exercises</section>
                         {dropdownExercises}
                     </div>
+                    <div className="nutrition-toggle-div">
+                        <section>Nutrition</section>
+                    </div>
                   
                 </div>
                 
