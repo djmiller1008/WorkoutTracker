@@ -85,6 +85,7 @@
 
     a:hover {
         background-color: $light-green;
+        color: white;
         cursor: pointer;
     }
 }
@@ -132,6 +133,10 @@
         background-color: $green;
         cursor: pointer;
         color: white;
+    }
+
+    .demo-button:hover {
+        background-color: $light-green;
     }
    
 }

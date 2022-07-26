@@ -24,7 +24,7 @@ const Content = ({ login }) => {
                 <Link to="./signup">Register</Link>
                 <section className="demo-section">
                     <p>Click Here to Demo the App!</p>
-                    <button onClick={loginAdmin}>Demo</button>
+                    <button className="demo-button" onClick={loginAdmin}>Demo</button>
                 </section>
             </section>
             <section className="info-section">
