@@ -1,24 +1,22 @@
-# README
+# Welcome To RepLogger!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a personal project I've built to help me keep track of my workouts in the gym. I also wanted to build a full-stack application on my own.
 
-Things you may want to cover:
+Live Website - https://rep-logger.herokuapp.com/#/
 
-* Ruby version
+Technologies used include React, SCSS, and Redux for the frontend as well as Ruby, Rails, and PostgreSQL for the backend.
 
-* System dependencies
+## Local Installation
 
-* Configuration
+- First fork this repository and clone it on your local machine
 
-* Database creation
+- Run `npm install`
 
-* Database initialization
+- Run `bundle install`
 
-* How to run the test suite
+- After all dependencies are installed run `rails s` to start the server.
 
-* Services (job queues, cache servers, search engines, etc.)
+- Run `npm start` to start webpack
 
-* Deployment instructions
+- Navigate to localhost:3000 and you should be up and running!
 
-* ...
