@@ -11,8 +11,9 @@ const FoodSearch = () => {
     return (
         <div>
             <DashNavLink />
-            <section>
-                <input onChange={handleInput} type="text"></input>
+            <section className="food-search-section">
+                <h2>Search for a food</h2>
+                <input className="food-search-bar" onChange={handleInput} type="text"></input>
             </section>
         </div>
     )
