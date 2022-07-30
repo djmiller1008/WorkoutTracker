@@ -1,0 +1,12 @@
+@import 'colors';
+@import 'fonts';
+
+.food-search-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.food-search-bar {
+    width: 8rem !important;
+}
