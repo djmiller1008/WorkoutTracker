@@ -9,6 +9,7 @@ const Dashnav = ({ currentUserEmail, logout }) => {
 
     const [logoutDropdown, setLogout] = useState(false);
     const [exercisesDropdown, setExercisesDropdown] = useState(false);
+    const [nutritionDropdown, setNutritionDropdown] = useState(false);
 
     const handleLogout = e => {
         e.preventDefault();
@@ -39,20 +40,39 @@ const Dashnav = ({ currentUserEmail, logout }) => {
 
     const toggleExercisesDropdown = () => {
         if (exercisesDropdown) {
-            setExercisesDropdown(false)
+            setExercisesDropdown(false);
         } else {
-            setExercisesDropdown(true)
+            setExercisesDropdown(true);
         }
     };
+
+    const toggleNutritionDropdown = () => {
+        if (nutritionDropdown) {
+            setNutritionDropdown(false);
+        } else {
+            setNutritionDropdown(true);
+        }
+    }
 
     const displayExercisesDropdown = () => {
         if (exercisesDropdown) {
             return (
-                <div className="dashnav-dropdown-exercises">
-                    <Link className="exercises-links" to="/exercises/all">All Exercises</Link>
-                    <Link className="exercises-links" to="/categories/all">Categories</Link>
-                    <Link className="exercises-links" to="/exercises/new">Create a New Exercise</Link>
-                    <Link className="exercises-links" to="/exercises/user">My Exercises</Link>
+                <div className="dashnav-dropdown-main">
+                    <Link className="dashnav-links" to="/exercises/all">All Exercises</Link>
+                    <Link className="dashnav-links" to="/categories/all">Categories</Link>
+                    <Link className="dashnav-links" to="/exercises/new">Create a New Exercise</Link>
+                    <Link className="dashnav-links" to="/exercises/user">My Exercises</Link>
+                </div>
+            )
+        }
+    }
+
+    const displayNutritionDropdown = () => {
+        if (nutritionDropdown) {
+            return (
+                <div className="dashnav-dropdown-main">
+                    <Link className="dashnav-links">Food Items</Link>
+                    <Link className="dashnav-links">Add a Food Item</Link>
                 </div>
             )
         }
@@ -60,6 +80,7 @@ const Dashnav = ({ currentUserEmail, logout }) => {
     
     const dropdownMenu = displayLogout();
     const dropdownExercises = displayExercisesDropdown();
+    const dropdownNutrition = displayNutritionDropdown();
 
     return (
         
@@ -67,12 +88,13 @@ const Dashnav = ({ currentUserEmail, logout }) => {
             <nav className="dashboard-nav">
                 <div className="title-links-div">
                     <h1>My Dashboard</h1>
-                    <div onMouseEnter={toggleExercisesDropdown} onMouseLeave={toggleExercisesDropdown} className="exercise-toggle-div">
-                        <section className="exercises-toggle">Exercises</section>
+                    <div onMouseEnter={toggleExercisesDropdown} onMouseLeave={toggleExercisesDropdown} className="dashnav-toggle-div">
+                        <section className="dashnav-toggle">Exercises</section>
                         {dropdownExercises}
                     </div>
-                    <div className="nutrition-toggle-div">
-                        <section>Nutrition</section>
+                    <div onMouseEnter={toggleNutritionDropdown} onMouseLeave={toggleNutritionDropdown} className="dashnav-toggle-div">
+                        <section className="dashnav-toggle">Nutrition</section>
+                        {dropdownNutrition}
                     </div>
                   
                 </div>
