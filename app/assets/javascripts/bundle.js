@@ -4411,6 +4411,11 @@ var Dashnav = function Dashnav(_ref) {
       exercisesDropdown = _useState4[0],
       setExercisesDropdown = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      nutritionDropdown = _useState6[0],
+      setNutritionDropdown = _useState6[1];
+
   var handleLogout = function handleLogout(e) {
     e.preventDefault();
     logout().then(function () {
@@ -4448,28 +4453,49 @@ var Dashnav = function Dashnav(_ref) {
     }
   };
 
+  var toggleNutritionDropdown = function toggleNutritionDropdown() {
+    if (nutritionDropdown) {
+      setNutritionDropdown(false);
+    } else {
+      setNutritionDropdown(true);
+    }
+  };
+
   var displayExercisesDropdown = function displayExercisesDropdown() {
     if (exercisesDropdown) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-        className: "dashnav-dropdown-exercises"
+        className: "dashnav-dropdown-main"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-        className: "exercises-links",
+        className: "dashnav-links",
         to: "/exercises/all"
       }, "All Exercises"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-        className: "exercises-links",
+        className: "dashnav-links",
         to: "/categories/all"
       }, "Categories"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-        className: "exercises-links",
+        className: "dashnav-links",
         to: "/exercises/new"
       }, "Create a New Exercise"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-        className: "exercises-links",
+        className: "dashnav-links",
         to: "/exercises/user"
       }, "My Exercises"));
     }
   };
 
+  var displayNutritionDropdown = function displayNutritionDropdown() {
+    if (nutritionDropdown) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+        className: "dashnav-dropdown-main"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+        className: "dashnav-links"
+      }, "Food Items"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+        className: "dashnav-links"
+      }, "Add a Food Item"));
+    }
+  };
+
   var dropdownMenu = displayLogout();
   var dropdownExercises = displayExercisesDropdown();
+  var dropdownNutrition = displayNutritionDropdown();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", {
     className: "dashboard-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
@@ -4479,12 +4505,16 @@ var Dashnav = function Dashnav(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "My Dashboard"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     onMouseEnter: toggleExercisesDropdown,
     onMouseLeave: toggleExercisesDropdown,
-    className: "exercise-toggle-div"
+    className: "dashnav-toggle-div"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
-    className: "exercises-toggle"
+    className: "dashnav-toggle"
   }, "Exercises"), dropdownExercises), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "nutrition-toggle-div"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", null, "Nutrition"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    onMouseEnter: toggleNutritionDropdown,
+    onMouseLeave: toggleNutritionDropdown,
+    className: "dashnav-toggle-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "dashnav-toggle"
+  }, "Nutrition"), dropdownNutrition)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     onMouseEnter: toggleLogout,
     onMouseLeave: toggleLogout,
     className: "email-div"
