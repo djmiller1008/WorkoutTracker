@@ -16,8 +16,6 @@ import WorkoutLogFormContainer from '../components/workout_logs/workout_log_form
 import WorkoutLogShowContainer from '../components/workout_logs/workout_log_show_container';
 import UpdateEmailContainer from '../components/profile/update_email_container';
 import { ProtectedRoute, AuthRoute } from '../util/route_util';
-import FoodSearch from './nutrition/food_search';
-
 
 const App = () => (
     <div>
@@ -34,7 +32,6 @@ const App = () => (
         <ProtectedRoute exact path='/profile' component={ProfileContainer} />
         <ProtectedRoute exact path='/profile/email' component={UpdateEmailContainer} />
         <ProtectedRoute exact path='/exercises/user' component={MyExercisesShowContainer} />
-        <ProtectedRoute exact path='/nutrition/search' component={FoodSearch} />
         <Switch>
             <ProtectedRoute exact path='/categories/all' component={ExerciseCategoriesContainer} />
             <ProtectedRoute exact path='/categories/:categoryName' component={CategoryShowContainer} />
