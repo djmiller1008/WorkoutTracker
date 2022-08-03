@@ -14,6 +14,11 @@ class Api::FoodItemsController < ApplicationController
         end
     end
 
+    def show
+        @food_item = FoodItem.find_by(id: params[:id])
+        render :show
+    end
+
     def destroy
     end
 
