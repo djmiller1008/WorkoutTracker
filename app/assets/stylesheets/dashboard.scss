@@ -54,6 +54,7 @@
 
 .dashnav-dropdown {
     z-index: 99;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,7 +70,7 @@
     background-color: #fff;
     border: none;
     padding: 10px;
-    font-size: $font-m;
+    font-size: $font-sm;
     font-family: $body-font;
     color: black;
     width: 100%;

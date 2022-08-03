@@ -3821,6 +3821,55 @@ var fetchAllCategories = function fetchAllCategories() {
 
 /***/ }),
 
+/***/ "./frontend/actions/food_item_actions.js":
+/*!***********************************************!*\
+  !*** ./frontend/actions/food_item_actions.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_ALL_FOOD_ITEMS": () => (/* binding */ RECEIVE_ALL_FOOD_ITEMS),
+/* harmony export */   "RECEIVE_FOOD_ITEM": () => (/* binding */ RECEIVE_FOOD_ITEM),
+/* harmony export */   "fetchAllFoodItems": () => (/* binding */ fetchAllFoodItems),
+/* harmony export */   "fetchFoodItem": () => (/* binding */ fetchFoodItem),
+/* harmony export */   "receiveAllFoodItems": () => (/* binding */ receiveAllFoodItems),
+/* harmony export */   "receiveFoodItem": () => (/* binding */ receiveFoodItem)
+/* harmony export */ });
+/* harmony import */ var _util_food_item_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/food_item_api_util */ "./frontend/util/food_item_api_util.js");
+
+var RECEIVE_ALL_FOOD_ITEMS = "RECEIVE_ALL_FOOD_ITEMS";
+var RECEIVE_FOOD_ITEM = "RECEIVE_FOOD_ITEM";
+var receiveFoodItem = function receiveFoodItem(foodItem) {
+  return {
+    type: RECEIVE_FOOD_ITEM,
+    foodItem: foodItem
+  };
+};
+var receiveAllFoodItems = function receiveAllFoodItems(foodItems) {
+  return {
+    type: RECEIVE_ALL_FOOD_ITEMS,
+    foodItems: foodItems
+  };
+};
+var fetchFoodItem = function fetchFoodItem(id) {
+  return function (dispatch) {
+    return _util_food_item_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchFoodItem(id).then(function (foodItem) {
+      return dispatch(receiveFoodItem(foodItem));
+    });
+  };
+};
+var fetchAllFoodItems = function fetchAllFoodItems() {
+  return function (dispatch) {
+    return _util_food_item_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchAllFoodItems().then(function (foodItems) {
+      return dispatch(receiveAllFoodItems(foodItems));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -4120,7 +4169,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _home_home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home/home */ "./frontend/components/home/home.jsx");
 /* harmony import */ var _session_signup_form_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session/signup-form-content */ "./frontend/components/session/signup-form-content.jsx");
 /* harmony import */ var _session_login_form_content__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session/login_form_content */ "./frontend/components/session/login_form_content.jsx");
@@ -4131,12 +4180,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_exercises_my_exercises_show_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/exercises/my_exercises_show_container */ "./frontend/components/exercises/my_exercises_show_container.js");
 /* harmony import */ var _components_workouts_workout_form_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/workouts/workout_form_container */ "./frontend/components/workouts/workout_form_container.js");
 /* harmony import */ var _components_exercise_categories_category_show_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/exercise_categories/category_show_container */ "./frontend/components/exercise_categories/category_show_container.js");
-/* harmony import */ var _components_workouts_all_workouts_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/workouts/all_workouts_container */ "./frontend/components/workouts/all_workouts_container.js");
-/* harmony import */ var _components_exercises_user_exercise_form_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/exercises/user_exercise_form_container */ "./frontend/components/exercises/user_exercise_form_container.js");
-/* harmony import */ var _components_workout_logs_workout_log_form_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/workout_logs/workout_log_form_container */ "./frontend/components/workout_logs/workout_log_form_container.js");
-/* harmony import */ var _components_workout_logs_workout_log_show_container__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/workout_logs/workout_log_show_container */ "./frontend/components/workout_logs/workout_log_show_container.js");
-/* harmony import */ var _components_profile_update_email_container__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/profile/update_email_container */ "./frontend/components/profile/update_email_container.js");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var _components_nutrition_food_items_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/nutrition/food_items_container */ "./frontend/components/nutrition/food_items_container.js");
+/* harmony import */ var _components_nutrition_food_item_show_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/nutrition/food_item_show_container */ "./frontend/components/nutrition/food_item_show_container.js");
+/* harmony import */ var _components_workouts_all_workouts_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/workouts/all_workouts_container */ "./frontend/components/workouts/all_workouts_container.js");
+/* harmony import */ var _components_exercises_user_exercise_form_container__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/exercises/user_exercise_form_container */ "./frontend/components/exercises/user_exercise_form_container.js");
+/* harmony import */ var _components_workout_logs_workout_log_form_container__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/workout_logs/workout_log_form_container */ "./frontend/components/workout_logs/workout_log_form_container.js");
+/* harmony import */ var _components_workout_logs_workout_log_show_container__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/workout_logs/workout_log_show_container */ "./frontend/components/workout_logs/workout_log_show_container.js");
+/* harmony import */ var _components_profile_update_email_container__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/profile/update_email_container */ "./frontend/components/profile/update_email_container.js");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+
+
 
 
 
@@ -4157,64 +4210,72 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.AuthRoute, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.AuthRoute, {
     exact: true,
     path: "/",
     component: _home_home__WEBPACK_IMPORTED_MODULE_1__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.AuthRoute, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.AuthRoute, {
     exact: true,
     path: "/signup",
     component: _session_signup_form_content__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.AuthRoute, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.AuthRoute, {
     exact: true,
     path: "/login",
     component: _session_login_form_content__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.ProtectedRoute, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.ProtectedRoute, {
     path: "/dashboard",
     component: _components_dashboard_dashboard_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.ProtectedRoute, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.ProtectedRoute, {
     path: "/workouts/new",
     component: _components_workouts_workout_form_container__WEBPACK_IMPORTED_MODULE_9__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.ProtectedRoute, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.ProtectedRoute, {
     exact: true,
     path: "/workouts/all",
-    component: _components_workouts_all_workouts_container__WEBPACK_IMPORTED_MODULE_11__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.ProtectedRoute, {
+    component: _components_workouts_all_workouts_container__WEBPACK_IMPORTED_MODULE_13__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.ProtectedRoute, {
     exact: true,
     path: "/workouts/:workoutId/workout_log",
-    component: _components_workout_logs_workout_log_show_container__WEBPACK_IMPORTED_MODULE_14__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.ProtectedRoute, {
+    component: _components_workout_logs_workout_log_show_container__WEBPACK_IMPORTED_MODULE_16__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.ProtectedRoute, {
     exact: true,
     path: "/workouts/:workoutId/workout_log/new",
-    component: _components_workout_logs_workout_log_form_container__WEBPACK_IMPORTED_MODULE_13__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.ProtectedRoute, {
+    component: _components_workout_logs_workout_log_form_container__WEBPACK_IMPORTED_MODULE_15__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.ProtectedRoute, {
     exact: true,
     path: "/exercises/all",
     component: _components_exercises_all_exercises_container__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.ProtectedRoute, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.ProtectedRoute, {
     exact: true,
     path: "/exercises/new",
-    component: _components_exercises_user_exercise_form_container__WEBPACK_IMPORTED_MODULE_12__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.ProtectedRoute, {
+    component: _components_exercises_user_exercise_form_container__WEBPACK_IMPORTED_MODULE_14__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.ProtectedRoute, {
     exact: true,
     path: "/profile",
     component: _profile_profile_container__WEBPACK_IMPORTED_MODULE_6__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.ProtectedRoute, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.ProtectedRoute, {
     exact: true,
     path: "/profile/email",
-    component: _components_profile_update_email_container__WEBPACK_IMPORTED_MODULE_15__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.ProtectedRoute, {
+    component: _components_profile_update_email_container__WEBPACK_IMPORTED_MODULE_17__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.ProtectedRoute, {
     exact: true,
     path: "/exercises/user",
     component: _components_exercises_my_exercises_show_container__WEBPACK_IMPORTED_MODULE_8__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.ProtectedRoute, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.ProtectedRoute, {
     exact: true,
     path: "/categories/all",
     component: _components_exercise_categories_exercise_categories_container__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_16__.ProtectedRoute, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.ProtectedRoute, {
     exact: true,
     path: "/categories/:categoryName",
     component: _components_exercise_categories_category_show_container__WEBPACK_IMPORTED_MODULE_10__["default"]
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.ProtectedRoute, {
+    exact: true,
+    path: "/nutrition/items/all",
+    component: _components_nutrition_food_items_container__WEBPACK_IMPORTED_MODULE_11__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_18__.ProtectedRoute, {
+    exact: true,
+    path: "/nutrition/items/:id",
+    component: _components_nutrition_food_item_show_container__WEBPACK_IMPORTED_MODULE_12__["default"]
   })));
 };
 
@@ -4486,8 +4547,9 @@ var Dashnav = function Dashnav(_ref) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "dashnav-dropdown-main"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-        className: "dashnav-links"
-      }, "Food Items"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+        className: "dashnav-links",
+        to: "/nutrition/items/all"
+      }, "My Food Items"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
         className: "dashnav-links"
       }, "Add a Food Item"));
     }
@@ -4726,7 +4788,7 @@ var ExerciseCategories = function ExerciseCategories(_ref) {
     to: "/dashboard",
     className: "dashboard-link"
   }, "My Dashboard")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
-    className: "categories-h1"
+    className: "subpage-h1"
   }, "Exercise Categories"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "categories-div"
   }, display));
@@ -4816,7 +4878,7 @@ var AllExercises = function AllExercises(_ref) {
       to: "/dashboard",
       className: "dashboard-link"
     }, "My Dashboard")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
-      className: "all-exercises-h1"
+      className: "subpage-h1"
     }, "All Exercises"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "all-exercises-div"
     }, renderExercises()));
@@ -5345,6 +5407,167 @@ var Navbar = function Navbar() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Navbar);
+
+/***/ }),
+
+/***/ "./frontend/components/nutrition/food_item_show.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/nutrition/food_item_show.jsx ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+
+
+
+
+var FoodItemShow = function FoodItemShow(_ref) {
+  var fetchFoodItem = _ref.fetchFoodItem,
+      foodItem = _ref.foodItem;
+  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useParams)();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchFoodItem(params.id);
+  }, []);
+
+  var renderFoodItem = function renderFoodItem() {
+    if (foodItem) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "hi");
+    }
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", null, renderFoodItem());
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FoodItemShow);
+
+/***/ }),
+
+/***/ "./frontend/components/nutrition/food_item_show_container.js":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/nutrition/food_item_show_container.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_food_item_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/food_item_actions */ "./frontend/actions/food_item_actions.js");
+/* harmony import */ var _food_item_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./food_item_show */ "./frontend/components/nutrition/food_item_show.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var entities = _ref.entities;
+  return {
+    foodItem: entities.foodItems
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchFoodItem: function fetchFoodItem(id) {
+      return dispatch((0,_actions_food_item_actions__WEBPACK_IMPORTED_MODULE_1__.fetchFoodItem)(id));
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_food_item_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/nutrition/food_items.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/nutrition/food_items.jsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _dashboard_dashnavlink__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dashboard/dashnavlink */ "./frontend/components/dashboard/dashnavlink.jsx");
+
+
+
+
+var FoodItems = function FoodItems(_ref) {
+  var foodItems = _ref.foodItems,
+      fetchAllFoodItems = _ref.fetchAllFoodItems;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchAllFoodItems();
+  }, []);
+
+  var renderFoodItems = function renderFoodItems() {
+    if (JSON.stringify(foodItems).length > 0) {
+      return Object.values(foodItems).map(function (foodItem, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+          key: i,
+          to: "/nutrition/items/".concat(foodItem.id)
+        }, foodItem.name);
+      });
+    }
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dashboard_dashnavlink__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "food-items-main-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+    className: "subpage-h1"
+  }, "My Food Items"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, renderFoodItems())));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FoodItems);
+
+/***/ }),
+
+/***/ "./frontend/components/nutrition/food_items_container.js":
+/*!***************************************************************!*\
+  !*** ./frontend/components/nutrition/food_items_container.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_food_item_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/food_item_actions */ "./frontend/actions/food_item_actions.js");
+/* harmony import */ var _food_items__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./food_items */ "./frontend/components/nutrition/food_items.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var entities = _ref.entities;
+  return {
+    foodItems: entities.foodItems
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchAllFoodItems: function fetchAllFoodItems() {
+      return dispatch((0,_actions_food_item_actions__WEBPACK_IMPORTED_MODULE_1__.fetchAllFoodItems)());
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_food_items__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -6753,13 +6976,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _exercises_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./exercises_reducer */ "./frontend/reducers/exercises_reducer.js");
 /* harmony import */ var _exercise_categories_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./exercise_categories_reducer */ "./frontend/reducers/exercise_categories_reducer.js");
-/* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
-/* harmony import */ var _user_exercises_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./user_exercises_reducer */ "./frontend/reducers/user_exercises_reducer.js");
-/* harmony import */ var _workouts_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./workouts_reducer */ "./frontend/reducers/workouts_reducer.js");
-/* harmony import */ var _workout_logs_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./workout_logs_reducer */ "./frontend/reducers/workout_logs_reducer.js");
+/* harmony import */ var _food_items_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./food_items_reducer */ "./frontend/reducers/food_items_reducer.js");
+/* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _user_exercises_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user_exercises_reducer */ "./frontend/reducers/user_exercises_reducer.js");
+/* harmony import */ var _workouts_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./workouts_reducer */ "./frontend/reducers/workouts_reducer.js");
+/* harmony import */ var _workout_logs_reducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./workout_logs_reducer */ "./frontend/reducers/workout_logs_reducer.js");
 
 
 
@@ -6767,13 +6991,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_6__.combineReducers)({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  workouts: _workouts_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
+
+var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_7__.combineReducers)({
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  workouts: _workouts_reducer__WEBPACK_IMPORTED_MODULE_5__["default"],
   exercises: _exercises_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
-  workoutLogs: _workout_logs_reducer__WEBPACK_IMPORTED_MODULE_5__["default"],
+  workoutLogs: _workout_logs_reducer__WEBPACK_IMPORTED_MODULE_6__["default"],
   exerciseCategories: _exercise_categories_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  userExercises: _user_exercises_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  userExercises: _user_exercises_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
+  foodItems: _food_items_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (entitiesReducer);
 
@@ -6881,6 +7107,41 @@ var exercisesReducer = function exercisesReducer() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (exercisesReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/food_items_reducer.js":
+/*!*************************************************!*\
+  !*** ./frontend/reducers/food_items_reducer.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_food_item_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/food_item_actions */ "./frontend/actions/food_item_actions.js");
+
+
+var foodItemsReducer = function foodItemsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_food_item_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_ALL_FOOD_ITEMS:
+      return action.foodItems;
+
+    case _actions_food_item_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_FOOD_ITEM:
+      return action.foodItem;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (foodItemsReducer);
 
 /***/ }),
 
@@ -7348,6 +7609,36 @@ var fetchCategory = function fetchCategory(categoryName) {
   return $.ajax({
     method: 'GET',
     url: "/api/exercise_categories/".concat(categoryName)
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/food_item_api_util.js":
+/*!*********************************************!*\
+  !*** ./frontend/util/food_item_api_util.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fetchAllFoodItems": () => (/* binding */ fetchAllFoodItems),
+/* harmony export */   "fetchFoodItem": () => (/* binding */ fetchFoodItem)
+/* harmony export */ });
+var fetchAllFoodItems = function fetchAllFoodItems() {
+  return $.ajax({
+    method: "GET",
+    url: "api/food_items"
+  });
+};
+var fetchFoodItem = function fetchFoodItem(id) {
+  return $.ajax({
+    method: "GET",
+    url: "api/food_items/".concat(id),
+    data: {
+      id: id
+    }
   });
 };
 
@@ -48830,7 +49121,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   window.store = store;
-  window.updateEmail = (0,_actions_account_actions__WEBPACK_IMPORTED_MODULE_4__.updateEmail)();
   var root = document.getElementById('root');
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store

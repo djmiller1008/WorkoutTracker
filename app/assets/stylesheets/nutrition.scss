@@ -1,12 +1,10 @@
 @import 'colors';
 @import 'fonts';
 
-.food-search-section {
+.food-items-main-div {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: $body-font;
 }
 
-.food-search-bar {
-    width: 8rem !important;
-}
