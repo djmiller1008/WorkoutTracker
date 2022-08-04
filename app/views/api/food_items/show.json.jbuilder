@@ -1,0 +1,1 @@
+json.array! @food_item, :name, :calories, :fat, :protein, :carbohydrates
