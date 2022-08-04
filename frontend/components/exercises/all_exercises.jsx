@@ -18,7 +18,7 @@ const AllExercises = ({ exercises, fetchExercises }) => {
                 <nav className="dashboard-nav-link">
                     <Link to="/dashboard" className="dashboard-link">My Dashboard</Link>
                 </nav>
-                <h1 className="all-exercises-h1">All Exercises</h1>
+                <h1 className="subpage-h1">All Exercises</h1>
                 <div className="all-exercises-div">
                     {renderExercises()}
                 </div>
