@@ -36,7 +36,7 @@ const Dashnav = ({ currentUserEmail, logout }) => {
         }
     };
 
-
+ 
 
     const toggleExercisesDropdown = () => {
         if (exercisesDropdown) {
@@ -71,7 +71,7 @@ const Dashnav = ({ currentUserEmail, logout }) => {
         if (nutritionDropdown) {
             return (
                 <div className="dashnav-dropdown-main">
-                    <Link className="dashnav-links">Food Items</Link>
+                    <Link className="dashnav-links" to="/nutrition/items/all">My Food Items</Link>
                     <Link className="dashnav-links">Add a Food Item</Link>
                 </div>
             )
