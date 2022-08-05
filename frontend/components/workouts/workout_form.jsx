@@ -43,7 +43,7 @@ class WorkoutForm extends React.Component {
                         <input className="date-input" type='date'
                             value={this.state.date}
                             onChange={this.handleInput('date')} />
-                        <button className='new-workout-submit'>Create Workout</button>
+                        <button className='create-button'>Create Workout</button>
                     </form>
                 </div>
             </div>
