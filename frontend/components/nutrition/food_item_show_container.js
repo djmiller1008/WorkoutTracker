@@ -4,7 +4,6 @@ import FoodItemShow from "./food_item_show";
 
 const mapStateToProps = ({ entities }) => ({
     foodItem: entities.foodItems
-
 });
 
 const mapDispatchToProps = dispatch => ({
