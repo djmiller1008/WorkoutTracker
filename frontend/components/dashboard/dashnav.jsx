@@ -72,7 +72,7 @@ const Dashnav = ({ currentUserEmail, logout }) => {
             return (
                 <div className="dashnav-dropdown-main">
                     <Link className="dashnav-links" to="/nutrition/items/all">My Food Items</Link>
-                    <Link className="dashnav-links">Add a Food Item</Link>
+                    <Link className="dashnav-links" to="/nutrition/items/new">Add a Food Item</Link>
                 </div>
             )
         }
