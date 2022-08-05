@@ -8,6 +8,7 @@ class Api::FoodItemsController < ApplicationController
     def create
         @food_item = FoodItem.new(food_item_params)
         if @food_item.save
+            @food_items = current_user.food_items
             render :index
         else
             render json: ["Invalid Entry"], status: 401
