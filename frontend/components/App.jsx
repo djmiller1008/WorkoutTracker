@@ -10,6 +10,7 @@ import ExerciseCategoriesContainer from '../components/exercise_categories/exerc
 import MyExercisesShowContainer from '../components/exercises/my_exercises_show_container';
 import WorkoutFormContainer from '../components/workouts/workout_form_container';
 import CategoryShowContainer from '../components/exercise_categories/category_show_container';
+import FoodItemFormContainer from '../components/nutrition/food_item_form_container';
 import FoodItemsContainer from '../components/nutrition/food_items_container';
 import FoodItemShowContainer from '../components/nutrition/food_item_show_container';
 import AllWorkoutsContainer from '../components/workouts/all_workouts_container';
@@ -39,6 +40,7 @@ const App = () => (
             <ProtectedRoute exact path='/categories/:categoryName' component={CategoryShowContainer} />
         </Switch>
         <Switch>
+            <ProtectedRoute exact path='/nutrition/items/new' component={FoodItemFormContainer} />
             <ProtectedRoute exact path='/nutrition/items/all' component={FoodItemsContainer} />
             <ProtectedRoute exact path='/nutrition/items/:id' component={FoodItemShowContainer} />
         </Switch>
