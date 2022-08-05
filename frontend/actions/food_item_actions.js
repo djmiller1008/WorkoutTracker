@@ -2,6 +2,7 @@ import * as APIUtil from "../util/food_item_api_util";
 
 export const RECEIVE_ALL_FOOD_ITEMS = "RECEIVE_ALL_FOOD_ITEMS";
 export const RECEIVE_FOOD_ITEM = "RECEIVE_FOOD_ITEM";
+export const CREATE_FOOD_ITEM = "CREATE_FOOD_ITEM";
 
 export const receiveFoodItem = foodItem => ({
     type: RECEIVE_FOOD_ITEM,
@@ -22,4 +23,10 @@ export const fetchAllFoodItems = () => dispatch => (
     APIUtil.fetchAllFoodItems()
         .then(foodItems => dispatch(receiveAllFoodItems(foodItems)))
 );
+
+export const createFoodItem = foodItem => dispatch => {
+    return (
+    APIUtil.createFoodItem(foodItem)
+        .then(foodItems => dispatch(receiveAllFoodItems(foodItems))))
+};
 
