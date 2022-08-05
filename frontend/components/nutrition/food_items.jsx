@@ -8,8 +8,8 @@ const FoodItems = ({ foodItems, fetchAllFoodItems }) => {
     }, [])
 
     const renderFoodItems = () => {
-        if (JSON.stringify(foodItems).length > 0) {
-            return Object.values(foodItems).map(((foodItem, i) => <Link key={i} to={`/nutrition/items/${foodItem.id}`}>{foodItem.name}</Link>))
+        if (!foodItems.hasOwnProperty("name")) {
+            return Object.values(foodItems).map(((foodItem, i) => <p className="food-item-p"><Link className="food-item-link" key={i} to={`/nutrition/items/${foodItem.id}`}>{foodItem.name}</Link></p>))
         }
     }
 
@@ -18,7 +18,7 @@ const FoodItems = ({ foodItems, fetchAllFoodItems }) => {
             <DashNavLink />
             <div className="food-items-main-div">
                 <h1 className="subpage-h1">My Food Items</h1>
-                <div>
+                <div className="all-food-items-div">
                     {renderFoodItems()}
                 </div>
             </div>
