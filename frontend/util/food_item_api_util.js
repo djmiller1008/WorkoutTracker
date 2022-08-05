@@ -12,3 +12,11 @@ export const fetchFoodItem = id => (
         data: { id }
     })
 );
+
+export const createFoodItem = food_item => (
+    $.ajax({
+        method: "POST",
+        url: "api/food_items",
+        data: { food_item }
+    })
+)
