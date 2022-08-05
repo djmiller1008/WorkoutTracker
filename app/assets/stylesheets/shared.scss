@@ -5,4 +5,21 @@
     text-align: center;
     margin-top: 25px;
     font-size: $font-l;
+    font-family: $body-font;
 }
+
+.create-button {
+    margin-top: 25px;
+    background-color: $green;
+    color: #fff;
+    padding: 10px 30px;
+    border: none;
+    font-family: $body-font;
+ 
+ 
+ }
+ 
+ .create-button:hover {
+     cursor: pointer;
+     background-color: $light-green;
+ }
