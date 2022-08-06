@@ -7,7 +7,7 @@ const ExerciseCategories = ({ fetchAllCategories, categories }) => {
     }, [])
     
     const renderCategories = () => {
-        const names = categories.map((cat, i) => <Link to={`/categories/${cat.name}`} key={i}>{cat.name}</Link>)
+        const names = categories.map((cat, i) => <p><Link to={`/categories/${cat.name}`} key={i}>{cat.name}</Link></p>)
         return names;
     };
 
