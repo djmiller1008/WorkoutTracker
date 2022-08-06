@@ -11,7 +11,9 @@ const FoodItemShow = ({ fetchFoodItem, foodItem }) => {
     }, []);
 
     const renderFoodItem = () => {
-    
+        const fatUnit = (foodItem.fat === null) ? "-" : "g";
+        const proteinUnit = (foodItem.protein === null) ? "-" : "g";
+        const carbohydratesUnit = (foodItem.carbohydrates === null) ? "-" : "g";
         if (Object.keys(foodItem).length > 0) {
        
             return (
@@ -24,15 +26,15 @@ const FoodItemShow = ({ fetchFoodItem, foodItem }) => {
                         </section>
                         <section className="food-item-info-section">
                             <p>Fat:</p>
-                            <p>{foodItem.fat}</p>
+                            <p>{foodItem.fat}{fatUnit}</p>
                         </section>
                         <section className="food-item-info-section">
                             <p>Carbohydrates:</p>
-                            <p>{foodItem.carbohydrates}</p>
+                            <p>{foodItem.carbohydrates}{carbohydratesUnit}</p>
                         </section>
                         <section className="food-item-info-section">
                             <p>Protein:</p>
-                            <p>{foodItem.protein}</p>
+                            <p>{foodItem.protein}{proteinUnit}</p>
                         </section>
                     </div>
                 </div>
