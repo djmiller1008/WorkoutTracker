@@ -45,12 +45,12 @@ const UserExerciseForm = ({ userId, fetchAllCategories, createUserExercise, cate
             <div className="user-exercise-form-div">
                 <form className="user-exercise-form">
                     <label>Exercise Name</label>
-                    <input type="text" name="name"
+                    <input className="exercise-input" type="text" name="name"
                             onChange={handleInput}
                     />
 
                     <label>Exercise Category</label>
-                    <select name="exercise_category_id" onChange={handleInput}>
+                    <select className="exercise-input" name="exercise_category_id" onChange={handleInput}>
                         <option value="" disabled selected>Select your option</option>
                         {renderCategories()}
                     </select>
