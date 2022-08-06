@@ -9,7 +9,7 @@ const FoodItems = ({ foodItems, fetchAllFoodItems }) => {
 
     const renderFoodItems = () => {
         if (!foodItems.hasOwnProperty("name")) {
-            return Object.values(foodItems).map(((foodItem, i) => <p className="food-item-p"><Link className="food-item-link" key={i} to={`/nutrition/items/${foodItem.id}`}>{foodItem.name}</Link></p>))
+            return Object.values(foodItems).map(((foodItem, i) => <p key={i} className="food-item-p"><Link className="food-item-link" key={i} to={`/nutrition/items/${foodItem.id}`}>{foodItem.name}</Link></p>))
         }
     }
 
