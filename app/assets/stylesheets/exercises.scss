@@ -26,10 +26,13 @@
     font-size: $font-ml;
     margin-top: 45px;
 
-    a {
+    p {
         flex-basis: 33.33333%;
         margin-bottom: 40px;
         text-align: center;
+    }
+
+    a {
         text-transform: capitalize;
     }
 
@@ -71,18 +74,31 @@
     width: 10rem;
     margin: auto;
     height: 15rem;
+    font-family: $body-font;
 
     button {
         border: none;
         cursor: pointer;
     }
 
-    label {
-       
+    input {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: .5px solid black;
     }
 
+    input:focus, select:focus {
+        outline: 2px solid $green;
+    }
+
+    select {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: .5px solid black;
+    }
 
 }
+
 
 .user-exercise-form-div {
     margin-top: 3rem;
