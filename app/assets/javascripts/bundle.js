@@ -4788,10 +4788,10 @@ var ExerciseCategories = function ExerciseCategories(_ref) {
 
   var renderCategories = function renderCategories() {
     var names = categories.map(function (cat, i) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         to: "/categories/".concat(cat.name),
         key: i
-      }, cat.name);
+      }, cat.name));
     });
     return names;
   };
@@ -5180,10 +5180,12 @@ var UserExerciseForm = function UserExerciseForm(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     className: "user-exercise-form"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Exercise Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    className: "exercise-input",
     type: "text",
     name: "name",
     onChange: handleInput
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Exercise Category"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    className: "exercise-input",
     name: "exercise_category_id",
     onChange: handleInput
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
@@ -5605,6 +5607,10 @@ var FoodItemShow = function FoodItemShow(_ref) {
   }, []);
 
   var renderFoodItem = function renderFoodItem() {
+    var fatUnit = foodItem.fat === null ? "-" : "g";
+    var proteinUnit = foodItem.protein === null ? "-" : "g";
+    var carbohydratesUnit = foodItem.carbohydrates === null ? "-" : "g";
+
     if (Object.keys(foodItem).length > 0) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "food-show-div"
@@ -5614,11 +5620,11 @@ var FoodItemShow = function FoodItemShow(_ref) {
         className: "food-item-info-section"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Calories:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, foodItem.calories)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
         className: "food-item-info-section"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Fat:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, foodItem.fat)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Fat:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, foodItem.fat, fatUnit)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
         className: "food-item-info-section"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Carbohydrates:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, foodItem.carbohydrates)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Carbohydrates:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, foodItem.carbohydrates, carbohydratesUnit)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
         className: "food-item-info-section"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Protein:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, foodItem.protein))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Protein:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, foodItem.protein, proteinUnit))));
     }
   };
 
@@ -5696,6 +5702,7 @@ var FoodItems = function FoodItems(_ref) {
     if (!foodItems.hasOwnProperty("name")) {
       return Object.values(foodItems).map(function (foodItem, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+          key: i,
           className: "food-item-p"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
           className: "food-item-link",
@@ -5732,7 +5739,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_food_item_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/food_item_actions */ "./frontend/actions/food_item_actions.js");
-/* harmony import */ var _food_items__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./food_items */ "./frontend/components/nutrition/food_items.jsx");
+/* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
+/* harmony import */ var _food_items__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./food_items */ "./frontend/components/nutrition/food_items.jsx");
+
 
 
 
@@ -5740,7 +5749,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref) {
   var entities = _ref.entities;
   return {
-    foodItems: entities.foodItems
+    foodItems: (0,_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__.sortFoodItems)(entities.foodItems)
   };
 };
 
@@ -5752,7 +5761,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_food_items__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_food_items__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -7371,6 +7380,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getExerciseNames": () => (/* binding */ getExerciseNames),
 /* harmony export */   "sortByDate": () => (/* binding */ sortByDate),
 /* harmony export */   "sortExerciseNames": () => (/* binding */ sortExerciseNames),
+/* harmony export */   "sortFoodItems": () => (/* binding */ sortFoodItems),
 /* harmony export */   "sortUserExercises": () => (/* binding */ sortUserExercises),
 /* harmony export */   "sortWorkoutLogs": () => (/* binding */ sortWorkoutLogs)
 /* harmony export */ });
@@ -7415,6 +7425,15 @@ var sortExerciseNames = function sortExerciseNames(exercises) {
 var sortUserExercises = function sortUserExercises(exercises) {
   return Object.values(exercises).map(function (exercise) {
     return [exercise.name, exercise.id];
+  });
+};
+var sortFoodItems = function sortFoodItems(foodItems) {
+  if (foodItems.hasOwnProperty('name')) {
+    return "";
+  }
+
+  return Object.values(foodItems).sort(function (a, b) {
+    return a.name.toUpperCase() > b.name.toUpperCase() ? 1 : b.name.toUpperCase() > a.name.toUpperCase() ? -1 : 0;
   });
 };
 
