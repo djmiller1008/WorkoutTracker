@@ -40,3 +40,10 @@ export const sortExerciseNames = exercises => {
 export const sortUserExercises = exercises => {
     return Object.values(exercises).map(exercise => [exercise.name, exercise.id])
 };
+
+export const sortFoodItems = foodItems => {
+    if (foodItems.hasOwnProperty('name')) {
+        return "";
+    }
+    return Object.values(foodItems).sort((a, b) => (a.name.toUpperCase() > b.name.toUpperCase()) ? 1 : ((b.name.toUpperCase() > a.name.toUpperCase()) ? -1 : 0));
+};
