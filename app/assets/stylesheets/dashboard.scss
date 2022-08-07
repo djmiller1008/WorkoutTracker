@@ -85,20 +85,10 @@
     margin-top: 50px;
     font-family: $body-font;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
-.my-workouts-div {
-    margin-left: 45px;
-    width: 25%;
-    h1 {
-        font-size: $font-ml;
-        margin-bottom: 12px;
-        text-align: center;
-    }
-}
-
-.workout-log-table {
+.dashboard-content-table {
     border: 4px solid black;
     border-radius: 5px;
 
@@ -131,6 +121,7 @@
     color: white;
     padding: 12px 30px;
     text-align: center;
+    margin-bottom: 1.5rem;
 }
 
 .dashboard-link:hover {
@@ -140,8 +131,11 @@
     color: white;
 }
 
-.new-workout-link-div {
-    margin-right: 100px;
+.dashboard-link-div {
+    display: flex;
+    flex-direction: column;
+  
+   
 }
 
 .all-workouts-link-div {
@@ -244,7 +238,7 @@
         margin-left: 0px;
     }
 
-    .new-workout-link-div {
+    .dashboard-link-div {
         margin-right: 0px;
     }
 }

@@ -15,11 +15,18 @@
     padding: 10px 30px;
     border: none;
     font-family: $body-font;
- 
- 
- }
+}
  
  .create-button:hover {
      cursor: pointer;
      background-color: $light-green;
- }
+}
+
+.content-box-div {
+    width: 25%;
+    h1 {
+        font-size: $font-ml;
+        margin-bottom: 12px;
+        text-align: center;
+    }
+}
