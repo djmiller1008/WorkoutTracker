@@ -19,4 +19,11 @@ export const createFoodItem = food_item => (
         url: "api/food_items",
         data: { food_item }
     })
-)
+);
+
+export const deleteFoodItem = id => (
+    $.ajax({
+        method: "DELETE",
+        url: `api/food_items/${id}`
+    })
+);
