@@ -42,10 +42,13 @@ class User < ApplicationRecord
     def show_workouts(limit = nil)
         @workouts = self.workouts.order(date: :desc)
         @workouts = @workouts.limit(limit) if limit
-     
-    
-        
         @workouts
+    end
+
+    def show_food_diaries(limit = nil)
+        @food_diaries = self.food_diaries.order(date: :desc)
+        @food_diaries = @food_diaries.limit(limit) if limit
+        @food_diaries
     end
 
 end
