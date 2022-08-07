@@ -1,1 +1,1 @@
-json.extract! @food_item, :name, :calories, :fat, :protein, :carbohydrates
+json.extract! @food_item, :name, :calories, :fat, :protein, :carbohydrates, :id
