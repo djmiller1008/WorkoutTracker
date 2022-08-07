@@ -2,7 +2,6 @@ class Api::WorkoutsController < ApplicationController
 
     def index
         @workouts = current_user.show_workouts(params[:limit])
-
         render :index
     end
 
