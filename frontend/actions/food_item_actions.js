@@ -30,3 +30,7 @@ export const createFoodItem = foodItem => dispatch => {
         .then(foodItems => dispatch(receiveAllFoodItems(foodItems))))
 };
 
+export const deleteFoodItem = id => dispatch => (
+    APIUtil.deleteFoodItem(id)
+        .then(foodItems => dispatch(receiveAllFoodItems(foodItems)))
+);
