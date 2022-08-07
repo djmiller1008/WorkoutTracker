@@ -19,7 +19,7 @@ const MyExercisesShow = ({ fetchExercises, exercises, deleteExercise }) => {
         return (
             <div className="all-exercises">
                 <DashNavLink />
-                <h1 className="all-exercises-h1">My Exercises</h1>
+                <h1 className="subpage-h1">My Exercises</h1>
                 <div className="my-exercises-div">
                     {renderExercises()}
                 </div>
