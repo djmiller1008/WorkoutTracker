@@ -1,5 +1,5 @@
-export const sortByDate = workouts => {
-    return Object.values(workouts).sort(function(a, b) {
+export const sortByDate = object => {
+    return Object.values(object).sort(function(a, b) {
         let c = new Date(a.date);
         let d = new Date(b.date);
         return d - c;
