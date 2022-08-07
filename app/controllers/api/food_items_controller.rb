@@ -21,6 +21,10 @@ class Api::FoodItemsController < ApplicationController
     end
 
     def destroy
+        food_item = FoodItem.find_by(id: params[:id])
+        food_item.destroy
+        @food_items = current_user.food_items
+        render :index
     end
 
     private
