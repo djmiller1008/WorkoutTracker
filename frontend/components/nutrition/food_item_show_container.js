@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchFoodItem } from "../../actions/food_item_actions";
+import { fetchFoodItem, deleteFoodItem } from "../../actions/food_item_actions";
 import FoodItemShow from "./food_item_show";
 
 const mapStateToProps = ({ entities }) => ({
@@ -7,7 +7,8 @@ const mapStateToProps = ({ entities }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchFoodItem: id => dispatch(fetchFoodItem(id))
+    fetchFoodItem: id => dispatch(fetchFoodItem(id)),
+    deleteFoodItem: id => dispatch(deleteFoodItem(id))
 });
 
 export default connect(
