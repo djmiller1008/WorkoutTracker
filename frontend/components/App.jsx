@@ -12,6 +12,7 @@ import WorkoutFormContainer from '../components/workouts/workout_form_container'
 import CategoryShowContainer from '../components/exercise_categories/category_show_container';
 import FoodItemFormContainer from '../components/nutrition/food_item_form_container';
 import FoodItemsContainer from '../components/nutrition/food_items_container';
+import FoodDiaryFormContainer from '../components/nutrition/food_diary_form_container';
 import FoodItemShowContainer from '../components/nutrition/food_item_show_container';
 import AllWorkoutsContainer from '../components/workouts/all_workouts_container';
 import UserExerciseFormContainer from '../components/exercises/user_exercise_form_container';
@@ -19,6 +20,7 @@ import WorkoutLogFormContainer from '../components/workout_logs/workout_log_form
 import WorkoutLogShowContainer from '../components/workout_logs/workout_log_show_container';
 import UpdateEmailContainer from '../components/profile/update_email_container';
 import { ProtectedRoute, AuthRoute } from '../util/route_util';
+import FoodDiaryShowContainer from './nutrition/food_diary_show_container';
 
 const App = () => (
     <div>
@@ -44,6 +46,8 @@ const App = () => (
             <ProtectedRoute exact path='/nutrition/items/all' component={FoodItemsContainer} />
             <ProtectedRoute exact path='/nutrition/items/:id' component={FoodItemShowContainer} />
         </Switch>
+        <ProtectedRoute exact path='/food_diary/new' component={FoodDiaryFormContainer} />
+        <ProtectedRoute exact path='/food_diaries/:foodDiaryId' component={FoodDiaryShowContainer} />
     </div>
 );
    
