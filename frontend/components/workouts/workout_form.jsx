@@ -36,9 +36,9 @@ class WorkoutForm extends React.Component {
                 <div className="workout-form-errors-div">
                     {this.renderErrors()}
                 </div>
-                <div className="workout-form-div">
+                <div className="new-form-div">
                     <h1>Which Day Did You Workout?</h1>
-                    <form onSubmit={this.handleSubmit} className='new-workout-form'>
+                    <form onSubmit={this.handleSubmit} className='new-content-form'>
                         
                         <input className="date-input" type='date'
                             value={this.state.date}
