@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 import DashNavLink from "../dashboard/dashnavlink";
 
 const FoodDiaryForm = ({ userId, createFoodDiary }) => {
+    const history = useHistory();
 
     const [formData, setFormData] = useState({
         user_id: userId,
@@ -11,12 +13,13 @@ const FoodDiaryForm = ({ userId, createFoodDiary }) => {
 
     const handleInput = property => {
         return event => setFormData({...formData, [property]: event.target.value})
-    }
+    };
 
     const handleSubmit = event => {
         event.preventDefault();
         createFoodDiary(formData)
-    }
+            .then(foodDiary => history.push(`/food_diaries/${Object.values(foodDiary.diary)[0].id}`))
+    };
 
 
 
