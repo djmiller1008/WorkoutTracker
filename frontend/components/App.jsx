@@ -13,6 +13,7 @@ import CategoryShowContainer from '../components/exercise_categories/category_sh
 import FoodItemFormContainer from '../components/nutrition/food_item_form_container';
 import FoodItemsContainer from '../components/nutrition/food_items_container';
 import FoodDiaryFormContainer from '../components/nutrition/food_diary_form_container';
+import FoodLogFormContainer from '../components/nutrition/food_log_form_container';
 import FoodItemShowContainer from '../components/nutrition/food_item_show_container';
 import AllWorkoutsContainer from '../components/workouts/all_workouts_container';
 import UserExerciseFormContainer from '../components/exercises/user_exercise_form_container';
@@ -48,6 +49,7 @@ const App = () => (
         </Switch>
         <ProtectedRoute exact path='/food_diary/new' component={FoodDiaryFormContainer} />
         <ProtectedRoute exact path='/food_diaries/:foodDiaryId' component={FoodDiaryShowContainer} />
+        <ProtectedRoute exact path='/food_diaries/:foodDiaryId/new' component={FoodLogFormContainer} />
     </div>
 );
    

@@ -21,12 +21,9 @@ const WorkoutLogShow = ({ match, logs, fetchWorkoutLogs, fetchWorkout, date, del
     }
 
     const handleClear = () => {
-        console.log('hi');
         return clearLogs();
     }
      
-   
-    
     let displayLogs;
 
     if (JSON.stringify(logs) !== '{}') {
