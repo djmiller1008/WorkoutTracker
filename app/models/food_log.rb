@@ -3,6 +3,7 @@ class FoodLog < ApplicationRecord
     validates :user_id, presence: true
     validates :servings, presence: true
     validates :food_diary_id, presence: true
+    validates :name, presence: true
     
 
     belongs_to :user
