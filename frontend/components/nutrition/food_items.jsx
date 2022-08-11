@@ -21,6 +21,7 @@ const FoodItems = ({ foodItems, fetchAllFoodItems }) => {
                 <div className="all-food-items-div">
                     {renderFoodItems()}
                 </div>
+                <Link className="create-new-exercise" to="/nutrition/items/new">Create a New Food Item</Link>
             </div>
             
            
