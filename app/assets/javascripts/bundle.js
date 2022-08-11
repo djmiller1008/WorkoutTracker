@@ -6147,7 +6147,10 @@ var FoodItems = function FoodItems(_ref) {
     className: "subpage-h1"
   }, "My Food Items"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "all-food-items-div"
-  }, renderFoodItems())));
+  }, renderFoodItems()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    className: "create-new-exercise",
+    to: "/nutrition/items/new"
+  }, "Create a New Food Item")));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FoodItems);
@@ -6206,6 +6209,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _dashboard_dashnavlink__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dashboard/dashnavlink */ "./frontend/components/dashboard/dashnavlink.jsx");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6221,22 +6232,111 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var FoodLogForm = function FoodLogForm(_ref) {
-  var createFoodLog = _ref.createFoodLog,
-      userId = _ref.userId;
+  var fetchAllFoodItems = _ref.fetchAllFoodItems,
+      createFoodLog = _ref.createFoodLog,
+      userId = _ref.userId,
+      foodItems = _ref.foodItems;
+  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useParams)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useHistory)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     food_item_id: '',
     user_id: userId,
     servings: '',
-    food_diary_id: '',
+    food_diary_id: params.foodDiaryId,
     name: ''
   }),
       _useState2 = _slicedToArray(_useState, 2),
       formData = _useState2[0],
       setFormData = _useState2[1];
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "hello");
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchAllFoodItems();
+  }, []);
+
+  var handleInput = function handleInput(property) {
+    return function (event) {
+      return setFormData(_objectSpread(_objectSpread({}, formData), {}, _defineProperty({}, property, event.target.value)));
+    };
+  };
+
+  var handleSubmit = function handleSubmit(event) {
+    event.preventDefault();
+    createFoodLog(formData).then(function () {
+      return history.replace("/food_diaries/".concat(params.foodDiaryId));
+    });
+  };
+
+  var selectFoodItemName = function selectFoodItemName(name) {
+    event.preventDefault();
+    return function () {
+      return setFormData(_objectSpread(_objectSpread({}, formData), {}, {
+        name: name
+      }));
+    };
+  };
+
+  var matches = function matches() {
+    var matches = [];
+    var found = false;
+
+    if (formData.name.length === 0) {
+      return matches;
+    }
+
+    Object.values(foodItems).forEach(function (foodItem) {
+      var partialName = foodItem.name.slice(0, formData.name.length);
+
+      if (formData.name === foodItem.name) {
+        found = true;
+        return;
+      } else if (partialName.toLowerCase() === formData.name.toLowerCase()) {
+        matches.push(foodItem.name);
+      }
+    });
+
+    if (matches.length === 0 && found === false) {
+      matches.push('No Food Items Found');
+      return matches;
+    }
+
+    return matches;
+  };
+
+  var possibleFoodItems = matches().map(function (match, i) {
+    if (match === 'No Food Items Found') {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, match);
+    } else {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+        onClick: selectFoodItemName(match),
+        key: i
+      }, match);
+    }
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dashboard_dashnavlink__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "workout-log-main-form-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    className: "workout-log-form"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "exercise-search"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Food Item:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    value: formData.name,
+    onChange: handleInput('name')
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
+    className: "possible-exercises"
+  }, possibleFoodItems), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "sets-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Servings:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "number",
+    min: "1",
+    onChange: handleInput('servings')
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: handleSubmit,
+    className: "log-submit"
+  }, "Add Food Log"))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FoodLogForm);
@@ -6256,15 +6356,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_food_log_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/food_log_actions */ "./frontend/actions/food_log_actions.js");
-/* harmony import */ var _food_log_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./food_log_form */ "./frontend/components/nutrition/food_log_form.jsx");
+/* harmony import */ var _actions_food_item_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/food_item_actions */ "./frontend/actions/food_item_actions.js");
+/* harmony import */ var _food_log_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./food_log_form */ "./frontend/components/nutrition/food_log_form.jsx");
+
 
 
 
 
 var mapStateToProps = function mapStateToProps(_ref) {
-  var session = _ref.session;
+  var session = _ref.session,
+      entities = _ref.entities;
   return {
-    userId: session.id
+    userId: session.id,
+    foodItems: entities.foodItems
   };
 };
 
@@ -6272,11 +6376,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     createFoodLog: function createFoodLog(foodLog) {
       return dispatch((0,_actions_food_log_actions__WEBPACK_IMPORTED_MODULE_1__.createFoodLog)(foodLog));
+    },
+    fetchAllFoodItems: function fetchAllFoodItems() {
+      return dispatch((0,_actions_food_item_actions__WEBPACK_IMPORTED_MODULE_2__.fetchAllFoodItems)());
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_food_log_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_food_log_form__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -7094,12 +7201,13 @@ var WorkoutLogForm = /*#__PURE__*/function (_React$Component) {
         type: "text",
         value: this.state.exerciseName,
         onChange: this.handleExerciseInput
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
         className: "possible-exercises"
       }, possibleExercises), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
         className: "sets-section"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Sets:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
         type: "number",
+        min: "1",
         value: this.state.sets,
         onChange: this.handleSetsInput('sets')
       })), this.renderSetInputs(this.state.sets), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
@@ -7182,11 +7290,18 @@ var WorkoutLogItem = function WorkoutLogItem(_ref) {
   var log = _ref.log;
 
   var displayLog = function displayLog() {
+    var weight;
     var display = log.map(function (set, i) {
+      if (set[0].weight === 0) {
+        weight = '';
+      } else {
+        weight = set[0].weight;
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         key: i,
         className: "single-log-div"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, set[0].reps, " ", set[0].rep_unit, " * ", set[0].weight, " ", set[0].weight_unit));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, set[0].reps, " ", set[0].rep_unit, " * ", weight, " ", set[0].weight_unit));
     });
     return display;
   };
