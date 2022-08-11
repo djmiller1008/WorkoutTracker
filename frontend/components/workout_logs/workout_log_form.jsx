@@ -152,12 +152,12 @@ class WorkoutLogForm extends React.Component {
                             />
                         </div>
                        
-                        <section className="possible-exercises">
+                        <ul className="possible-exercises">
                             {possibleExercises}
-                        </section>
+                        </ul>
                         <section className="sets-section">
                             <label>Sets:</label>
-                            <input type='number'
+                            <input type='number' min='1'
                                     value={this.state.sets}
                                     onChange={this.handleSetsInput('sets')}
                             />
