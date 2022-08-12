@@ -7,3 +7,5 @@
         json.name log.name
     end
 end
+
+json.nutrient_info @nutrient_info
