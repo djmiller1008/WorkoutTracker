@@ -1,6 +1,11 @@
 @import 'colors';
 @import 'fonts';
 
+.food-log-content-div {
+    display: flex;
+
+}
+
 .food-items-main-div {
     display: flex;
     flex-direction: column;
@@ -13,7 +18,32 @@
     flex-direction: column;
     align-items: center;
     font-family: $body-font;
- 
+}
+
+.day-totals-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    h1 {
+        margin-bottom: 2rem;
+        font-size: $font-ml;
+        font-family: $body-font;
+    }
+}
+
+.food-log-food-items-div {
+    width: 70%;
+}
+
+.total-calories-section {
+    display: flex;
+    flex-direction: column;
+    
+    p {
+        padding: 1rem;
+    }
 }
 
 .food-item-info-section {
@@ -78,4 +108,19 @@
 
 .food-show-inner-div {
     margin-bottom: 2rem;
+}
+
+.single-food-log-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    h2 {
+        margin-bottom: .75rem;
+    }
+}
+
+.total-calories-div {
+    
 }

@@ -3957,6 +3957,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RECEIVE_FOOD_LOG": () => (/* binding */ RECEIVE_FOOD_LOG),
 /* harmony export */   "RECEIVE_FOOD_LOGS": () => (/* binding */ RECEIVE_FOOD_LOGS),
 /* harmony export */   "createFoodLog": () => (/* binding */ createFoodLog),
+/* harmony export */   "fetchFoodLogs": () => (/* binding */ fetchFoodLogs),
 /* harmony export */   "receiveFoodLog": () => (/* binding */ receiveFoodLog),
 /* harmony export */   "receiveFoodLogs": () => (/* binding */ receiveFoodLogs)
 /* harmony export */ });
@@ -3979,6 +3980,13 @@ var receiveFoodLog = function receiveFoodLog(foodLog) {
 var createFoodLog = function createFoodLog(foodLog) {
   return function (dispatch) {
     return _util_food_log_api_util__WEBPACK_IMPORTED_MODULE_0__.createFoodLog(foodLog).then(function (foodLogs) {
+      return dispatch(receiveFoodLogs(foodLogs));
+    });
+  };
+};
+var fetchFoodLogs = function fetchFoodLogs(foodDiaryId) {
+  return function (dispatch) {
+    return _util_food_log_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchFoodLogs(foodDiaryId).then(function (foodLogs) {
       return dispatch(receiveFoodLogs(foodLogs));
     });
   };
@@ -5761,20 +5769,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _dashboard_dashnavlink__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dashboard/dashnavlink */ "./frontend/components/dashboard/dashnavlink.jsx");
+/* harmony import */ var _food_log_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./food_log_item */ "./frontend/components/nutrition/food_log_item.jsx");
+
 
 
 
 
 
 var FoodDiaryShow = function FoodDiaryShow(_ref) {
-  var fetchFoodDiary = _ref.fetchFoodDiary,
-      foodDiary = _ref.foodDiary;
-  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useParams)();
+  var fetchFoodLogs = _ref.fetchFoodLogs,
+      fetchFoodDiary = _ref.fetchFoodDiary,
+      foodDiary = _ref.foodDiary,
+      foodLogs = _ref.foodLogs;
+  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useParams)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchFoodDiary(params.foodDiaryId);
+    fetchFoodLogs(params.foodDiaryId);
   }, []);
 
   var renderDate = function renderDate() {
@@ -5785,15 +5798,46 @@ var FoodDiaryShow = function FoodDiaryShow(_ref) {
     return "";
   };
 
+  var displayFoodLogs;
+  var calories = '';
+  var fat = '';
+  var carbs = '';
+  var protein = '';
+
+  if (JSON.stringify(foodLogs) !== '{}') {
+    displayFoodLogs = Object.values(foodLogs).map(function (foodLog, i) {
+      if (foodLog.id !== undefined) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_food_log_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: i,
+          foodLog: foodLog
+        });
+      }
+    });
+    calories = foodLogs.nutrient_info.calories;
+    fat = foodLogs.nutrient_info.fat;
+    protein = foodLogs.nutrient_info.protein;
+    carbs = foodLogs.nutrient_info.carbohydrates;
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dashboard_dashnavlink__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "workout-log-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "food-log-content-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "food-log-food-items-div"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "log-title-div"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
     className: "date-h1"
   }, "Food Diary: ", renderDate())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "display-all-logs-div"
+  }, displayFoodLogs)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "day-totals-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Nutrient Info"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "total-calories-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Calories: ", calories), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Fat: ", fat, "g"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Carbohydrates: ", carbs, "g"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Protein: ", protein, "g")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "new-exercise-link-div"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/food_diaries/".concat(params.foodDiaryId, "/new")
   }, "Add A New Food Item"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "delete-button"
@@ -5817,14 +5861,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_food_diary_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/food_diary_actions */ "./frontend/actions/food_diary_actions.js");
-/* harmony import */ var _food_diary_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./food_diary_show */ "./frontend/components/nutrition/food_diary_show.jsx");
+/* harmony import */ var _actions_food_log_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/food_log_actions */ "./frontend/actions/food_log_actions.js");
+/* harmony import */ var _food_diary_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./food_diary_show */ "./frontend/components/nutrition/food_diary_show.jsx");
 
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var entities = _ref.entities;
   return {
-    foodDiary: state.entities.foodDiaries
+    foodDiary: entities.foodDiaries,
+    foodLogs: entities.foodLogs
   };
 };
 
@@ -5832,11 +5880,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchFoodDiary: function fetchFoodDiary(id) {
       return dispatch((0,_actions_food_diary_actions__WEBPACK_IMPORTED_MODULE_1__.fetchFoodDiary)(id));
+    },
+    fetchFoodLogs: function fetchFoodLogs(foodDiaryId) {
+      return dispatch((0,_actions_food_log_actions__WEBPACK_IMPORTED_MODULE_2__.fetchFoodLogs)(foodDiaryId));
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_food_diary_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_food_diary_show__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -6384,6 +6435,36 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_food_log_form__WEBPACK_IMPORTED_MODULE_3__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/nutrition/food_log_item.jsx":
+/*!*********************************************************!*\
+  !*** ./frontend/components/nutrition/food_log_item.jsx ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var FoodLogItem = function FoodLogItem(_ref) {
+  var foodLog = _ref.foodLog;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "workout-log-main-content"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "single-food-log-item"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, foodLog.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "servings-section"
+  }, "Servings: ", foodLog.servings)));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FoodLogItem);
 
 /***/ }),
 
