@@ -17,3 +17,8 @@ export const createFoodLog = foodLog => dispatch => (
     APIUtil.createFoodLog(foodLog)
         .then(foodLogs => dispatch(receiveFoodLogs(foodLogs)))
 );
+
+export const fetchFoodLogs = foodDiaryId => dispatch => (
+    APIUtil.fetchFoodLogs(foodDiaryId)
+        .then(foodLogs => dispatch(receiveFoodLogs(foodLogs)))
+);
