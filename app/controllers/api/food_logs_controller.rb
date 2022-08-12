@@ -6,6 +6,7 @@ class Api::FoodLogsController < ApplicationController
         @food_log.food_item_id = food_item_id
         if @food_log.save
             @food_logs = FoodDiary.find_by(id: @food_log.food_diary_id).food_logs
+            @nutrient_info = FoodLog.find_nutrient_totals(@food_logs)
             render :index
         else
             render json: @food_log.errors.full_messages, status: 401
@@ -13,7 +14,11 @@ class Api::FoodLogsController < ApplicationController
     end
 
     def index
+        @food_logs = current_user.food_logs.where(food_diary_id: params[:food_diary_id])
+        @nutrient_info = FoodLog.find_nutrient_totals(@food_logs)
         
+     
+        render :index
     end
 
 
