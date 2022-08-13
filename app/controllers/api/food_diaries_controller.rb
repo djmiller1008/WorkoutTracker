@@ -23,6 +23,11 @@ class Api::FoodDiariesController < ApplicationController
         end
     end
 
+    def destroy
+        food_diary = FoodDiary.find_by(id: params[:id])
+        food_diary.destroy
+    end
+
     private
 
     def food_diary_params
