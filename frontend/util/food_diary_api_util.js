@@ -20,3 +20,10 @@ export const fetchFoodDiary = id => (
         url: `/api/food_diaries/${id}`
     })
 );
+
+export const deleteFoodDiary = id => (
+    $.ajax({
+        method: 'DELETE',
+        url: `/api/food_diaries/${id}`
+    })
+);
