@@ -4,6 +4,11 @@ export const RECEIVE_WORKOUTS = 'RECEIVE_WORKOUTS';
 export const RECEIVE_WORKOUT = 'RECEIVE_WORKOUT';
 export const CLEAR_WORKOUTS = 'CLEAR_WORKOUTS';
 export const RECEIVE_WORKOUT_ERRORS = 'RECEIVE_WORKOUT_ERRORS';
+export const CLEAR_WORKOUT_ERRORS = 'CLEAR_WORKOUT_ERRORS';
+
+export const clearWorkoutErrors = () => ({
+    type: CLEAR_WORKOUT_ERRORS
+});
 
 export const receiveWorkoutErrors = (errors) => ({
     type: RECEIVE_WORKOUT_ERRORS,
