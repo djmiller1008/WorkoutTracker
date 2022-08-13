@@ -1,12 +1,13 @@
 import React from "react";
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import DashNavLink from "../dashboard/dashnavlink";
 import FoodLogItem from "./food_log_item";
 
-const FoodDiaryShow = ({ fetchFoodLogs, fetchFoodDiary, foodDiary, foodLogs }) => {
+const FoodDiaryShow = ({ fetchFoodLogs, fetchFoodDiary, foodDiary, foodLogs, deleteFoodDiary }) => {
     const params = useParams();
-    
+    const history = useHistory();
+
     useEffect(() => {
         fetchFoodDiary(params.foodDiaryId);
         fetchFoodLogs(params.foodDiaryId);
@@ -17,6 +18,11 @@ const FoodDiaryShow = ({ fetchFoodLogs, fetchFoodDiary, foodDiary, foodLogs }) =
             return foodDiary[params.foodDiaryId].date;
         }
         return "";
+    };
+
+    const handleDelete = () => {
+        deleteFoodDiary(params.foodDiaryId)
+            .then(() => history.replace("/dashboard"))
     };
 
     let displayFoodLogs;
@@ -69,7 +75,7 @@ const FoodDiaryShow = ({ fetchFoodLogs, fetchFoodDiary, foodDiary, foodLogs }) =
                     <Link to={`/food_diaries/${params.foodDiaryId}/new`}>
                         Add A New Food Item
                     </Link>
-                    <button className="delete-button">Delete Food Diary</button>
+                    <button onClick={handleDelete} className="delete-button">Delete Food Diary</button>
                     
                 </div>
             </div>
