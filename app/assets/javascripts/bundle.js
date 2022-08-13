@@ -3830,18 +3830,36 @@ var fetchAllCategories = function fetchAllCategories() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CLEAR_FOOD_DIARY_ERRORS": () => (/* binding */ CLEAR_FOOD_DIARY_ERRORS),
 /* harmony export */   "RECEIVE_FOOD_DIARIES": () => (/* binding */ RECEIVE_FOOD_DIARIES),
 /* harmony export */   "RECEIVE_FOOD_DIARY": () => (/* binding */ RECEIVE_FOOD_DIARY),
+/* harmony export */   "RECEIVE_FOOD_DIARY_ERRORS": () => (/* binding */ RECEIVE_FOOD_DIARY_ERRORS),
+/* harmony export */   "clearFoodDiaryErrors": () => (/* binding */ clearFoodDiaryErrors),
 /* harmony export */   "createFoodDiary": () => (/* binding */ createFoodDiary),
+/* harmony export */   "deleteFoodDiary": () => (/* binding */ deleteFoodDiary),
 /* harmony export */   "fetchFoodDiaries": () => (/* binding */ fetchFoodDiaries),
 /* harmony export */   "fetchFoodDiary": () => (/* binding */ fetchFoodDiary),
 /* harmony export */   "receiveFoodDiaries": () => (/* binding */ receiveFoodDiaries),
-/* harmony export */   "receiveFoodDiary": () => (/* binding */ receiveFoodDiary)
+/* harmony export */   "receiveFoodDiary": () => (/* binding */ receiveFoodDiary),
+/* harmony export */   "receiveFoodDiaryErrors": () => (/* binding */ receiveFoodDiaryErrors)
 /* harmony export */ });
 /* harmony import */ var _util_food_diary_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/food_diary_api_util */ "./frontend/util/food_diary_api_util.js");
 
 var RECEIVE_FOOD_DIARIES = "RECEIVE_FOOD_DIARIES";
 var RECEIVE_FOOD_DIARY = "RECEIVE_FOOD_DIARY";
+var RECEIVE_FOOD_DIARY_ERRORS = "RECEIVE_FOOD_DIARY_ERRORS";
+var CLEAR_FOOD_DIARY_ERRORS = "CLEAR_FOOD_DIARY_ERRORS";
+var clearFoodDiaryErrors = function clearFoodDiaryErrors() {
+  return {
+    type: CLEAR_FOOD_DIARY_ERRORS
+  };
+};
+var receiveFoodDiaryErrors = function receiveFoodDiaryErrors(errors) {
+  return {
+    type: RECEIVE_FOOD_DIARY_ERRORS,
+    errors: errors
+  };
+};
 var receiveFoodDiaries = function receiveFoodDiaries(diaries) {
   return {
     type: RECEIVE_FOOD_DIARIES,
@@ -3854,10 +3872,15 @@ var receiveFoodDiary = function receiveFoodDiary(diary) {
     diary: diary
   };
 };
+var deleteFoodDiary = function deleteFoodDiary(id) {
+  return _util_food_diary_api_util__WEBPACK_IMPORTED_MODULE_0__.deleteFoodDiary(id);
+};
 var createFoodDiary = function createFoodDiary(diary) {
   return function (dispatch) {
     return _util_food_diary_api_util__WEBPACK_IMPORTED_MODULE_0__.createFoodDiary(diary).then(function (diary) {
       return dispatch(receiveFoodDiary(diary));
+    }).fail(function (error) {
+      return dispatch(receiveFoodDiaryErrors(error.responseJSON));
     });
   };
 };
@@ -4138,9 +4161,11 @@ var deleteUserExercise = function deleteUserExercise(id) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CLEAR_WORKOUTS": () => (/* binding */ CLEAR_WORKOUTS),
+/* harmony export */   "CLEAR_WORKOUT_ERRORS": () => (/* binding */ CLEAR_WORKOUT_ERRORS),
 /* harmony export */   "RECEIVE_WORKOUT": () => (/* binding */ RECEIVE_WORKOUT),
 /* harmony export */   "RECEIVE_WORKOUTS": () => (/* binding */ RECEIVE_WORKOUTS),
 /* harmony export */   "RECEIVE_WORKOUT_ERRORS": () => (/* binding */ RECEIVE_WORKOUT_ERRORS),
+/* harmony export */   "clearWorkoutErrors": () => (/* binding */ clearWorkoutErrors),
 /* harmony export */   "clearWorkouts": () => (/* binding */ clearWorkouts),
 /* harmony export */   "createWorkout": () => (/* binding */ createWorkout),
 /* harmony export */   "deleteWorkout": () => (/* binding */ deleteWorkout),
@@ -4156,6 +4181,12 @@ var RECEIVE_WORKOUTS = 'RECEIVE_WORKOUTS';
 var RECEIVE_WORKOUT = 'RECEIVE_WORKOUT';
 var CLEAR_WORKOUTS = 'CLEAR_WORKOUTS';
 var RECEIVE_WORKOUT_ERRORS = 'RECEIVE_WORKOUT_ERRORS';
+var CLEAR_WORKOUT_ERRORS = 'CLEAR_WORKOUT_ERRORS';
+var clearWorkoutErrors = function clearWorkoutErrors() {
+  return {
+    type: CLEAR_WORKOUT_ERRORS
+  };
+};
 var receiveWorkoutErrors = function receiveWorkoutErrors(errors) {
   return {
     type: RECEIVE_WORKOUT_ERRORS,
@@ -5646,9 +5677,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var FoodDiaryForm = function FoodDiaryForm(_ref) {
   var userId = _ref.userId,
-      createFoodDiary = _ref.createFoodDiary;
+      createFoodDiary = _ref.createFoodDiary,
+      errors = _ref.errors,
+      clearErrors = _ref.clearErrors;
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useHistory)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
@@ -5658,6 +5692,10 @@ var FoodDiaryForm = function FoodDiaryForm(_ref) {
       _useState2 = _slicedToArray(_useState, 2),
       formData = _useState2[0],
       setFormData = _useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    clearErrors();
+  }, []);
 
   var handleInput = function handleInput(property) {
     return function (event) {
@@ -5672,7 +5710,19 @@ var FoodDiaryForm = function FoodDiaryForm(_ref) {
     });
   };
 
+  var renderErrors = function renderErrors() {
+    if (errors.length > 0) {
+      return errors.map(function (err, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+          key: i
+        }, err);
+      });
+    }
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dashboard_dashnavlink__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "form-errors-div"
+  }, renderErrors()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "new-form-div"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Pick a Day for your Food Diary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onSubmit: handleSubmit,
@@ -5710,7 +5760,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    userId: state.session.id
+    userId: state.session.id,
+    errors: state.errors.foodDiary
   };
 };
 
@@ -5718,6 +5769,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     createFoodDiary: function createFoodDiary(diary) {
       return dispatch((0,_actions_food_diary_actions__WEBPACK_IMPORTED_MODULE_2__.createFoodDiary)(diary));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0,_actions_food_diary_actions__WEBPACK_IMPORTED_MODULE_2__.clearFoodDiaryErrors)());
     }
   };
 };
@@ -5783,8 +5837,10 @@ var FoodDiaryShow = function FoodDiaryShow(_ref) {
   var fetchFoodLogs = _ref.fetchFoodLogs,
       fetchFoodDiary = _ref.fetchFoodDiary,
       foodDiary = _ref.foodDiary,
-      foodLogs = _ref.foodLogs;
+      foodLogs = _ref.foodLogs,
+      deleteFoodDiary = _ref.deleteFoodDiary;
   var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useParams)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useHistory)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchFoodDiary(params.foodDiaryId);
     fetchFoodLogs(params.foodDiaryId);
@@ -5796,6 +5852,12 @@ var FoodDiaryShow = function FoodDiaryShow(_ref) {
     }
 
     return "";
+  };
+
+  var handleDelete = function handleDelete() {
+    deleteFoodDiary(params.foodDiaryId).then(function () {
+      return history.replace("/dashboard");
+    });
   };
 
   var displayFoodLogs;
@@ -5840,6 +5902,7 @@ var FoodDiaryShow = function FoodDiaryShow(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/food_diaries/".concat(params.foodDiaryId, "/new")
   }, "Add A New Food Item"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: handleDelete,
     className: "delete-button"
   }, "Delete Food Diary"))));
 };
@@ -5883,6 +5946,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchFoodLogs: function fetchFoodLogs(foodDiaryId) {
       return dispatch((0,_actions_food_log_actions__WEBPACK_IMPORTED_MODULE_2__.fetchFoodLogs)(foodDiaryId));
+    },
+    deleteFoodDiary: function deleteFoodDiary(id) {
+      return (0,_actions_food_diary_actions__WEBPACK_IMPORTED_MODULE_1__.deleteFoodDiary)(id);
     }
   };
 };
@@ -7705,6 +7771,11 @@ var WorkoutForm = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(WorkoutForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.clearErrors();
+    }
+  }, {
     key: "handleInput",
     value: function handleInput(property) {
       var _this2 = this;
@@ -7740,7 +7811,7 @@ var WorkoutForm = /*#__PURE__*/function (_React$Component) {
         to: "/dashboard",
         className: "dashboard-link"
       }, "My Dashboard")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-        className: "workout-form-errors-div"
+        className: "form-errors-div"
       }, this.renderErrors()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         className: "new-form-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Which Day Did You Workout?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
@@ -7793,6 +7864,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     createWorkout: function createWorkout(workout) {
       return dispatch((0,_actions_workout_actions__WEBPACK_IMPORTED_MODULE_1__.createWorkout)(workout));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0,_actions_workout_actions__WEBPACK_IMPORTED_MODULE_1__.clearWorkoutErrors)());
     }
   };
 };
@@ -7926,18 +8000,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
 /* harmony import */ var _workout_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./workout_errors_reducer */ "./frontend/reducers/workout_errors_reducer.js");
 /* harmony import */ var _account_update_errors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./account_update_errors */ "./frontend/reducers/account_update_errors.js");
+/* harmony import */ var _food_diary_errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./food_diary_errors_reducer */ "./frontend/reducers/food_diary_errors_reducer.js");
 
 
 
 
-var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
+
+var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
   workout: _workout_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  account: _account_update_errors__WEBPACK_IMPORTED_MODULE_2__["default"]
+  account: _account_update_errors__WEBPACK_IMPORTED_MODULE_2__["default"],
+  foodDiary: _food_diary_errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorsReducer);
 
@@ -8054,6 +8131,41 @@ var foodDiariesReducer = function foodDiariesReducer() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (foodDiariesReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/food_diary_errors_reducer.js":
+/*!********************************************************!*\
+  !*** ./frontend/reducers/food_diary_errors_reducer.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_food_diary_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/food_diary_actions */ "./frontend/actions/food_diary_actions.js");
+
+
+var foodDiaryErrorsReducer = function foodDiaryErrorsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_food_diary_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_FOOD_DIARY_ERRORS:
+      return action.errors;
+
+    case _actions_food_diary_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_FOOD_DIARY_ERRORS:
+      return [];
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (foodDiaryErrorsReducer);
 
 /***/ }),
 
@@ -8402,6 +8514,9 @@ var workoutErrorsReducer = function workoutErrorsReducer() {
     case _actions_workout_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_WORKOUT_ERRORS:
       return action.errors;
 
+    case _actions_workout_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_WORKOUT_ERRORS:
+      return [];
+
     default:
       return state;
   }
@@ -8613,6 +8728,7 @@ var fetchCategory = function fetchCategory(categoryName) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "createFoodDiary": () => (/* binding */ createFoodDiary),
+/* harmony export */   "deleteFoodDiary": () => (/* binding */ deleteFoodDiary),
 /* harmony export */   "fetchFoodDiaries": () => (/* binding */ fetchFoodDiaries),
 /* harmony export */   "fetchFoodDiary": () => (/* binding */ fetchFoodDiary)
 /* harmony export */ });
@@ -8637,6 +8753,12 @@ var fetchFoodDiaries = function fetchFoodDiaries(limit) {
 var fetchFoodDiary = function fetchFoodDiary(id) {
   return $.ajax({
     method: "GET",
+    url: "/api/food_diaries/".concat(id)
+  });
+};
+var deleteFoodDiary = function deleteFoodDiary(id) {
+  return $.ajax({
+    method: 'DELETE',
     url: "/api/food_diaries/".concat(id)
   });
 };
