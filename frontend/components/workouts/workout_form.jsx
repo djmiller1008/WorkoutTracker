@@ -11,6 +11,10 @@ class WorkoutForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     };
 
+    componentDidMount() {
+        this.props.clearErrors();
+    };
+
     handleInput(property) {
         return (e) => this.setState({ [property]: e.target.value })
     };
@@ -33,7 +37,7 @@ class WorkoutForm extends React.Component {
                 <nav className="dashboard-nav-link">
                     <Link to="/dashboard" className='dashboard-link'>My Dashboard</Link>
                 </nav>
-                <div className="workout-form-errors-div">
+                <div className="form-errors-div">
                     {this.renderErrors()}
                 </div>
                 <div className="new-form-div">
