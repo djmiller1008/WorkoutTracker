@@ -1,6 +1,6 @@
 import { 
     RECEIVE_FOOD_DIARIES,
-    RECEIVE_FOOD_DIARY
+    RECEIVE_FOOD_DIARY,
  } from "../actions/food_diary_actions";    
 
 const foodDiariesReducer = (state = {}, action) => {
