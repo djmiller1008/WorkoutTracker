@@ -1,40 +1,6 @@
 @import 'fonts';
 @import 'colors';
 
-.all-workouts-div {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 35px;
-
-    h1 {
-        margin-bottom: 25px;
-        font-size: $font-l;
-    }
-}
-
-.workout-log-table-all {
-    border: 4px solid black;
-    border-radius: 5px;
-    width: 50%;
-
-    a:last-child {
-        
-        p {
-            border-bottom: none;
-        }
-    }
-}
-
-
-.all-workouts {
-    font-family: $body-font;
-    margin-top: 30px;
- 
-    
-}
-
-
 .new-workout-submit {
    margin-top: 25px;
    background-color: $green;
@@ -49,13 +15,6 @@
 .new-workout-submit:hover {
     cursor: pointer;
     background-color: $light-green;
-}
-
-.dashboard-nav-link {
-    padding: 20px 30px;
-    display: flex;
-    justify-content: end;
-    border-bottom: .5px solid $green;
 }
 
 .date-h1 {

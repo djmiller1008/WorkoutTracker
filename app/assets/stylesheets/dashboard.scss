@@ -113,7 +113,13 @@
     background-color: $light-green;
 }
 
-
+.dashboard-nav-link {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    border-bottom: .5px solid $green;
+}
 
 .dashboard-link {
     font-family: $body-font;
@@ -121,6 +127,9 @@
     color: white;
     padding: 12px 30px;
     text-align: center;
+}
+
+.main {
     margin-bottom: 1.5rem;
 }
 
