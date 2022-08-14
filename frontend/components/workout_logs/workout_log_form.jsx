@@ -7,7 +7,7 @@ class WorkoutLogForm extends React.Component {
 
         this.state = {
             exerciseName: '',
-            sets: '',
+            sets: '', 
             reps: {},
             weight: {},
             weightUnit: {},
