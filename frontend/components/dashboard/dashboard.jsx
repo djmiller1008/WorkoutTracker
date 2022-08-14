@@ -76,10 +76,13 @@ const Dashboard = ({ workouts, foodDiaries, fetchWorkouts, fetchFoodDiaries }) =
                 <div className="content-box-div">
                     <h1>My Food Diary</h1>
                     {renderFoodLogs()}
+                    <div className="all-workouts-link-div">
+                        <Link className="dashboard-link" to="./food_diaries/all">View All Food Diaries</Link>
+                    </div>
                 </div>
                 <div className="dashboard-link-div">
-                    <Link className="dashboard-link" to="./workouts/new">Log A New Workout</Link>
-                    <Link className="dashboard-link" to="./food_diary/new">Create a Food Diary Entry</Link>
+                    <Link className="dashboard-link main" to="./workouts/new">Log A New Workout</Link>
+                    <Link className="dashboard-link main" to="./food_diary/new">Create a Food Diary Entry</Link>
                 </div>
             </div>
         </div>
