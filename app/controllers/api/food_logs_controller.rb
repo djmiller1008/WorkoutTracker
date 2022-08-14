@@ -2,14 +2,21 @@ class Api::FoodLogsController < ApplicationController
 
     def create
         @food_log = FoodLog.new(food_log_params)
-        food_item_id = FoodItem.find_by(name: params[:food_log][:name]).id
-        @food_log.food_item_id = food_item_id
-        if @food_log.save
-            @food_logs = FoodDiary.find_by(id: @food_log.food_diary_id).food_logs
-            @nutrient_info = FoodLog.find_nutrient_totals(@food_logs)
-            render :index
+        
+        if params[:food_log][:name] == ""
+            render json: ['Please pick a food item'], status: 401
+        elsif params[:food_log][:servings] == ""
+            render json: ['Please enter the number of servings'], status: 401
         else
-            render json: @food_log.errors.full_messages, status: 401
+            food_item_id = FoodItem.find_by(name: params[:food_log][:name]).id
+            @food_log.food_item_id = food_item_id
+            if @food_log.save
+                @food_logs = FoodDiary.find_by(id: @food_log.food_diary_id).food_logs
+                @nutrient_info = FoodLog.find_nutrient_totals(@food_logs)
+                render :index
+            else
+                render json: @food_log.errors.full_messages, status: 401
+            end
         end
     end
 
