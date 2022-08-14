@@ -15,22 +15,22 @@ const AllWorkouts = ({ fetchWorkouts, workouts }) => {
                 display.push(workoutElement);
             })
             return (
-                <section className="workout-log-table-all">
+                <section className="item-log-table-all">
                     {display}
                 </section>
             )
         } else {
             return (
-                <div className="no-workouts-div">You Don't Have Any Workouts!</div>
+                <div>You Don't Have Any Workouts!</div>
             )
         } 
     };
 
     return (
-        <div className="all-workouts">
+        <div>
             <DashNavLink />
             
-            <div className="all-workouts-div">
+            <div className="all-items-div">
                 <h1>Your Workouts</h1>
                 {renderWorkouts()}
             </div>
