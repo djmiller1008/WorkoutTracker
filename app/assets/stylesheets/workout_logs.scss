@@ -13,14 +13,10 @@
 
 .exercise-search {
     display: flex;
-    align-items: baseline;
-    justify-content: center;
-    width: 15rem;
-    margin-bottom: 25px;
-
-    label {
-        padding-right: 15px;
-    }
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    width: 100%;
 
     input:focus {
         outline: 2px solid $green;
@@ -48,15 +44,11 @@
 
 .sets-section {
     display: flex;
-    text-align: center;
-    align-items: baseline;
-    justify-content: center;
-    width: 125px;
-    height: 20px;
-
-    label {
-        margin-right: 15px;
-    }
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    
+ 
 
     input:focus {
         outline: 2px solid $green;
@@ -99,19 +91,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 17rem;
 }
 
 .log-submit {
-    margin-top: 35px;
+    margin: auto;
     width: 80%;
+    margin-top: 3rem;
     font-family: $body-font;
     background-color: $green;
     color: white;
     padding: 10px 20px;
     border: none;
-    margin-bottom: 3rem;
+   
 }
-
 
 .log-submit:hover {
     background-color: $light-green;
