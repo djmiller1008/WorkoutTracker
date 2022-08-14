@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import DashNavLink from "../dashboard/dashnavlink";
 
-const FoodLogForm = ({ fetchAllFoodItems, createFoodLog, userId, foodItems }) => {
+const FoodLogForm = ({ clearErrors, fetchAllFoodItems, createFoodLog, userId, foodItems, errors }) => {
     const params = useParams();
     const history = useHistory();
 
@@ -15,8 +15,10 @@ const FoodLogForm = ({ fetchAllFoodItems, createFoodLog, userId, foodItems }) =>
     });
 
     useEffect(() => {
-        fetchAllFoodItems()
+        fetchAllFoodItems();
+        clearErrors();
     }, []);
+
 
    
     const handleInput = property => {
@@ -38,7 +40,7 @@ const FoodLogForm = ({ fetchAllFoodItems, createFoodLog, userId, foodItems }) =>
         let matches = [];
         let found = false;
         if (formData.name.length === 0) {
-            return matches;
+            return matches; 
         }  
 
         Object.values(foodItems).forEach(foodItem => {
@@ -67,30 +69,40 @@ const FoodLogForm = ({ fetchAllFoodItems, createFoodLog, userId, foodItems }) =>
         }
     });
   
+    const renderErrors = () => {
+        if (errors.length > 0) {
+            return errors.map((err, i) => <p key={i}>{err}</p>)
+        }
+    }
 
     return (
         <div>
             <DashNavLink />
-            <div className="workout-log-main-form-div">
-                <form className="workout-log-form">
-                    <div className="exercise-search">
+            <div className="food-log-main-form-div">
+                <div className="form-errors-div">
+                    {renderErrors()}
+                </div>
+                <form className="food-log-form">
+                    <div className="form-section">
                         <label>Food Item:</label>
                         <input type='text' value={formData.name}
                                 onChange={handleInput('name')}
                         />
                     </div>
-                    <ul className="possible-exercises">
+                    <ul className="possible-food-items">
                         {possibleFoodItems}
                     </ul>
 
-                    <section className="sets-section">
+                    <section className="form-section">
                         <label>Servings:</label>
                         <input type='number' min='1'
                                 onChange={handleInput('servings')}
                         />
                     </section>
-                    
-                    <button onClick={handleSubmit} className='log-submit'>Add Food Log</button>
+                    <section className="form-section">
+                        <button className="log-submit" onClick={handleSubmit}>Add Food Log</button>
+                    </section>
+                   
                 </form>
             </div>
         </div>
