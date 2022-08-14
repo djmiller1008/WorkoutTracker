@@ -1,9 +1,10 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import DashNavLink from "../dashboard/dashnavlink";
 
-const FoodItemForm = ({ createFoodItem, userId }) => {
+const FoodItemForm = ({ createFoodItem, userId, errors, clearErrors }) => {
     const history = useHistory();
 
     const [formData, setFormData] = useState({
@@ -14,6 +15,11 @@ const FoodItemForm = ({ createFoodItem, userId }) => {
         protein: '',
         carbohydrates: ''
     });
+
+    useEffect(() => {
+        clearErrors();
+    }, []);
+
 
     const handleInput = property => {
         return event => setFormData({...formData, [property]: event.target.value })
@@ -26,10 +32,20 @@ const FoodItemForm = ({ createFoodItem, userId }) => {
             .then(() => history.replace('/nutrition/items/all'))
     };
 
+    const renderErrors = () => {
+        if (errors.length > 0) {
+            return errors.map((err, i) => <p key={i}>{err}</p>)
+        }
+    }
+
     return (
         <div>
             <DashNavLink />
+            <div className="form-errors-div">
+                {renderErrors()}
+            </div>
             <h1 className="subpage-h1">Create a Food Item</h1>
+            
             <form className="food-item-form">
 
                 <section className="food-item-form-section">
