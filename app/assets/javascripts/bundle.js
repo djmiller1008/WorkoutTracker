@@ -5945,7 +5945,7 @@ var FoodDiaryItem = function FoodDiaryItem(_ref) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/food_diaries/".concat(foodDiary.id)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-    className: "workout-date"
+    className: "table-date"
   }, foodDiary.date));
 };
 
@@ -8084,7 +8084,7 @@ var WorkoutItem = function WorkoutItem(_ref) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/workouts/".concat(workout.id, "/workout_log")
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-    className: "workout-date"
+    className: "table-date"
   }, workout.date));
 };
 

@@ -99,7 +99,7 @@
     }
 }
 
-.workout-date {
+.table-date {
     text-align: center;
     border-bottom: 3px solid black;
     padding-bottom: 12px;
@@ -108,7 +108,7 @@
 
 
 
-.workout-date:hover {
+.table-date:hover {
     cursor: pointer;
     background-color: $light-green;
 }
@@ -199,7 +199,7 @@
         font-size: $font-sm;
 
         h1 {
-            font-size: $font-ml;
+            font-size: $font-m;
             margin-bottom: 1rem;
         }
     }
@@ -250,4 +250,6 @@
     .dashboard-link-div {
         margin-right: 0px;
     }
+
+    
 }
