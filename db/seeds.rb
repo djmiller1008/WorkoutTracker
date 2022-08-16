@@ -9,8 +9,6 @@
 
 
 FoodItem.destroy_all
-
-=begin
 Workout.destroy_all
 WorkoutLog.destroy_all
 Exercise.destroy_all
@@ -96,7 +94,7 @@ Exercise.create(name: 'Supermans', exercise_category_id: back.id)
 
 
 
-=end
+
 
 
 
