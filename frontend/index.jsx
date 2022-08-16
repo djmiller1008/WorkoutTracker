@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import { updateEmail } from './actions/account_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
     let store;
