@@ -35,14 +35,13 @@ COPY Gemfile /myapp/Gemfile
 
 RUN bundle install
 
-RUN bin/rails db:migrate RAILS_ENV=development
+
 COPY . /myapp
 
 COPY --from=build /usr/src/app/app/assets/javascripts/bundle.js ./app/assets/javascripts/
 COPY --from=build /usr/src/app/app/assets/javascripts/bundle.js.map ./app/assets/javascripts/
 
-COPY entrypoint.sh /usr/bin
-RUN chmod +x /usr/bin/entrypoint.sh
+RUN bundle exec rake db:migrate
 
 EXPOSE 3000
 
