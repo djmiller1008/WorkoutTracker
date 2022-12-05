@@ -35,7 +35,7 @@ COPY Gemfile /myapp/Gemfile
 
 RUN bundle install
 
-RUN bundle exec rake db:migrate
+RUN bin/rails db:migrate RAILS_ENV=development
 COPY . /myapp
 
 COPY --from=build /usr/src/app/app/assets/javascripts/bundle.js ./app/assets/javascripts/
