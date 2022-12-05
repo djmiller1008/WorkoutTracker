@@ -34,8 +34,7 @@ COPY Gemfile /myapp/Gemfile
 
 
 RUN bundle install
-RUN bundle exec rake assets:precompile
-RUN bundle exec rake assets:clean
+
 RUN bundle exec rake db:migrate
 COPY . /myapp
 
