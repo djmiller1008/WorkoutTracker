@@ -82,5 +82,4 @@ test:
 production:
   <<: *default
   database: WorkoutTracker_production
-  username: WorkoutTracker
-  password: <%= ENV['WORKOUTTRACKER_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
