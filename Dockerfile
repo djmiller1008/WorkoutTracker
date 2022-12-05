@@ -34,7 +34,9 @@ COPY Gemfile /myapp/Gemfile
 
 
 RUN bundle install
-
+RUN bundle exec rake assets:precompile
+RUN bundle exec rake assets:clean
+RUN bundle exec rake db:migrate
 COPY . /myapp
 
 COPY --from=build /usr/src/app/app/assets/javascripts/bundle.js ./app/assets/javascripts/
