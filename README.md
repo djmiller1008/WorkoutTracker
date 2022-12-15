@@ -3,8 +3,6 @@
 This is a personal project I've built to help me keep track of my workouts in the gym. This project is meant to showcase my ability to build full-stack web applications
 and to use web technologies such as Ruby on Rails, React, Redux, and Docker.
 
-Live Website - https://rep-logger.herokuapp.com/#/
-
 Technologies used include React, SCSS, and Redux for the frontend as well as Ruby, Rails, and PostgreSQL for the backend.
 
 ## Local Installation
