@@ -42,8 +42,6 @@ COPY --from=build /usr/src/app/app/assets/javascripts/bundle.js.map ./app/assets
 
 COPY entrypoint.sh /usr/bin
 RUN chmod +x /usr/bin/entrypoint.sh
-RUN chmod +x /bin/sh
-RUN bundle exec rake db:migrate
 
 EXPOSE 3000
 
