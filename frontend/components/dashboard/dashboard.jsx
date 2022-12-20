@@ -7,7 +7,6 @@ import FoodDiaryItem from "../nutrition/food_diary_item";
 
 const Dashboard = ({ workouts, foodDiaries, fetchWorkouts, fetchFoodDiaries }) => {
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         let timer = setTimeout(() => {
             fetchWorkouts(10).then(() => setLoading(false));
