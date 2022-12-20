@@ -38,6 +38,10 @@ const Content = ({ login }) => {
                         <FontAwesomeIcon className="dot-icon" icon={regular('circle-dot')} />
                         <p>A Solution For Everyone To Record Progress In The Gym</p>
                     </section>
+                    <section className="content-section">
+                        <FontAwesomeIcon className="dot-icon" icon={regular('circle-dot')} />
+                        <p>Track and Manage Your Diet</p>
+                    </section>
                 </div>
                 
             </section>
