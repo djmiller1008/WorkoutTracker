@@ -23,7 +23,6 @@ RSpec.describe Api::WorkoutsController, type: :controller do
             controller.stub(:current_user).and_return(@current_user)
             get :index, format: :json
             expect(response.content_type).to eq("application/json")
-            puts response
         end
     end
 
