@@ -4,7 +4,4 @@ class FoodItem < ApplicationRecord
     validates :calories, presence: true
 
     belongs_to :user
-
-
-
 end
