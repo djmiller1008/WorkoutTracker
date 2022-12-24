@@ -12,24 +12,22 @@ class Api::UsersController < ApplicationController
 
     def update
         @user = User.find_by(id: params[:id])
-
-        if current_user.email == "admin@admin.com"
-            render json: ["Unauthorized to change admin email"], status: 401
-
-        elsif params[:data][:email]
+        if @user 
             if current_user.email == "admin@admin.com"
                 render json: ["Unauthorized to change admin email"], status: 401
-            end
 
-            if @user.update_attributes({ email: params[:data][:email] })
-                render :show
-            else
-                render json: @user.errors.full_messages, status: 422
-            end
-        elsif params[:data][:password]
+            elsif params[:data][:email]
+                if current_user.email == "admin@admin.com"
+                    render json: ["Unauthorized to change admin email"], status: 401
+                end
 
+                if @user.update_attributes({ email: params[:data][:email] })
+                    render :show
+                end
+            end 
+        else
+            render json: ["User not found"], status: 401
         end
-     
     end
 
     private
