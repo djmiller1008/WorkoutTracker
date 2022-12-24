@@ -8916,7 +8916,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var updateData = function updateData(data) {
   return $.ajax({
-    method: 'PATCH',
+    method: 'PUT',
     url: "/api/users/".concat(data.id),
     data: {
       data: data
