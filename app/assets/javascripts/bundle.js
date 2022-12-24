@@ -5561,6 +5561,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var Content = function Content(_ref) {
   var login = _ref.login;
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useHistory)();
@@ -5604,7 +5605,12 @@ var Content = function Content(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
     className: "dot-icon",
     icon: _fortawesome_free_regular_svg_icons_faCircleDot__WEBPACK_IMPORTED_MODULE_5__.faCircleDot
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "A Solution For Everyone To Record Progress In The Gym")))));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "A Solution For Everyone To Record Progress In The Gym")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "content-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
+    className: "dot-icon",
+    icon: _fortawesome_free_regular_svg_icons_faCircleDot__WEBPACK_IMPORTED_MODULE_5__.faCircleDot
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Track and Manage Your Diet")))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Content);
