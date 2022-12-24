@@ -1,7 +1,7 @@
 export const updateData = (data) => {
     return (
         $.ajax({
-            method: 'PATCH',
+            method: 'PUT',
             url: `/api/users/${data.id}`,
             data: { data }
         })
