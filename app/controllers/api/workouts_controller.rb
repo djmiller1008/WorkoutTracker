@@ -10,7 +10,7 @@ class Api::WorkoutsController < ApplicationController
         if @workout.save
             render :show
         else
-            render json: ['You must pick a valid date!'], status: 401
+            render json: ['Invalid Entry'], status: 401
         end
     end
 
