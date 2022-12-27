@@ -20,11 +20,11 @@ RSpec.describe Api::UsersController, type: :controller do
     describe 'PUT #update' do
         context 'as a normal user' do
             it 'correctly updates the users email' do
-                @current_user = User.find_by(email: 'david@david.com')
-                controller.stub(:current_user).and_return(@current_user)
-                put :update, params: { id: @current_user.id, data: {email: 'bob@bob.com'} }, format: :json
+                current_user = FactoryBot.create(:user)
+                controller.stub(:current_user).and_return(current_user)
+                put :update, params: { id: current_user.id, data: {email: 'bob@bob.com'} }, format: :json
                 expect(User.find_by(email: 'bob@bob.com')).to_not eq(nil)
-                expect(User.find_by(email: 'david@david.com')).to eq(nil)
+                expect(User.find_by(email: 'dav@dav.com')).to eq(nil)
             end
         end 
 
