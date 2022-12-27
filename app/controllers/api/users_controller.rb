@@ -15,15 +15,10 @@ class Api::UsersController < ApplicationController
         if @user 
             if current_user.email == "admin@admin.com"
                 render json: ["Unauthorized to change admin email"], status: 401
-
+                
             elsif params[:data][:email]
-                if current_user.email == "admin@admin.com"
-                    render json: ["Unauthorized to change admin email"], status: 401
-                end
-
-                if @user.update_attributes({ email: params[:data][:email] })
-                    render :show
-                end
+                @user.update_attributes({ email: params[:data][:email] })
+                render :show
             end 
         else
             render json: ["User not found"], status: 401
