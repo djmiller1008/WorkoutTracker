@@ -61,7 +61,7 @@ RSpec.describe User, type: :model do
             expect(new_session_token).to_not eq(session_token)
         end
     end
-
+ 
     describe 'show_food_diaries' do
         context 'when no limit is passed as an argument' do
             it 'returns all food_diaries' do 
