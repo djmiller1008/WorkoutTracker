@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:password_digest) }
 
@@ -14,7 +13,7 @@ RSpec.describe User, type: :model do
 
     it "creates a new user when given valid attributes" do
         expect(User.new(email: 'data@data.com', password: 'password')).to be_valid
-    end
+    end 
 
     it "doesn't create a new user when given no attributes" do
         expect(User.new).to_not be_valid
@@ -26,7 +25,7 @@ RSpec.describe User, type: :model do
 
     it "ensures a new user enters a unique email" do
         user = FactoryBot.create(:user)
-        expect(User.create(email: 'david@david.com', password: 'password')).to_not be_valid
+        expect(User.create(email: 'dav@dav.com', password: 'password')).to_not be_valid
     end 
 
     describe 'find_by_credentials' do
