@@ -21,12 +21,6 @@ class Api::WorkoutLogsController < ApplicationController
         end
     end
 
-    def show
-    
-    end
-
-
-
     private
 
     def workout_log_params
@@ -34,6 +28,4 @@ class Api::WorkoutLogsController < ApplicationController
                                             :weight_unit, :user_id,
                                             :rep_unit, :name)
     end
-
-
 end
