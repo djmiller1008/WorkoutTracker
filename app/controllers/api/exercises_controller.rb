@@ -3,7 +3,7 @@ class Api::ExercisesController < ApplicationController
     def create
         @exercise = Exercise.new(exercise_params)
         if @exercise.save
-            render :show
+            render json: ["Exercise saved"]
         else
             render json: @exercise.errors.full_messages, status: 401
         end
@@ -15,18 +15,10 @@ class Api::ExercisesController < ApplicationController
         render :index
     end
 
-    def show
-    end
-
-    def destroy
-    end
-
- 
-
     private
 
     def exercise_params
-        params.require(:exercise).permit(:name)
+        params.require(:exercise).permit(:name, :exercise_category_id)
     end
 
 end
