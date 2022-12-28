@@ -10,7 +10,7 @@ class Api::UserExercisesController < ApplicationController
         if @user_exercise.save
             render :show
         else
-            render @user_exercise.errors.full_messages, status: 401
+            render json: ["Invalid Entry"], status: 401
         end
     end
 
