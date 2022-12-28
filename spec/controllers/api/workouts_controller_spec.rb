@@ -24,8 +24,8 @@ RSpec.describe Api::WorkoutsController, type: :controller do
 
     describe 'GET #index' do
         it 'returns json' do
-            @current_user = build(:user)
-            controller.stub(:current_user).and_return(@current_user)
+            current_user = build(:user)
+            controller.stub(:current_user).and_return(current_user)
             get :index, format: :json
             expect(response.content_type).to eq("application/json")
         end
