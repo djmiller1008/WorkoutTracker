@@ -7,3 +7,4 @@ FactoryBot.define do
     name { "lunchbox" }
   end
 end
+ 
