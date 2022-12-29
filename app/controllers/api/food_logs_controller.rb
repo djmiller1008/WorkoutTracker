@@ -23,18 +23,12 @@ class Api::FoodLogsController < ApplicationController
     def index
         @food_logs = current_user.food_logs.where(food_diary_id: params[:food_diary_id])
         @nutrient_info = FoodLog.find_nutrient_totals(@food_logs)
-        
-     
         render :index
     end
-
-
 
     private
 
     def food_log_params
         params.require(:food_log).permit(:food_item_id, :user_id, :servings, :food_diary_id, :name)
     end
-
-
 end
