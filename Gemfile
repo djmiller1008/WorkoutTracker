@@ -69,7 +69,6 @@ group :test do
   gem 'chromedriver-helper'
   gem 'guard-rspec'
   gem 'faker'
-  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
