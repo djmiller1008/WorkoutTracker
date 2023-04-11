@@ -10,7 +10,7 @@ COPY package.json /usr/src/app/package.json
 
 RUN npm install --silent
 
-COPY . /usr/src/app
+COPY . /usr/src/app 
 
 RUN npm run postinstall
 
