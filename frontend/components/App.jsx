@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import Home from './home/home';
 import SignupFormContent from './session/signup-form-content';
 import LoginFormContent from './session/login_form_content';
