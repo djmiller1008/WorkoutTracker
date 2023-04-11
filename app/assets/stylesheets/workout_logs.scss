@@ -15,7 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem; 
     width: 100%;
 
     input:focus {
@@ -114,11 +114,22 @@
 .display-all-logs-div {
     display: flex;
     flex-wrap: wrap;
-    
+}
+
+.display-logs-div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
 }
 
 .workout-log-main-content {
-    flex-basis: 33.33333%;
+    margin-right: 2rem;
+}
+
+.log-big-div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 @media (max-width: 480px) {
