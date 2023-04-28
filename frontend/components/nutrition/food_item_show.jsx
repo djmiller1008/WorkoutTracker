@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import DashNavLink from "../dashboard/dashnavlink";
+import DashnavContainer from "../dashboard/dashnav_container";
 
 const FoodItemShow = ({ fetchFoodItem, deleteFoodItem, foodItem }) => {
     const params = useParams();
@@ -50,17 +50,14 @@ const FoodItemShow = ({ fetchFoodItem, deleteFoodItem, foodItem }) => {
         }
     } 
     
-   
     return (
-        <div>
-            <DashNavLink />
+        <>
+            <DashnavContainer />
             <div>
                 {renderFoodItem()}
             </div>
-        </div>
-       
+        </>
     )
-
 };
 
 export default FoodItemShow;
