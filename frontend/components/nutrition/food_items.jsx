@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import DashNavLink from "../dashboard/dashnavlink";
+import DashnavContainer from "../dashboard/dashnav_container";
 
 const FoodItems = ({ foodItems, fetchAllFoodItems }) => {
     useEffect(() => {
@@ -14,8 +14,8 @@ const FoodItems = ({ foodItems, fetchAllFoodItems }) => {
     }
 
     return (
-        <div>
-            <DashNavLink />
+        <>
+            <DashnavContainer />
             <div className="food-items-main-div">
                 <h1 className="subpage-h1">My Food Items</h1>
                 <div className="all-food-items-div">
@@ -23,13 +23,8 @@ const FoodItems = ({ foodItems, fetchAllFoodItems }) => {
                 </div>
                 <Link className="create-new-exercise" to="/nutrition/items/new">Create a New Food Item</Link>
             </div>
-            
-           
-        </div>
+        </>
     )
-
 };
-
-
 
 export default FoodItems;
