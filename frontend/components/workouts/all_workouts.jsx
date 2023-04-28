@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import WorkoutItem from './workout_item';
-import DashNavLink from "../dashboard/dashnavlink";
+import DashnavContainer from "../dashboard/dashnav_container";
 
 const AllWorkouts = ({ fetchWorkouts, workouts }) => {
     useEffect(() => {
@@ -27,15 +27,13 @@ const AllWorkouts = ({ fetchWorkouts, workouts }) => {
     };
 
     return (
-        <div>
-            <DashNavLink />
-            
+        <>
+            <DashnavContainer />
             <div className="all-items-div">
                 <h1>Your Workouts</h1>
                 {renderWorkouts()}
             </div>
-        </div>
-        
+        </>
     );
 };
 
