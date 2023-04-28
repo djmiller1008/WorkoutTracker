@@ -3,27 +3,27 @@
 
 .dashboard-header { 
     font-family: $body-font;
-    margin-top: 35px;
-    padding-bottom: 15px;
+    padding: 1.5rem 2rem;
     border-bottom: .5px solid $green;
 }
 
 .dashboard-nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     position: relative;
+}
 
-    h1 {
-        font-size: $font-l;
-        margin-left: 55px;
-    }
+.dashboard-title-link {
+    display: flex;
+    font-family: $header-font;
+    align-items: center;
 }
 
 .title-links-div {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     width: 500px;
-    margin-bottom: 20px;
 }
 
 .nutrition-toggle-div {
@@ -42,37 +42,26 @@
 
 .email-div {
     display: flex;
-    margin-right: 55px;
-    margin-top: 10px;
-    padding-bottom: 10px;
+    height: 2rem;
+    margin-top: 1.2rem;
 }
 
 .hover-div {
     height: auto;
 }
 
-.dashnav-dropdown {
-    z-index: 99;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 25px;
-    margin-right: 25px;
-    justify-content: center;
-    position: absolute;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-
 .email-dropdown-button {
-    text-align: center;
     background-color: #fff;
     border: none;
-    padding: 10px;
     font-size: $font-sm;
-    font-family: $body-font;
+    margin-top: 0.65rem;
     color: black;
     width: 100%;
+    padding: 0;
+}
+
+.email-dropdown-button:last-child {
+    margin-bottom: 0.65rem;
 }
 
 .email-dropdown-button:hover {
@@ -85,6 +74,13 @@
     font-family: $body-font;
     display: flex;
     justify-content: space-evenly;
+}
+
+.exercise-nutrition-links-div {
+    margin-left: 2rem;
+    width: 10rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 .dashboard-content-table {
@@ -104,8 +100,6 @@
     padding-bottom: 12px;
     padding-top: 12px;
 }
-
-
 
 .table-date:hover {
     cursor: pointer;
@@ -142,8 +136,6 @@
 .dashboard-link-div {
     display: flex;
     flex-direction: column;
-  
-   
 }
 
 .all-workouts-link-div {
@@ -158,26 +150,41 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: space-evenly;
     margin-top: 8px;
-    width: 6rem;
-    padding: 8px; 
+    width: 6rem; 
+    padding: 0.5rem 0.35rem;
     font-size: $font-sm;
     position: absolute;
     background-color: white;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
+.dashnav-dropdown {
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 5rem;
+    padding: 0.5rem 0.35rem;
+    margin-top: 1.75rem;
+    margin-left: 2rem;
+    position: absolute;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
 .dashnav-links:last-child {
-    margin-bottom: 15px;
+    margin-bottom: 0.65rem;
 }
 
 .dashnav-links {
-    margin-top: 15px;
+    margin-top: 0.65rem;
 }
 
-.dashnav-toggle-div {  
-    margin-left: 50px;
-    padding-bottom: 10px;
+.dashnav-toggle-div { 
+    margin-top: 1.2rem;
+    height: 2rem;
 }
     
 .dashnav-toggle:hover {
@@ -190,23 +197,21 @@
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 650px) {
+    .dashboard-header{
+        padding: 0.5rem;
+    }
 
     .title-links-div {
         flex-direction: column;
-        justify-content: space-between;
-        font-size: $font-sm;
-
+        align-items: flex-start;
         h1 {
-            font-size: $font-m;
-            margin-bottom: 1rem;
+            font-size: $font-ml;
         }
     }
 
-    .dashboard-nav {
-        h1 {
-            margin-left: 25px;
-        }
+    .exercise-nutrition-links-div {
+        margin: 0;
     }
 
     .dashnav-links {
@@ -224,11 +229,11 @@
 
     .email-dropdown-button {
         font-size: $font-sm;
-        padding: 5px;
     }
 
     .email-div {
         font-size: $font-sm;
+        margin-top: 0;
     }
 
     .email-display {
@@ -250,5 +255,12 @@
         margin-right: 0px;
     }
 
-    
+    .dashnav-toggle-div {
+        margin-top: 0.5rem;
+        height: 1.5rem;
+    }
+
+    .dashnav-dropdown {
+        margin-top: 1.5rem;
+    }
 }
