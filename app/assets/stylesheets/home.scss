@@ -8,20 +8,18 @@
 
 .nav-bar {
     display: flex;
-    height: 100%;
-    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem;
 }
 
-.title-div {
+.title-link {
     display: flex;
-    padding-top: 2rem;
-    padding-left: 2rem;
 }
 
 .nav-links-div {
-    width: 12rem;
     display: flex;
-    margin-right: 4rem;
+    width: 10rem;
     justify-content: space-evenly;
 
     a:hover {
@@ -32,9 +30,7 @@
 .info-div {
     display: flex;
     justify-content: space-between;
-    padding-top: 2.5rem;
-    margin-left: 10px;
-    width: 100%;
+
     font-size: $font-m;
 
     a:hover {
@@ -138,33 +134,19 @@
     .demo-button:hover {
         background-color: $light-green;
     }
-   
 }
 
-@media (max-width: 480px) {
+@media (max-width: 650px) {
     .title {
         font-size: 1.2rem;
     }
 
-    .title-div {
-        padding-top: 1.5rem;
-    }
-
     .logo {
-        font-size: $font-m;
+        font-size: $font-ml;
     }
 
     .header {
         height: fit-content;
-    }
-
-    .info-div {
-        padding-top: 1.5rem;
-        
-    }
-
-    .nav-links-div {
-        margin-right: 2rem;
     }
 
     .content-icon {
