@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-
+import DashnavContainer from "../dashboard/dashnav_container";
 
 const AllExercises = ({ exercises, fetchExercises }) => {
     useEffect(() => {
@@ -13,16 +12,17 @@ const AllExercises = ({ exercises, fetchExercises }) => {
     }
 
     if (exercises.length > 0) {
+        
         return (
-            <div className="all-exercises">
-                <nav className="dashboard-nav-link">
-                    <Link to="/dashboard" className="dashboard-link">My Dashboard</Link>
-                </nav>
-                <h1 className="subpage-h1">All Exercises</h1>
-                <div className="all-exercises-div">
-                    {renderExercises()}
+            <>
+                <DashnavContainer />
+                <div className="all-exercises">
+                    <h1 className="subpage-h1">All Exercises</h1>
+                    <div className="all-exercises-div">
+                        {renderExercises()}
+                    </div>
                 </div>
-            </div>
+            </>
         )
     } else {
         return <div>Loading...</div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import DashNavLink from "../dashboard/dashnavlink";
+import DashnavContainer from "../dashboard/dashnav_container";
 
 const UserExerciseForm = ({ userId, fetchAllCategories, createUserExercise, categories }) => {
     const history = useHistory();
@@ -40,9 +40,10 @@ const UserExerciseForm = ({ userId, fetchAllCategories, createUserExercise, cate
     }
 
     return (
-        <div>
-            <DashNavLink />
-            <div className="user-exercise-form-div">
+        <>
+            <DashnavContainer />
+            <div className="subpage-container">
+                <h1 className="subpage-h1">Create a Custom Exercise</h1>
                 <form className="user-exercise-form">
                     <label>Exercise Name</label>
                     <input className="exercise-input" type="text" name="name"
@@ -58,7 +59,7 @@ const UserExerciseForm = ({ userId, fetchAllCategories, createUserExercise, cate
                     <button className="create-new-exercise" onClick={handleSubmit}>Create Exercise</button>
                 </form>
             </div>
-        </div>
+        </>
     )
 };
 

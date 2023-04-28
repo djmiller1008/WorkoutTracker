@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import DashNavLink from "../dashboard/dashnavlink";
 import MyExerciseItem from "./my_exercise_item";
+import DashnavContainer from "../dashboard/dashnav_container";
 
 const MyExercisesShow = ({ fetchExercises, exercises, deleteExercise }) => {
 
@@ -15,10 +15,10 @@ const MyExercisesShow = ({ fetchExercises, exercises, deleteExercise }) => {
                                             deleteExercise={deleteExercise} />)
     }
     
-    if (JSON.stringify(exercises).length > 0) {
-        return (
+    return (
+        <>
+            <DashnavContainer />
             <div className="all-exercises">
-                <DashNavLink />
                 <h1 className="subpage-h1">My Exercises</h1>
                 <div className="my-exercises-div">
                     {renderExercises()}
@@ -26,16 +26,9 @@ const MyExercisesShow = ({ fetchExercises, exercises, deleteExercise }) => {
                 <section className="button-section">
                     <Link to="/exercises/new" className="create-new-exercise" >Create a New Exercise</Link>
                 </section>
-                
             </div>
-        )
-    } else {
-        return (
-                <div>
-                    <DashNavLink />
-                </div>
-        )
-    };
+        </>
+    ) 
 };
 
 export default MyExercisesShow;
