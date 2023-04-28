@@ -1,6 +1,5 @@
-import React from "react";
-import { useEffect } from "react";
-import DashNavLink from "../../components/dashboard/dashnavlink";
+import React, { useEffect } from "react";
+import DashnavContainer from "../dashboard/dashnav_container";
 import FoodDiaryItem from "./food_diary_item";
 
 const AllFoodDiaries = ({ foodDiaries, fetchAllFoodDiaries }) => {
@@ -29,13 +28,13 @@ const AllFoodDiaries = ({ foodDiaries, fetchAllFoodDiaries }) => {
     }
 
     return (
-        <div>
-            <DashNavLink />
+        <>
+            <DashnavContainer />
             <div className="all-items-div">
                 <h1>Your Food Diaries</h1>
                 {renderFoodDiaries()}
             </div>
-        </div>
+        </>
     )
 
 
