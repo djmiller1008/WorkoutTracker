@@ -1,7 +1,6 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
-import DashNavLink from "../dashboard/dashnavlink";
+import DashnavContainer from "../dashboard/dashnav_container";
 import FoodLogItem from "./food_log_item";
 
 const FoodDiaryShow = ({ fetchFoodLogs, fetchFoodDiary, foodDiary, foodLogs, deleteFoodDiary }) => {
@@ -45,8 +44,8 @@ const FoodDiaryShow = ({ fetchFoodLogs, fetchFoodDiary, foodDiary, foodLogs, del
     } 
     
     return (
-        <div>
-            <DashNavLink />
+        <>
+            <DashnavContainer />
             <div className="workout-log-div">
                 <div className="food-log-content-div">
                     <div className="food-log-food-items-div">
@@ -79,7 +78,7 @@ const FoodDiaryShow = ({ fetchFoodLogs, fetchFoodDiary, foodDiary, foodLogs, del
                     
                 </div>
             </div>
-        </div>
+        </>
     )
 };
 
