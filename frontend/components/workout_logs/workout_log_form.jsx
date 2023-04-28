@@ -1,4 +1,5 @@
 import React from "react";
+import DashnavContainer from "../dashboard/dashnav_container";
 import { Link } from "react-router-dom";
 
 class WorkoutLogForm extends React.Component {
@@ -22,7 +23,6 @@ class WorkoutLogForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        
         const logs = this.state.sets;
         if (this.state.exerciseName === "") {
             return alert("You must pick a valid exercise");
@@ -30,7 +30,6 @@ class WorkoutLogForm extends React.Component {
             return alert("You must pick a valid number of sets");
         }
         
-
         for (let i = 0; i < logs; i++) {
             let logObject = {
                 reps: this.state.reps[i],
@@ -42,7 +41,6 @@ class WorkoutLogForm extends React.Component {
             }
             this.props.createWorkoutLog(logObject);
         }
-
         this.props.history.replace(`/workouts/${this.props.match.url.split("/")[2]}/workout_log`);
     };
 
@@ -123,7 +121,6 @@ class WorkoutLogForm extends React.Component {
             matches.push('No Exercises Found');
             return matches;
         } 
-        
         return matches;
     }
 
@@ -138,17 +135,17 @@ class WorkoutLogForm extends React.Component {
         });
        
         return (
-            <div>
-                <nav className="dashboard-nav-link">
-                    <Link className="dashboard-link" to='/dashboard'>My Dashboard</Link>
-                </nav>
+            <>
+                <DashnavContainer />
                 <div className="workout-log-main-form-div">
+                    <h1 className="subpage-h1 log-h1">Log An Exercise</h1>
                     <form className="workout-log-form">
                         <div className="exercise-search">
                             <label>Exercise:</label>
-                            <input type='text'
+                            <input className="workout-log-form-input" type='text'
                                     value={this.state.exerciseName}
                                     onChange={this.handleExerciseInput}
+                                    placeholder="Begin typing to find exercises..."
                             />
                         </div>
                        
@@ -157,7 +154,7 @@ class WorkoutLogForm extends React.Component {
                         </ul>
                         <section className="sets-section">
                             <label>Sets:</label>
-                            <input type='number' min='1'
+                            <input className="workout-log-form-input" type='number' min='1'
                                     value={this.state.sets}
                                     onChange={this.handleSetsInput('sets')}
                             />
@@ -167,8 +164,12 @@ class WorkoutLogForm extends React.Component {
    
                         <button onClick={this.handleSubmit} className='log-submit'>Log Exercise</button>
                     </form>
+                    <div className="custom-info-div">
+                        <span>Can't find the exercise you want?</span>
+                        <Link className="dashboard-link custom-item-link" to="/exercises/new">Add a Custom Exercise</Link>
+                    </div>
                 </div>
-            </div>
+            </>
         )
     }
 };
