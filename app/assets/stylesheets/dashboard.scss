@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
+
 }
 
 .dashboard-title-link {
@@ -43,7 +43,6 @@
 .email-div {
     display: flex;
     height: 2rem;
-    margin-top: 1.2rem;
 }
 
 .hover-div {
@@ -151,7 +150,6 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
-    margin-top: 8px;
     width: 6rem; 
     padding: 0.5rem 0.35rem;
     font-size: $font-sm;
@@ -167,7 +165,7 @@
     align-items: flex-start;
     width: 5rem;
     padding: 0.5rem 0.35rem;
-    margin-top: 1.75rem;
+    margin-top: 2em;
     margin-left: 2rem;
     position: absolute;
     background-color: white;
@@ -183,9 +181,15 @@
 }
 
 .dashnav-toggle-div { 
-    margin-top: 1.2rem;
     height: 2rem;
 }
+
+.dashnav-toggle {
+    height: 100%;
+    display: flex;
+    align-items: end;
+}
+
     
 .dashnav-toggle:hover {
     color: $light-green;

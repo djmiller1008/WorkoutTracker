@@ -3,24 +3,27 @@
 
 .workout-log-main-form-div {
     font-family: $body-font;
-    margin-top: 35px;
+    margin-top: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
-    
 }
 
 .exercise-search {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.5rem; 
+    margin-bottom: 0.5rem; 
     width: 100%;
 
     input:focus {
         outline: 2px solid $green;
     }
+}
+
+.log-h1 {
+    margin-top: 0;
 }
 
 .possible-exercises {
@@ -30,7 +33,6 @@
     align-items: center;
     margin-bottom: 25px;
     
-
     li {
         padding-top: 5px;
         padding-bottom: 5px;
@@ -48,16 +50,19 @@
     align-items: center;
     justify-content: space-between;
     
- 
+
 
     input:focus {
         outline: 2px solid $green;
     }
 }
 
+.workout-log-form-input {
+    width: 12rem;
+}
+
 .log-info-section {
     display: flex;
-    
     justify-content: center;
     align-items: end;
     margin-top: 50px;
@@ -65,7 +70,6 @@
 
     label {
         margin-right: 15px;
-       
     }
 
     input {
@@ -84,14 +88,13 @@
     select:focus {
         outline: 2px solid $green;
     }
-
 }
 
 .workout-log-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 17rem;
+    width: 20rem;
 }
 
 .log-submit {
@@ -145,8 +148,6 @@
         padding-left: 15px;
         padding-right: 15px;
         
-        
-
         input {
             width: 1.5rem;
             height: 1.5rem;
@@ -159,7 +160,6 @@
            font-size: $font-sm;
            padding: 5px;
            
-
            option {
             text-align: center;
            }

@@ -8,8 +8,6 @@
    padding: 10px 30px;
    border: none;
    font-family: $body-font;
-
-
 }
 
 .new-workout-submit:hover {
@@ -39,7 +37,6 @@
 .new-exercise-link-div {
     margin-top: 30px;
    
-
     a {
         color: white;
         background-color: $green;
@@ -71,7 +68,6 @@
 }
 
 @media (max-width: 480px) {
-
     .workout-log-div {
         margin-left: 0;
     }
@@ -98,7 +94,6 @@
 
         button {
             margin-left: 0px;
-
         }
     }
 

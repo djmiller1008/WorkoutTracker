@@ -82,13 +82,14 @@
 .signup-content-div {
     display: flex;
     justify-content: space-evenly;
-    font-family: $body-font;
     margin-top: 5rem;
 }
 
 .signup-content-info {
-    h2 {
-        font-size: $font-xl;
+    font-family: $body-font;
+
+    h1 {
+        font-size: $font-xl
     }
 
     ul {
@@ -108,10 +109,11 @@
 
 .signup-form-div {
     width: 350px;
+    font-family: $body-font;
 
-    h2 {
+    h1 {
         text-align: center;
-        font-size: $font-l;
+        font-size: $font-xl;
     }
 }
 
