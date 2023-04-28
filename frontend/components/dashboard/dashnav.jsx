@@ -29,14 +29,11 @@ const Dashnav = ({ currentUserEmail, logout }) => {
             return (
                 <div className="dashnav-dropdown">
                     <Link to='/profile' className="email-dropdown-button">My Account</Link>
-                    <button className="email-dropdown-button" onClick={handleLogout}>Logout</button>
+                    <p className="email-dropdown-button" onClick={handleLogout}>Logout</p>
                 </div>
-               
             )
         }
     };
-
- 
 
     const toggleExercisesDropdown = () => {
         if (exercisesDropdown) {
@@ -81,28 +78,33 @@ const Dashnav = ({ currentUserEmail, logout }) => {
     const dropdownMenu = displayLogout();
     const dropdownExercises = displayExercisesDropdown();
     const dropdownNutrition = displayNutritionDropdown();
-
+ 
     return (
         
         <header className="dashboard-header">
             <nav className="dashboard-nav">
                 <div className="title-links-div">
-                    <h1>My Dashboard</h1>
-                    <div onMouseEnter={toggleExercisesDropdown} onMouseLeave={toggleExercisesDropdown} className="dashnav-toggle-div">
-                        <section className="dashnav-toggle">Exercises</section>
-                        {dropdownExercises}
-                    </div>
-                    <div onMouseEnter={toggleNutritionDropdown} onMouseLeave={toggleNutritionDropdown} className="dashnav-toggle-div">
-                        <section className="dashnav-toggle">Nutrition</section>
-                        {dropdownNutrition}
+                    <Link className="dashboard-title-link" to="/">
+                        <FontAwesomeIcon className="logo" icon={solid('dumbbell')} />
+                        <h1 className="title">RepLogger</h1> 
+                    </Link>
+                    <div className="exercise-nutrition-links-div">
+                        <div onMouseEnter={toggleExercisesDropdown} onMouseLeave={toggleExercisesDropdown} className="dashnav-toggle-div">
+                            <div className="dashnav-toggle">Exercises</div>
+                            {dropdownExercises}
+                        </div>
+                        <div onMouseEnter={toggleNutritionDropdown} onMouseLeave={toggleNutritionDropdown} className="dashnav-toggle-div">
+                            <div className="dashnav-toggle">Nutrition</div>
+                            {dropdownNutrition}
+                        </div>
                     </div>
                   
                 </div>
                 
                 <div>
                     <div onMouseEnter={toggleLogout} onMouseLeave={toggleLogout} className="email-div">
-                        <p className="email-display">{currentUserEmail}</p>
-                        <FontAwesomeIcon icon={solid('caret-down')} />
+                        <div className="email-display dashnav-toggle">{currentUserEmail}</div>
+                        <div className="dashnav-toggle"><FontAwesomeIcon icon={solid('caret-down')} /></div>
                         {dropdownMenu}
                     </div>
                     
