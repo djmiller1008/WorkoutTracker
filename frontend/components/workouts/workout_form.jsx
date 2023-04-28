@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import DashnavContainer from "../dashboard/dashnav_container";
 
 class WorkoutForm extends React.Component {
     constructor(props) {
@@ -29,14 +29,12 @@ class WorkoutForm extends React.Component {
     renderErrors() {
         const errors = this.props.errors.map((err => <p>{err}</p>));
         return errors;
-    }
+    };
 
     render() {
         return (
-            <div>
-                <nav className="dashboard-nav-link">
-                    <Link to="/dashboard" className='dashboard-link'>My Dashboard</Link>
-                </nav>
+            <>
+                <DashnavContainer />
                 <div className="form-errors-div">
                     {this.renderErrors()}
                 </div>
@@ -50,9 +48,8 @@ class WorkoutForm extends React.Component {
                         <button className='create-button'>Create Workout</button>
                     </form>
                 </div>
-            </div>
-           
-    )}
-}
+            </> 
+    )};
+};
 
 export default WorkoutForm;
