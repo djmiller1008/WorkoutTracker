@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
     font-family: $body-font;
-    margin-top: 3rem;
+    margin-bottom: 3rem;
 
     label {
         font-family: inherit;
@@ -20,6 +20,8 @@
         padding: 5px 10px;
         border-radius: 5px;
         border: .5px solid black;
+        width: 15rem;
+        height: 1.5rem;
     }
 
     input:focus {
@@ -50,13 +52,13 @@
     display: flex;
     justify-content: space-evenly;
     font-family: $body-font;
+    margin-top: 5rem;
 }
 
 .login-page-section {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 75px;
     text-align: center;
     font-size: $font-xl;
 }
@@ -66,25 +68,25 @@
 }
 
 .quote-div {
-    margin-top: 100px;
     display: flex;
-    justify-content: space-around;
     flex-direction: column;
     font-size: $font-xl;
     font-family: $body-font;
     text-align: center;
+    
+    p {
+        margin-bottom: 3rem;
+    }
 }
 
 .signup-content-div {
     display: flex;
     justify-content: space-evenly;
     font-family: $body-font;
-    margin-top: 55px;
+    margin-top: 5rem;
 }
 
 .signup-content-info {
-   
-
     h2 {
         font-size: $font-xl;
     }
@@ -94,8 +96,7 @@
 
         li {
             text-align: center;
-            margin-top: 25px;
-            
+            margin-top: 25px;  
         }
     }
 }
@@ -111,7 +112,6 @@
     h2 {
         text-align: center;
         font-size: $font-l;
-        margin-bottom: 15px;
     }
 }
 
@@ -130,7 +130,6 @@
 }
 
 @media (max-width: 480px) {
-
     .quote-div {
         display: none;
     }
@@ -145,7 +144,4 @@
         align-items: center;  
     }
 
-    .signup-form-div {
-        height: 75vh;
-    }
 }
