@@ -66,8 +66,6 @@ class SessionForm extends React.Component {
                     />
                     <button onClick={this.handleSubmit}>{buttonText}</button>
                 </form>
-
-                
             </div>
         )
     };
