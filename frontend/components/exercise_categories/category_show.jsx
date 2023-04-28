@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import DashnavContainer from "../dashboard/dashnav_container";
 
 const CategoryShow = ({ category, fetchExerciseCategory }) => {
     const params = useParams();
@@ -15,9 +16,7 @@ const CategoryShow = ({ category, fetchExerciseCategory }) => {
 
     return (
         <div>
-            <nav className="dashboard-nav-link">
-                <Link to="/dashboard" className="dashboard-link">My Dashboard</Link>
-            </nav>
+            <DashnavContainer />
             <div>
                 <h1 className="category-h1">{category.name}</h1>
                 <div className="category-exercises-div">
