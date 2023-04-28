@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import DashNavLink from "../dashboard/dashnavlink";
+import DashnavContainer from "../dashboard/dashnav_container";
 
 const FoodDiaryForm = ({ userId, createFoodDiary, errors, clearErrors }) => {
     const history = useHistory();
@@ -32,13 +31,12 @@ const FoodDiaryForm = ({ userId, createFoodDiary, errors, clearErrors }) => {
     }
 
     return (
-        <div>
-            <DashNavLink />
+        <>
+            <DashnavContainer />
             <div className="form-errors-div">
                 {renderErrors()}
             </div>
             <div className="new-form-div">
-                
                 <h1>Pick a Day for your Food Diary</h1>
                 <form onSubmit={handleSubmit} className='new-content-form'>
                     <input className="date-input" type='date'
@@ -46,9 +44,8 @@ const FoodDiaryForm = ({ userId, createFoodDiary, errors, clearErrors }) => {
                     <button className="create-button">Create Food Diary</button>
                 </form>
             </div>
-        </div>
+        </>
     )
-
 };
 
 export default FoodDiaryForm;
