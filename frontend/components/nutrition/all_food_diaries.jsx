@@ -31,7 +31,7 @@ const AllFoodDiaries = ({ foodDiaries, fetchAllFoodDiaries }) => {
         <>
             <DashnavContainer />
             <div className="all-items-div">
-                <h1>Your Food Diaries</h1>
+                <h1>My Food Diaries</h1>
                 {renderFoodDiaries()}
             </div>
         </>
