@@ -43,7 +43,7 @@ const UserExerciseForm = ({ userId, fetchAllCategories, createUserExercise, cate
         <>
             <DashnavContainer />
             <div className="subpage-container">
-                <h1 className="subpage-h1">Create a Custom Exercise</h1>
+                <h1 className="subpage-h1">Create a New Exercise</h1>
                 <form className="user-exercise-form">
                     <label>Exercise Name</label>
                     <input className="exercise-input" type="text" name="name"
