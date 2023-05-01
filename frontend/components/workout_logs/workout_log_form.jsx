@@ -166,7 +166,7 @@ class WorkoutLogForm extends React.Component {
                     </form>
                     <div className="custom-info-div">
                         <span>Can't find the exercise you want?</span>
-                        <Link className="dashboard-link custom-item-link" to="/exercises/new">Add a Custom Exercise</Link>
+                        <Link className="dashboard-link custom-item-link" to="/exercises/new">Add a New Exercise</Link>
                     </div>
                 </div>
             </>
