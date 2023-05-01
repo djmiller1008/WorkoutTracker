@@ -17,13 +17,12 @@
 
 .date-h1 {
     font-size: $font-l;
-    margin-bottom: 30px;
 }
 
 .workout-log-div {
     font-family: $body-font;
-    margin-left: 35px;
-    margin-top: 25px;
+    margin-left: 3rem;
+    margin-top: 2rem;
 }
 
 .single-log-div {
@@ -32,6 +31,9 @@
 
 .log-title-div {
     display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
 }
 
 .new-exercise-link-div {
@@ -48,9 +50,6 @@
         cursor: pointer;
     }
 
-    button {
-        margin-left: 20px;
-    }
 }
 
 .delete-button {
@@ -67,14 +66,15 @@
     cursor: pointer;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 650px) {
     .workout-log-div {
-        margin-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
     }
 
-    .display-all-logs-div {
-        margin-right: 2rem;
-    }
+    
 
     .dashboard-nav-link {
        justify-content: center;
@@ -84,7 +84,9 @@
     .log-title-div {
         margin-top: 2rem;
         text-align: center;
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .new-exercise-link-div {
@@ -104,5 +106,9 @@
     .delete-button {
         margin-top: 1rem;
         margin-bottom: 2rem;
+    }
+
+    .date-h1 {
+        margin-bottom: 1rem;
     }
 }

@@ -2,7 +2,6 @@
 @import 'colors';
 
 .subpage-h1 {
-    margin-top: 1rem;
     margin-bottom: 2rem;
     text-align: center;
     font-size: $font-l;
@@ -50,7 +49,7 @@
     align-items: center;
 
     h1 {
-        font-size: $font-ml;
+        font-size: $font-l;
         padding-bottom: 25px;
     }
 }

@@ -122,20 +122,26 @@
 .display-logs-div {
     display: flex;
     flex-direction: column;
+    align-items: end;
     margin-left: 2rem;
 }
 
 .workout-log-main-content {
     margin-right: 2rem;
+    width: 15rem;
 }
 
 .log-big-div {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+
+    h2 {
+        width: 6rem;
+    }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 650px) {
     .display-all-logs-div {
         flex-direction: column;
         align-items: center;
