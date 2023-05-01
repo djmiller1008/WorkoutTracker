@@ -80,7 +80,6 @@ const Dashnav = ({ currentUserEmail, logout }) => {
     const dropdownNutrition = displayNutritionDropdown();
  
     return (
-        
         <header className="dashboard-header">
             <nav className="dashboard-nav">
                 <div className="title-links-div">
@@ -100,23 +99,16 @@ const Dashnav = ({ currentUserEmail, logout }) => {
                     </div>
                   
                 </div>
-                
                 <div>
                     <div onMouseEnter={toggleLogout} onMouseLeave={toggleLogout} className="email-div">
                         <div className="email-display dashnav-toggle">{currentUserEmail}</div>
                         <div className="dashnav-toggle"><FontAwesomeIcon icon={solid('caret-down')} /></div>
                         {dropdownMenu}
                     </div>
-                    
-                    
                 </div>
-                
-                
-                    
             </nav>
         </header>
-    )
-    
+    );
 };
 
 export default Dashnav;
