@@ -1,12 +1,11 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
-import DashNavLink from "../dashboard/dashnavlink";
+import DashnavContainer from "../dashboard/dashnav_container";
 
 const Profile = ({ currentUser }) => {
     return (
-        <div>
-            <DashNavLink />
+        <>
+            <DashnavContainer />
             <div className="account-page-div">
                 <section className="account-management-section">
                     <h1>Account Management</h1>
@@ -21,7 +20,7 @@ const Profile = ({ currentUser }) => {
                     </ul>
                 </section>
             </div>
-        </div>
+        </>
     )
 }
 

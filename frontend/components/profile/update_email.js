@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import DashNavLink from "../dashboard/dashnavlink";
+import DashnavContainer from "../dashboard/dashnav_container";
 
 const UpdateEmail = ({ currentUser, updateEmail, errors, clearErrors }) => {
     const [oldEmail, setOldEmail] = useState('');
@@ -46,15 +45,12 @@ const UpdateEmail = ({ currentUser, updateEmail, errors, clearErrors }) => {
     }
     
     return (
-        <div>
-            <DashNavLink />
-
-
+        <>
+            <DashnavContainer />
             <div className="errors-div">
                     {renderErrors()}
             </div>
             <form className="update-email-form">
-                
                 <label>Current Email Address</label>
                 <input onChange={handleOldEmail}  type="text"></input>
                 <label>New Email</label>
@@ -63,7 +59,7 @@ const UpdateEmail = ({ currentUser, updateEmail, errors, clearErrors }) => {
                 <input onChange={handleConfirmNewEmail} type='text'></input>
                 <button onClick={handleSubmit} type='submit'>Change Email</button>
             </form>
-        </div>
+        </>
     )
 
 }
