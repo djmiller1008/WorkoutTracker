@@ -6,7 +6,6 @@ import FoodLogItem from "./food_log_item";
 const FoodDiaryShow = ({ fetchFoodLogs, fetchFoodDiary, foodDiary, foodLogs, deleteFoodDiary }) => {
     const params = useParams();
     const history = useHistory();
-
     useEffect(() => {
         fetchFoodDiary(params.foodDiaryId);
         fetchFoodLogs(params.foodDiaryId);
@@ -46,14 +45,16 @@ const FoodDiaryShow = ({ fetchFoodLogs, fetchFoodDiary, foodDiary, foodLogs, del
     return (
         <>
             <DashnavContainer />
-            <div className="workout-log-div">
                 <div className="food-log-content-div">
                     <div className="food-log-food-items-div">
-                        <div className="log-title-div">
-                            <h1 className="date-h1">Food Diary: {renderDate()}</h1>
+                        <div className="food-diary-title-div">
+                            <h1 className="">Food Diary: {renderDate()}</h1>
+                            <Link className="dashboard-link" to={`/food_diaries/${params.foodDiaryId}/new`}>
+                                Add A New Food Item
+                            </Link>
                         </div>
 
-                        <div className="display-all-logs-div">
+                        <div className="display-all-foodlogs-div">
                             {displayFoodLogs}
                         </div>
                     </div>
@@ -70,14 +71,10 @@ const FoodDiaryShow = ({ fetchFoodLogs, fetchFoodDiary, foodDiary, foodLogs, del
                     </div>
                 </div>
 
-                <div className="new-exercise-link-div">
-                    <Link to={`/food_diaries/${params.foodDiaryId}/new`}>
-                        Add A New Food Item
-                    </Link>
+                <div className="delete-food-diary-div">
                     <button onClick={handleDelete} className="delete-button">Delete Food Diary</button>
-                    
                 </div>
-            </div>
+          
         </>
     )
 };
