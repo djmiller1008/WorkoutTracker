@@ -8,8 +8,9 @@ class Api::FoodLogsController < ApplicationController
         elsif params[:food_log][:servings] == ""
             render json: ['Please enter the number of servings'], status: 401
         else
-            food_item_id = FoodItem.find_by(name: params[:food_log][:name]).id
-            @food_log.food_item_id = food_item_id
+            food_item = FoodItem.find_by(name: params[:food_log][:name])
+            @food_log.food_item_id = food_item.id
+            @food_log.calories = food_item.calories * @food_log.servings
             if @food_log.save
                 @food_logs = FoodDiary.find_by(id: @food_log.food_diary_id).food_logs
                 @nutrient_info = FoodLog.find_nutrient_totals(@food_logs)
