@@ -30,7 +30,7 @@ const AllWorkouts = ({ fetchWorkouts, workouts }) => {
         <>
             <DashnavContainer />
             <div className="all-items-div">
-                <h1>Your Workouts</h1>
+                <h1>My Workout Log</h1>
                 {renderWorkouts()}
             </div>
         </>
