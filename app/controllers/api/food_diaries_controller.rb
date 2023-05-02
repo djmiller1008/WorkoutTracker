@@ -28,6 +28,19 @@ class Api::FoodDiariesController < ApplicationController
         food_diary.destroy
     end
 
+    def calorie_data
+        data = Hash.new()
+        offset = params["offset"].to_i * 7
+        diaries = current_user.food_diaries.offset(offset).order('date DESC').limit(7)
+        total_calories = 0
+        diaries.each do |diary|
+            total_calories += FoodLog.where(food_diary_id: diary.id).pluck(:calories).sum
+            data[diary.date.strftime("%m/%d/%Y")] = total_calories 
+            total_calories = 0
+        end
+        render json: [data]
+    end
+
     private
 
     def food_diary_params
