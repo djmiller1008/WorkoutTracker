@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import DashnavContainer from './dashnav_container';
 import WorkoutItem from "../workouts/workout_item";
 import FoodDiaryItem from "../nutrition/food_diary_item";
-
+import CalorieChart from "../chart/CalorieChart";
 
 const Dashboard = ({ workouts, foodDiaries, fetchWorkouts, fetchFoodDiaries }) => {
     const [loading, setLoading] = useState(true);
@@ -66,7 +66,7 @@ const Dashboard = ({ workouts, foodDiaries, fetchWorkouts, fetchFoodDiaries }) =
                 <div className="content-box-div">
                     <h1>My Workout Log</h1>
                     <div className="dashboard-link-div">
-                        <Link className="dashboard-link main" to="./workouts/new">Log A New Workout</Link>
+                        <Link className="dashboard-link" to="./workouts/new">Log A New Workout</Link>
                     </div>
                     {renderWorkouts()}
                     <div className="all-workouts-link-div">
@@ -77,7 +77,7 @@ const Dashboard = ({ workouts, foodDiaries, fetchWorkouts, fetchFoodDiaries }) =
                 <div className="content-box-div">
                     <h1>My Food Diary</h1>
                     <div className="dashboard-link-div">
-                    <Link className="dashboard-link main" to="./food_diary/new">Log A New Food Diary</Link>
+                    <Link className="dashboard-link" to="./food_diary/new">Log A New Food Diary</Link>
                     </div>
                     {renderFoodLogs()}
                     <div className="all-workouts-link-div">
@@ -85,7 +85,7 @@ const Dashboard = ({ workouts, foodDiaries, fetchWorkouts, fetchFoodDiaries }) =
                     </div>
                 </div>
                 <div>
-                    TODO
+                    <CalorieChart />
                 </div>
             </div>
         </div>
