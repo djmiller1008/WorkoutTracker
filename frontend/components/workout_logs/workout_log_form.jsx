@@ -93,7 +93,7 @@ class WorkoutLogForm extends React.Component {
                                             <option value=''></option>
                                             <option value='lbs'>lbs</option>
                                             <option value='kg'>kg</option>
-                                            <option value='body-weight'>bw</option>
+                                            <option value='bw'>bw</option>
                                 </select>   
                           </section>
             setInputs.push(input);
