@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     resources :exercise_categories, only: [:index, :show]
     resources :user_exercises, only: [:create, :show, :destroy, :index]
     resources :food_items, only: [:create, :destroy, :index, :show]
-    resources :food_diaries, only: [:create, :destroy, :index, :show]
+    resources :food_diaries, only: [:create, :destroy, :index, :show] do
+      collection do
+        get 'calorie_data'
+      end
+    end
     resources :food_logs, only: [:create, :destroy, :index, :show]
   end
   
