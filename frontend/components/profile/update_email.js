@@ -47,18 +47,21 @@ const UpdateEmail = ({ currentUser, updateEmail, errors, clearErrors }) => {
     return (
         <>
             <DashnavContainer />
-            <div className="errors-div">
-                    {renderErrors()}
+            <div className="email-form-div">
+                <h1 className="subpage-h1">Change Email</h1>
+                <div className="errors-div">
+                        {renderErrors()}
+                </div>
+                <form className="update-email-form">
+                    <label>Current Email Address</label>
+                    <input onChange={handleOldEmail}  type="text"></input>
+                    <label>New Email</label>
+                    <input onChange={handleNewEmail} type='text'></input>
+                    <label>Confirm New Email</label>
+                    <input onChange={handleConfirmNewEmail} type='text'></input>
+                    <button onClick={handleSubmit} type='submit'>Change Email</button>
+                </form>
             </div>
-            <form className="update-email-form">
-                <label>Current Email Address</label>
-                <input onChange={handleOldEmail}  type="text"></input>
-                <label>New Email</label>
-                <input onChange={handleNewEmail} type='text'></input>
-                <label>Confirm New Email</label>
-                <input onChange={handleConfirmNewEmail} type='text'></input>
-                <button onClick={handleSubmit} type='submit'>Change Email</button>
-            </form>
         </>
     )
 
