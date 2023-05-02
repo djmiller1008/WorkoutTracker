@@ -12,7 +12,6 @@ const AllExercises = ({ exercises, fetchExercises }) => {
     }
 
     if (exercises.length > 0) {
-        
         return (
             <>
                 <DashnavContainer />
@@ -25,7 +24,11 @@ const AllExercises = ({ exercises, fetchExercises }) => {
             </>
         )
     } else {
-        return <div>Loading...</div>
+        return (
+            <>
+                <DashnavContainer />
+            </>
+        )
     };
 };
 
