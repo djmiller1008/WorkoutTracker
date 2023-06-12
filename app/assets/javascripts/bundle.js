@@ -5304,7 +5304,7 @@ var MyExerciseItem = function MyExerciseItem(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, exercise[0]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     value: exercise[1],
     onClick: handleDelete
-  }, "Delete"));
+  }, "x"));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyExerciseItem);
@@ -6829,7 +6829,43 @@ var Profile = function Profile(_ref) {
     className: "account-links-ul"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     to: "/profile/email"
-  }, "Change Email")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+  }, "Change Email"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+    className: "preferences-h1"
+  }, "Preferences"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    className: "weight-unit-preference-form"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    name: "weight_unit",
+    id: "kg",
+    type: "radio",
+    value: "kg",
+    defaultChecked: currentUser.weight_unit === "kg" ? true : false
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kg"
+  }, "kg"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    name: "weight_unit",
+    id: "lbs",
+    type: "radio",
+    value: "lbs",
+    defaultChecked: currentUser.weight_unit === "lbs" ? true : false
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "lbs"
+  }, "lbs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    name: "weight_unit",
+    id: "bw",
+    type: "radio",
+    value: "bw",
+    defaultChecked: currentUser.weight_unit === "bw" ? true : false
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "bw"
+  }, "bw"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    name: "weight_unit",
+    id: "none",
+    type: "radio",
+    value: "none",
+    defaultChecked: currentUser.weight_unit === "none" ? true : false
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "none"
+  }, "None"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "account-management-section"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
     className: "profile-ul"
@@ -6969,6 +7005,10 @@ var UpdateEmail = function UpdateEmail(_ref) {
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dashboard_dashnav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "email-form-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+    className: "subpage-h1"
+  }, "Change Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "errors-div"
   }, renderErrors()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     className: "update-email-form"
@@ -6984,7 +7024,7 @@ var UpdateEmail = function UpdateEmail(_ref) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: handleSubmit,
     type: "submit"
-  }, "Change Email")));
+  }, "Change Email"))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UpdateEmail);

@@ -106,19 +106,21 @@
 }
 
 .my-exercise-item-div {
-    flex-basis: 20%;
+    display: flex;
+    justify-content: space-between;
+    width: 12rem;
     text-align: center;
     font-family: $body-font;
     margin-bottom: 2rem;
 
     p {
-        padding: 5px;
-        margin-bottom: 5px;
+        margin: 5px;
+       
     }
 
     button {
-        color: white;
-        background-color: #d11a2a;
+        color: black;
+        background-color: transparent;
         border: none;
         font-family: $body-font;
     }
