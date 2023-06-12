@@ -1,3 +1,3 @@
 if @user 
-    json.extract! @user, :id, :email
+    json.extract! @user, :id, :email, :weight_unit
 end
