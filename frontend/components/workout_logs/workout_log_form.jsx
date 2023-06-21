@@ -29,12 +29,15 @@ class WorkoutLogForm extends React.Component {
         } else if (logs <= 0) {
             return alert("You must pick a valid number of sets");
         }
-        
+       
         for (let i = 0; i < logs; i++) {
+           
+            const weightUnit = this.state.weightUnit[i] === undefined ? 
+                                this.props.currentUser.weight_unit : this.state.weightUnit[i];
             let logObject = {
                 reps: this.state.reps[i],
                 weight: this.state.weight[i],
-                weight_unit: this.state.weightUnit[i],
+                weight_unit: weightUnit,
                 name: this.state.exerciseName,
                 user_id: this.props.userId,
                 workout_id: this.props.match.url.split("/")[2]
@@ -74,6 +77,8 @@ class WorkoutLogForm extends React.Component {
     }
 
     renderSetInputs(n) {
+        const defaultUnit = this.props.currentUser.weight_unit;
+        
         let setInputs = []
         for (let i = 0; i < n; i++) {
             const input = <section className="log-info-section" key={i}>
@@ -89,6 +94,7 @@ class WorkoutLogForm extends React.Component {
                                 />
                                 <label>Weight Unit: </label>
                                 <select 
+                                        defaultValue={defaultUnit}
                                         onChange={this.handleLogInput('weightUnit', i)}>
                                             <option value=''></option>
                                             <option value='lbs'>lbs</option>
@@ -128,7 +134,7 @@ class WorkoutLogForm extends React.Component {
     render() {
         const possibleExercises = this.matches().map((match, i) => {
             if (match === 'No Exercises Found') {
-                return <span>{match}</span>
+                return <span key={i}>{match}</span>
             } else {
             return <li onClick={this.selectExercise} key={i}>{match}</li>
             }

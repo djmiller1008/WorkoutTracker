@@ -4,11 +4,12 @@ import { createWorkoutLog } from "../../actions/workout_log_actions";
 import { getExerciseNames } from "../../reducers/selectors";
 import WorkoutLogForm from "./workout_log_form";
 
-const mapStateToProps = state => ({
-    userId: state.session.id,
-    exerciseNames: getExerciseNames(state.entities.exercises),
+const mapStateToProps = ({ entities, session }) => ({
+    currentUser: entities.users[session.id],
+    userId: session.id,
+    exerciseNames: getExerciseNames(entities.exercises),
     //workoutId: Object.values(state.entities.workouts)[0].id,
-    exercises: state.entities.exercises
+    exercises: entities.exercises 
 });
 
 const mapDispatchToProps = dispatch => ({
