@@ -25,6 +25,12 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def update_weight_unit
+        @user = current_user
+        @user.update_attributes({ weight_unit: params[:data] })
+        render :show
+    end
+
     private
 
     def user_params
