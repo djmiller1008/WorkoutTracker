@@ -20,3 +20,11 @@ export const updateEmail = data => dispatch => {
             .fail(err => dispatch(receiveAccountUpdateErrors(err.responseJSON)))
     )
 };
+
+export const updateWeightUnit = data => dispatch => {
+    return (
+        APIUtil.updateWeightUnit(data) 
+            .then(user => dispatch(receiveCurrentUser(user)))
+            .fail(err => dispatch(receiveAccountUpdateErrors(err.responseJSON)))
+    )
+};
