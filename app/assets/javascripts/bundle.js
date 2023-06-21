@@ -3684,7 +3684,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RECEIVE_ACCOUNT_UPDATE_ERRORS": () => (/* binding */ RECEIVE_ACCOUNT_UPDATE_ERRORS),
 /* harmony export */   "clearAccountUpdateErrors": () => (/* binding */ clearAccountUpdateErrors),
 /* harmony export */   "receiveAccountUpdateErrors": () => (/* binding */ receiveAccountUpdateErrors),
-/* harmony export */   "updateEmail": () => (/* binding */ updateEmail)
+/* harmony export */   "updateEmail": () => (/* binding */ updateEmail),
+/* harmony export */   "updateWeightUnit": () => (/* binding */ updateWeightUnit)
 /* harmony export */ });
 /* harmony import */ var _util_account_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/account_api_util */ "./frontend/util/account_api_util.js");
 /* harmony import */ var _session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_actions */ "./frontend/actions/session_actions.js");
@@ -3706,6 +3707,15 @@ var clearAccountUpdateErrors = function clearAccountUpdateErrors() {
 var updateEmail = function updateEmail(data) {
   return function (dispatch) {
     return _util_account_api_util__WEBPACK_IMPORTED_MODULE_0__.updateData(data).then(function (user) {
+      return dispatch((0,_session_actions__WEBPACK_IMPORTED_MODULE_1__.receiveCurrentUser)(user));
+    }).fail(function (err) {
+      return dispatch(receiveAccountUpdateErrors(err.responseJSON));
+    });
+  };
+};
+var updateWeightUnit = function updateWeightUnit(data) {
+  return function (dispatch) {
+    return _util_account_api_util__WEBPACK_IMPORTED_MODULE_0__.updateWeightUnit(data).then(function (user) {
       return dispatch((0,_session_actions__WEBPACK_IMPORTED_MODULE_1__.receiveCurrentUser)(user));
     }).fail(function (err) {
       return dispatch(receiveAccountUpdateErrors(err.responseJSON));
@@ -6820,7 +6830,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Profile = function Profile(_ref) {
-  var currentUser = _ref.currentUser;
+  var currentUser = _ref.currentUser,
+      updateWeightUnit = _ref.updateWeightUnit;
+
+  var handleUpdateWeightUnit = function handleUpdateWeightUnit(e) {
+    var selected = e.target.value;
+    updateWeightUnit(selected);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dashboard_dashnav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "account-page-div"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
@@ -6832,6 +6849,7 @@ var Profile = function Profile(_ref) {
   }, "Change Email"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
     className: "preferences-h1"
   }, "Preferences"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    onChange: handleUpdateWeightUnit,
     className: "weight-unit-preference-form"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "weight_unit",
@@ -6840,6 +6858,7 @@ var Profile = function Profile(_ref) {
     value: "kg",
     defaultChecked: currentUser.weight_unit === "kg" ? true : false
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    className: "weight-unit-label",
     htmlFor: "kg"
   }, "kg"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "weight_unit",
@@ -6848,6 +6867,7 @@ var Profile = function Profile(_ref) {
     value: "lbs",
     defaultChecked: currentUser.weight_unit === "lbs" ? true : false
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    className: "weight-unit-label",
     htmlFor: "lbs"
   }, "lbs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "weight_unit",
@@ -6856,6 +6876,7 @@ var Profile = function Profile(_ref) {
     value: "bw",
     defaultChecked: currentUser.weight_unit === "bw" ? true : false
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    className: "weight-unit-label",
     htmlFor: "bw"
   }, "bw"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "weight_unit",
@@ -6864,6 +6885,7 @@ var Profile = function Profile(_ref) {
     value: "none",
     defaultChecked: currentUser.weight_unit === "none" ? true : false
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    className: "weight-unit-label",
     htmlFor: "none"
   }, "None"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "account-management-section"
@@ -6889,6 +6911,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _profile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./profile */ "./frontend/components/profile/profile.js");
+/* harmony import */ var _actions_account_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/account_actions */ "./frontend/actions/account_actions.js");
+
 
 
 
@@ -6900,7 +6924,15 @@ var mapStateToProps = function mapStateToProps(_ref) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, null)(_profile__WEBPACK_IMPORTED_MODULE_1__["default"]));
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    updateWeightUnit: function updateWeightUnit(data) {
+      return dispatch((0,_actions_account_actions__WEBPACK_IMPORTED_MODULE_2__.updateWeightUnit)(data));
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_profile__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -7504,10 +7536,11 @@ var WorkoutLogForm = /*#__PURE__*/function (_React$Component) {
       }
 
       for (var i = 0; i < logs; i++) {
+        var weightUnit = this.state.weightUnit[i] === undefined ? this.props.currentUser.weight_unit : this.state.weightUnit[i];
         var logObject = {
           reps: this.state.reps[i],
           weight: this.state.weight[i],
-          weight_unit: this.state.weightUnit[i],
+          weight_unit: weightUnit,
           name: this.state.exerciseName,
           user_id: this.props.userId,
           workout_id: this.props.match.url.split("/")[2]
@@ -7571,6 +7604,7 @@ var WorkoutLogForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderSetInputs",
     value: function renderSetInputs(n) {
+      var defaultUnit = this.props.currentUser.weight_unit;
       var setInputs = [];
 
       for (var i = 0; i < n; i++) {
@@ -7584,6 +7618,7 @@ var WorkoutLogForm = /*#__PURE__*/function (_React$Component) {
           type: "number",
           onChange: this.handleLogInput('weight', i)
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Weight Unit: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+          defaultValue: defaultUnit,
           onChange: this.handleLogInput('weightUnit', i)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
           value: ""
@@ -7636,7 +7671,9 @@ var WorkoutLogForm = /*#__PURE__*/function (_React$Component) {
 
       var possibleExercises = this.matches().map(function (match, i) {
         if (match === 'No Exercises Found') {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, match);
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+            key: i
+          }, match);
         } else {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
             onClick: _this6.selectExercise,
@@ -7710,12 +7747,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(_ref) {
+  var entities = _ref.entities,
+      session = _ref.session;
   return {
-    userId: state.session.id,
-    exerciseNames: (0,_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__.getExerciseNames)(state.entities.exercises),
+    currentUser: entities.users[session.id],
+    userId: session.id,
+    exerciseNames: (0,_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__.getExerciseNames)(entities.exercises),
     //workoutId: Object.values(state.entities.workouts)[0].id,
-    exercises: state.entities.exercises
+    exercises: entities.exercises
   };
 };
 
@@ -9037,12 +9077,22 @@ var configureStore = function configureStore() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "updateData": () => (/* binding */ updateData)
+/* harmony export */   "updateData": () => (/* binding */ updateData),
+/* harmony export */   "updateWeightUnit": () => (/* binding */ updateWeightUnit)
 /* harmony export */ });
 var updateData = function updateData(data) {
   return $.ajax({
     method: 'PUT',
     url: "/api/users/".concat(data.id),
+    data: {
+      data: data
+    }
+  });
+};
+var updateWeightUnit = function updateWeightUnit(data) {
+  return $.ajax({
+    method: 'PUT',
+    url: '/api/users/update_weight_unit',
     data: {
       data: data
     }

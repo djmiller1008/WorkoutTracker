@@ -3,7 +3,6 @@
 
 .account-management-section {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
     margin-top: 3rem;
@@ -42,6 +41,10 @@
 
 .weight-unit-preference-form {
     margin-top: 1.5rem;
+}
+
+.weight-unit-label {
+    margin-right: 0.5rem;
 }
 
 .update-email-form {
