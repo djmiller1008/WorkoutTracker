@@ -10,8 +10,7 @@ const MyExerciseItem = ({exercise, deleteExercise}) => {
     return (
         <div className="my-exercise-item-div">
             <p>{exercise[0]}</p>
-            <button value={exercise[1]} onClick={handleDelete}>Delete</button>
-
+            <button value={exercise[1]} onClick={handleDelete}>x</button>
         </div>
     )
 };
